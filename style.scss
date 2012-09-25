@@ -1,0 +1,64 @@
+@import "always/_always";
+
+* { 
+  margin: 0;
+  padding: 0;
+}
+
+body { 
+  font-family: sans-serif;
+  
+}
+
+entry { 
+
+  width: 320px;
+
+
+}
+
+content { 
+  
+  outline: none;
+  // min-height: 50px;
+  margin: 10px;
+  padding: 10px;
+  display: block;
+  border: 1px solid transparent;
+
+  @include prefix(transition, all 0.1s);
+
+  &:hover, &:focus {
+    border: 1px solid #ccc;
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  }
+
+}
+
+header { 
+
+
+  @include linear-gradient-stops(top, #ddd 0%, #ccc 100%);
+
+  padding: 10px;
+  background-color: #eee;
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  border-bottom: 1px solid #bbb;
+
+}
+
+ordinal { 
+  font-size: 9px;
+  vertical-align: top;
+}
+
+dayofweek { 
+  font-weight: bold;
+}
+
+year { 
+  color: #eee;
+}
