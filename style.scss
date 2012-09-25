@@ -6,21 +6,31 @@
 }
 
 body { 
-  font-family: sans-serif;
-  
+  font-family: 'Radley', serif;
+  background-color: #333;
+}
+
+#entries { 
+  // margin-bottom: 200px;
+  background-color: #fff;
+  // box-shadow: 0 5px 5px rgba(0,0,0,0.3);
 }
 
 entry { 
 
-  width: 320px;
+  display: inline-block;
+  width: 100%;
 
+  @include prefix(transition, width 0.2s ease-out);
 
+  &.weekend-true { 
+    background-color: #E2FFF8;
+  }
 }
 
 content { 
   
   outline: none;
-  // min-height: 50px;
   margin: 10px;
   padding: 10px;
   display: block;
@@ -28,15 +38,19 @@ content {
 
   @include prefix(transition, all 0.1s);
 
-  &:hover, &:focus {
-    border: 1px solid #ccc;
-    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  &:hover:not(:focus) {
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.05);
   }
 
 }
 
-header { 
+.today-true header {
+  @include linear-gradient-stops(top, #333 0%, #111 100%);
+}
 
+
+header { 
 
   @include linear-gradient-stops(top, #ddd 0%, #ccc 100%);
 
@@ -55,10 +69,10 @@ ordinal {
   vertical-align: top;
 }
 
-dayofweek { 
-  font-weight: bold;
+day { 
+  font-style: italic;
 }
 
-year { 
+year, { 
   color: #eee;
 }

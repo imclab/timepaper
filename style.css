@@ -3,10 +3,22 @@
   padding: 0; }
 
 body {
-  font-family: sans-serif; }
+  font-family: 'Radley', serif;
+  background-color: #333; }
+
+#entries {
+  background-color: #fff; }
 
 entry {
-  width: 320px; }
+  display: inline-block;
+  width: 100%;
+  -webkit-transition: width 0.2s ease-out;
+  -moz-transition: width 0.2s ease-out;
+  -ms-transition: width 0.2s ease-out;
+  -o-transition: width 0.2s ease-out;
+  transition: width 0.2s ease-out; }
+  entry.weekend-true {
+    background-color: #E2FFF8; }
 
 content {
   outline: none;
@@ -19,9 +31,16 @@ content {
   -ms-transition: all 0.1s;
   -o-transition: all 0.1s;
   transition: all 0.1s; }
-  content:hover, content:focus {
-    border: 1px solid #ccc;
-    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1); }
+  content:hover:not(:focus) {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.05); }
+
+.today-true header {
+  background-image: -webkit-linear-gradient(top, #333333 0%, #111111 100%);
+  background-image: -moz-linear-gradient(top, #333333 0%, #111111 100%);
+  background-image: -ms-linear-gradient(top, #333333 0%, #111111 100%);
+  background-image: -o-linear-gradient(top, #333333 0%, #111111 100%);
+  background-image: linear-gradient(top, #333333 0%, #111111 100%); }
 
 header {
   background-image: -webkit-linear-gradient(top, #dddddd 0%, #cccccc 100%);
@@ -41,8 +60,8 @@ ordinal {
   font-size: 9px;
   vertical-align: top; }
 
-dayofweek {
-  font-weight: bold; }
+day {
+  font-style: italic; }
 
 year {
   color: #eee; }

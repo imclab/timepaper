@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app>
+<head>
+
+  <link href='http://fonts.googleapis.com/css?family=Radley:400,400italic' rel='stylesheet' type='text/css'>
+
+  <link href="style.css" rel="stylesheet" type="text/css" media="screen">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.min.js"></script>
+  <script src="always/always.min.js"></script>
+  
+  <script src="Entry.js"></script>
+
+  
+
+  <title></title>
+  <meta name="Title" content="">
+  <meta name="Description" content="">
+  <link rel="image_src" href="http://">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <script type="text/javascript" src="Entry.js"></script>
+
+</head>
+<body>
+  
+  <div id="entries" ng-controller="EntryCtrl">
+
+    <entry ng-repeat="entry in entries" 
+      class="today-{{entry.dateObject == today}} 
+             future-{{entry.dateObject > today}} 
+             past-{{entry.dateObject < today}}
+             weekend-{{entry.day == 'Sunday' || entry.day == 'Saturday'}}">
+      
+      <header>
+
+        <day>{{entry.day}}</day> 
+        <month>{{entry.month}}</month> 
+        <date>{{entry.date}}</date><ordinal>{{entry.ordinal}}</ordinal> 
+        <year>{{entry.year}}</year>  
+
+      </header>
+
+      <content spellcheck="false" contenteditable="true">
+        {{entry.text}}
+      </content>
+
+    </entry>
+
+  </div>
+
+</body>
+</html>
