@@ -11,42 +11,44 @@ body {
 }
 
 #entries { 
-  // margin-bottom: 200px;
   background-color: #fff;
-  // box-shadow: 0 5px 5px rgba(0,0,0,0.3);
 }
 
 entry { 
 
+  @include prefix(transition, width 0.2s ease-out);
+
   display: inline-block;
   width: 100%;
-
-  @include prefix(transition, width 0.2s ease-out);
 
   &.weekend-true { 
     background-color: #E2FFF8;
   }
+
+  &.today-true header {
+    @include linear-gradient-stops(top, #333 0%, #111 100%);
+  }
+
 }
 
 content { 
-  
+
+  @include prefix(transition, all 0.2s);
+
   outline: none;
   margin: 10px;
   padding: 10px;
   display: block;
   border: 1px solid transparent;
 
-  @include prefix(transition, all 0.1s);
+  font-family: sans-serif;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.05);
 
   &:hover:not(:focus) {
-    border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
   }
 
-}
-
-.today-true header {
-  @include linear-gradient-stops(top, #333 0%, #111 100%);
 }
 
 
@@ -55,7 +57,7 @@ header {
   @include linear-gradient-stops(top, #ddd 0%, #ccc 100%);
 
   padding: 10px;
-  background-color: #eee;
+  background-color: #333;
   font-size: 12px;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
