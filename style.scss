@@ -56,15 +56,11 @@ entry {
     @include entry-class(mix($bg, $wknd, 92%), mix($wknd, $fg, 50%));
   }
 
-
-  &.today header {
-    color: mix($fg, $bg, 80%);
-    border-bottom: 1px solid mix($fg, $bg, 20%);
-    wrapper:before { 
-      content: 'TODAY:';
-      margin-right: 5px;
-      font-weight: bold;
-      letter-spacing: -1px;
+  &.today {
+    background: url(images/today.png) left center no-repeat;
+    header {
+      color: mix($fg, $bg, 80%);
+      border-bottom: 1px solid mix($fg, $bg, 20%);
     }
   }
 
@@ -88,8 +84,8 @@ entry:not(.focus) .expandingArea:hover {
     color: $fg;
     padding: 10px;
     background: transparent;
-    font: 400 16px/20px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 mix($fg, #fff, 20%);
+    font: 400 16px/22px Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 0 mix($fg, #fff, 00%);
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -135,8 +131,6 @@ header {
   text-shadow: 0 1px 0 mix($bg, #fff, 10%);
   border-bottom: 1px solid mix($fg, $bg, 10%);
   @include prefix(transition, all 0.2s);
-
-
 
   wrapper { 
     display: inline-block;
