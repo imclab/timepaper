@@ -26,7 +26,7 @@ function EntryCtrl($scope, Entry) {
       e.ordinal = ordinal(this.date);
       e.text = '';
       $scope.entries.push(e);
-      e.$update();
+      // e.$update();
     });
 
 
