@@ -9,31 +9,32 @@ function EntryCtrl($scope, Entry) {
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   
-  $scope.entries = [];
   $scope.today = new Date();
+  $scope.entries = Entry.query(function() {
 
-  if ($scope.entries.length == 0) {
+    console.log($scope.entries.length);
 
-    _.each(_.range(-10, 10), function(i) {
-      var date = new Date();
-      date.setDate($scope.today.getDate()+i);
-      var e = new Entry();
-      e.dateObject = date;
-      e.day = days[date.getDay()];
-      e.date = date.getDate();
-      e.month = months[date.getMonth()];
-      e.year = date.getFullYear();
-      e.ordinal = ordinal(this.date);
-      e.text = '';
-      $scope.entries.push(e);
-      // e.$update();
-    });
+    if ($scope.entries.length == 0) {
 
+      _.each(_.range(-10, 10), function(i) {
+        var date = new Date();
+        date.setDate($scope.today.getDate()+i);
+        var e = new Entry({
+          // dateObject: date,
+          day: days[date.getDay()],
+          date: date.getDate(),
+          month: months[date.getMonth()],
+          year: date.getFullYear(),
+          ordinal: ordinal(this.date),
+          text: ' '
+        });
+        e.$update();
+        $scope.entries.push(e);
+      });
 
+    }
 
-    console.log('gotem');
-  } else {
-  }
+  });
 
 };
 
