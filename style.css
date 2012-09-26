@@ -4,7 +4,7 @@
 
 body {
   font-family: 'Radley', serif;
-  background-color: #333; }
+  padding-top: 20px; }
 
 #entries {
   background-color: #fff; }
@@ -17,9 +17,7 @@ entry {
   transition: width 0.2s ease-out;
   display: inline-block;
   width: 100%; }
-  entry.weekend-true {
-    background-color: #E2FFF8; }
-  entry.today-true header {
+  entry.today header {
     background-image: -webkit-linear-gradient(top, #333333 0%, #111111 100%);
     background-image: -moz-linear-gradient(top, #333333 0%, #111111 100%);
     background-image: -ms-linear-gradient(top, #333333 0%, #111111 100%);
@@ -27,35 +25,30 @@ entry {
     background-image: linear-gradient(top, #333333 0%, #111111 100%); }
 
 content {
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
   outline: none;
-  margin: 10px;
-  padding: 10px;
+  margin: 20px 10px;
   display: block;
-  border: 1px solid transparent;
+  padding: 10px;
   font-family: sans-serif;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.05); }
-  content:hover:not(:focus) {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.1); }
 
 header {
-  background-image: -webkit-linear-gradient(top, #dddddd 0%, #cccccc 100%);
-  background-image: -moz-linear-gradient(top, #dddddd 0%, #cccccc 100%);
-  background-image: -ms-linear-gradient(top, #dddddd 0%, #cccccc 100%);
-  background-image: -o-linear-gradient(top, #dddddd 0%, #cccccc 100%);
-  background-image: linear-gradient(top, #dddddd 0%, #cccccc 100%);
-  padding: 10px;
-  background-color: #333;
   font-size: 12px;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  border-bottom: 1px solid #bbb; }
+  margin-right: 10px;
+  color: #777;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+  border-bottom: 1px dotted #ccc; }
+  header wrapper {
+    display: inline-block;
+    position: absolute;
+    margin-top: -8px;
+    padding: 0 10px;
+    background-color: #fff; }
 
 ordinal {
   font-size: 9px;
@@ -63,6 +56,3 @@ ordinal {
 
 day {
   font-style: italic; }
-
-year {
-  color: #eee; }

@@ -1,0 +1,26 @@
+<div id="entries" ng-controller="EntryCtrl">
+
+  <entry ng-repeat="entry in entries" 
+    ng-class="{
+      future: entry.dateObject > today,
+      past: entry.dateObject < today,
+      weekend: entry.day == 'Sunday' || entry.day == 'Saturday',
+      today: entry.dateObject == today
+    }">
+
+    <header>
+      <wrapper>
+        <day>{{entry.day}}</day> 
+        <month>{{entry.month}}</month> 
+        <date>{{entry.date}}</date><ordinal>{{entry.ordinal}}</ordinal> 
+        <year>{{entry.year}}</year>  
+      </wrapper>
+    </header>
+
+    <content ng-model="entry.text" 
+             spellcheck="false" 
+             contenteditable="true"></content>
+
+  </entry>
+
+</div>
