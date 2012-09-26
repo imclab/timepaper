@@ -1,11 +1,11 @@
 <div id="entries">
 
-  <entry ng-repeat="entry in entries | orderBy:'index'" 
+  <entry ng-repeat="entry in entries | orderBy:'time'" 
     ng-class="{
-      future: entry.dateObject > today,
-      past: entry.dateObject < today,
+      future: entry.time > today,
+      past: entry.time < today,
       weekend: entry.day == 'Sunday' || entry.day == 'Saturday',
-      today: entry.dateObject == today
+      today: entry.offset == 0
     }">
 
     <header>
@@ -17,9 +17,10 @@
       </wrapper>
     </header>
 
-    <content key-update
-             spellcheck="false" 
-             contenteditable>{{entry.text}}</content>
+    <div expanding-area>
+      <pre><span></span><br></pre>
+      <textarea ng-model="entry.text" ng-change="entry.update()" spellcheck="false"></textarea>
+    </div>
 
   </entry>
 

@@ -1,80 +1,150 @@
 @import "always/_always";
 
+$bg: #f9f9f9;
+$fg: #3d2b24;
+$wknd: #9ffff9;
+$edit: #f6f0e5;
+
+@mixin entry-class($bg, $header: $fg, $bottom: false) {
+  $b: darken($bg, 10%);
+  background-color: $bg;
+  header {
+    border-color: $b;
+    @if $bottom { border-bottom: 1px solid $b; }
+    color: $header;
+    wrapper {
+      background-color: $bg;
+    }
+  }
+  &:not(.focus) .expandingArea:hover {
+    border-color: $b;
+  }
+}
+
 * { 
   margin: 0;
   padding: 0;
 }
 
+textarea, 
+pre {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+
 body { 
   font-family: 'Radley', serif;
   padding-top: 20px;
+  background-color: $bg;
+  color: $fg;
 }
 
 #entries { 
-  background-color: #fff;
+  background-color: $bg;
 }
 
 entry { 
 
-  @include prefix(transition, width 0.2s ease-out);
-
   display: inline-block;
   width: 100%;
 
+  @include prefix(transition, all 0.2s);
 
-  &.weekend header { 
-    
+  &.weekend { 
+    @include entry-class(mix($bg, $wknd, 92%), mix($wknd, $fg, 50%));
   }
+
 
   &.today header {
-    @include linear-gradient-stops(top, #333 0%, #111 100%);
+    color: mix($fg, $bg, 80%);
+    border-bottom: 1px solid mix($fg, $bg, 20%);
+    wrapper:before { 
+      content: 'TODAY:';
+      margin-right: 5px;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
   }
+
 
 }
 
-content { 
+entry:not(.focus) .expandingArea:hover { 
+  border: 1px dashed mix($fg, $bg, 20%);
+}
 
-  @include prefix(transition, all 0.3s);
+.expandingArea {
 
-  outline: none;
+  @include prefix(transition, all 0.2s);
+
+  position: relative;
   margin: 20px 10px;
-  
-  display: block;
-  
-  padding: 10px;
-  
-  
+  border: 1px dashed transparent;
 
-  font-family: sans-serif;
-  text-shadow: 0 1px 0 rgba(0,0,0,0.05);
-  // border: 1px dashed transparent;
-
-  &:hover:not(:focus) {
-    // border: 1px dashed #A5E4E6;
+  > textarea,
+  > pre {
+    color: $fg;
+    padding: 10px;
+    background: transparent;
+    font: 400 16px/20px Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 0 mix($fg, #fff, 20%);
+    /* Make the text soft-wrap */
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
-
-
+  > textarea {
+    /* The border-box box model is used to allow
+     * padding whilst still keeping the overall width
+     * at exactly that of the containing element.
+     */
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 100%;
+    /* This height is used when JS is disabled */
+    height: 100px;
+  }
+  &.active > textarea {
+    /* Hide any scrollbars */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* Remove WebKit user-resize widget */
+    resize: none;
+  }
+  > pre {
+    display: none;
+  }
+  > pre {
+    display: block;
+    /* Hide the text; just using it for sizing */
+    visibility: hidden;
+  }
 }
 
 
 header { 
-
-  // @include linear-gradient-stops(top, #bbb 0%, #ccc 100%);
-
-  // padding: 10px;
-  // background-color: #bbb;
-  font-size: 12px;
+  font-size: 13px;
   margin-right: 10px;
-  color: #777;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.45);
-  // box-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  border-bottom: 1px dotted #ccc;
+  color: mix($fg, $bg, 40%);
+  text-shadow: 0 1px 0 mix($bg, #fff, 10%);
+  border-bottom: 1px solid mix($fg, $bg, 10%);
+  @include prefix(transition, all 0.2s);
+
+
+
   wrapper { 
     display: inline-block;
     position: absolute;
-    margin-top: -8px;
+    line-height: 0;
     padding: 0 10px;
-    background-color: #fff;
+    background-color: $bg;
+    height: 1px;
   }
 
 }
@@ -88,5 +158,3 @@ day {
   font-style: italic;
 }
 
-year, { 
-}
