@@ -6,19 +6,33 @@ angular.module('entry', ['mongolab']).
   });
  
 function EntryCtrl($scope, Entry) {
+  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   
-  $scope.entries = Entry.query();
+  $scope.entries = [];
   $scope.today = new Date();
 
   if ($scope.entries.length == 0) {
 
     _.each(_.range(-10, 10), function(i) {
-      var d = new Date();
-      d.setDate($scope.today.getDate()+i);
-      var e = new Entry(d);
+      var date = new Date();
+      date.setDate($scope.today.getDate()+i);
+      var e = new Entry();
+      e.dateObject = date;
+      e.day = days[date.getDay()];
+      e.date = date.getDate();
+      e.month = months[date.getMonth()];
+      e.year = date.getFullYear();
+      e.ordinal = ordinal(this.date);
+      e.text = '';
       $scope.entries.push(e);
+      e.$update();
     });
 
+
+
+    console.log('gotem');
+  } else {
   }
 
 };
