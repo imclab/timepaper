@@ -1,6 +1,6 @@
-<div id="entries" ng-controller="EntryCtrl">
+<div id="entries">
 
-  <entry ng-repeat="entry in entries" 
+  <entry ng-repeat="entry in entries | orderBy:'index'" 
     ng-class="{
       future: entry.dateObject > today,
       past: entry.dateObject < today,
@@ -17,10 +17,9 @@
       </wrapper>
     </header>
 
-    <content ng-model="entry.text" 
-             ng-change="update()"
+    <content key-update
              spellcheck="false" 
-             contenteditable="true"></content>
+             contenteditable>{{entry.text}}</content>
 
   </entry>
 

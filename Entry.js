@@ -1,16 +1,29 @@
-angular.module('entry', ['mongolab']).
-  config(function($routeProvider) {
-    $routeProvider.
-      when('/', { controller: EntryCtrl, templateUrl: 'entry.html' }).
-      otherwise({ redirectTo: '/' });
-  });
- 
+angular.module('entry', ['mongolab']).config(function($routeProvider) {
+  $routeProvider.
+    when('/', { controller: EntryCtrl, templateUrl: 'entry.html' }).
+    otherwise({ redirectTo: '/' });
+});
+
+angular.module('entry').directive('keyUpdate', function() {
+  return function($scope, element, attrs) {
+    var el = element[0];
+    el.addEventListener('keyup', function() {
+      $scope.entry.text = el.innerHTML;
+      $scope.entry.update(function() {
+        console.log('done');
+      })
+    }, false);
+  }
+});
+
 function EntryCtrl($scope, Entry) {
+
   var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   
-  $scope.today = new Date();
-  $scope.entries = Entry.query(function() {
+  var millis = 86400000;
+  $scope.today = new Date(Math.floor(Date.now()/millis)*millis);
+  $scope.entries = Entry.query({}, function() {
 
     console.log($scope.entries.length);
 
@@ -20,7 +33,7 @@ function EntryCtrl($scope, Entry) {
         var date = new Date();
         date.setDate($scope.today.getDate()+i);
         var e = new Entry({
-          // dateObject: date,
+          index: Math.floor(date.getTime()/millis),
           day: days[date.getDay()],
           date: date.getDate(),
           month: months[date.getMonth()],
@@ -28,7 +41,7 @@ function EntryCtrl($scope, Entry) {
           ordinal: ordinal(this.date),
           text: ' '
         });
-        e.$update();
+        e.$save();
         $scope.entries.push(e);
       });
 
