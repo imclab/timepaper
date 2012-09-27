@@ -49,29 +49,33 @@ entry {
     background-image: url(images/today.png);
     background-position: left center;
     background-repeat: no-repeat; }
-  entry ribbons {
-    display: block;
-    position: absolute;
-    margin-top: -1px;
-    right: 15px;
-    cursor: pointer;
-    z-index: 20;
-    overflow: hidden; }
-    entry ribbons .white {
-      display: none; }
-    entry ribbons img:not(.white) {
-      display: block;
-      margin-left: 5px;
-      float: left;
-      -webkit-animation: myfirst 0.2s; }
   entry.hover *, entry:hover *, entry.focus * {
     color: #000 !important; }
-  entry.hover .white, entry:hover .white, entry.focus .white {
-    display: block; }
-  entry.empty:hover {
-    cursor: text; }
-    entry.empty:hover .expandingArea {
-      border: 1px dashed #d8dada; }
+
+.no-touch entry.empty:not(.open):hover {
+  cursor: text; }
+  .no-touch entry.empty:not(.open):hover .expandingArea {
+    border: 1px dashed #d8dada; }
+
+ribbons {
+  display: block;
+  position: absolute;
+  margin-top: -1px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20;
+  overflow: hidden; }
+  ribbons img:not(.white) {
+    display: block;
+    margin-left: 5px;
+    float: left;
+    -webkit-animation: myfirst 0.2s; }
+
+.no-touch ribbons .white {
+  display: none; }
+
+.no-touch entry:hover ribbons .white {
+  display: block; }
 
 content {
   overflow: hidden;
