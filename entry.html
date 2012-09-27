@@ -5,7 +5,7 @@
       future: entry.time > today,
       past: entry.time < today,
       weekend: entry.day == 'Sunday' || entry.day == 'Saturday',
-      today: entry.offset == 1,
+      today: entry.offset == 0,
       empty: entry.text == '' || entry.text == ' ',
       open: entry.open
     }">
@@ -19,17 +19,37 @@
       </wrapper>
     </header>
     
-    <img ng-class="{open: entry.open}" src="images/white.png" ng-click="entry.open = !entry.open" />
+    <ribbons ng-click="entry.open = !entry.open;"
+    ng-class="{open: entry.open}" >
+    <img ng-show="entry.ribbon0" src="images/ribbons0.png"  />
+    <img ng-show="entry.ribbon1" src="images/ribbons1.png"  />
+    <img ng-show="entry.ribbon2" src="images/ribbons2.png"  />
+    <img ng-show="entry.ribbon3" src="images/ribbons3.png"  />
+    <img ng-show="entry.ribbon4" src="images/ribbons4.png"  />
+    <!-- <img src="images/white.png" /> -->
+    <img ng-show="!entry.ribbon0 && 
+                  !entry.ribbon1 && 
+                  !entry.ribbon2 && 
+                  !entry.ribbon3 && 
+                  !entry.ribbon4" 
+                  class="white"
+                  src="images/white.png" />
+    </ribbons>
 
 
     <colors>
       <wrapper>
 
-        <swatch style="background-color: #403947"></swatch>
-        <swatch style="background-color: #E4D8B9"></swatch>
-        <swatch style="background-color: #DF6767"></swatch>
-        <swatch style="background-color: #8FDDD2"></swatch>
-        <swatch style="background-color: #A6A6C2"></swatch>
+        <swatch style="background-color: #403947"
+                ng-click="entry.ribbon0=!entry.ribbon0"></swatch>
+        <swatch style="background-color: #E4D8B9"
+                ng-click="entry.ribbon1=!entry.ribbon1"></swatch>
+        <swatch style="background-color: #DF6767"
+                ng-click="entry.ribbon2=!entry.ribbon2"></swatch>
+        <swatch style="background-color: #8FDDD2"
+                ng-click="entry.ribbon3=!entry.ribbon3"></swatch>
+        <swatch style="background-color: #A6A6C2"
+                ng-click="entry.ribbon4=!entry.ribbon4"></swatch>
       </wrapper>
     </colors>
 

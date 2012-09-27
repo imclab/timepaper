@@ -85,20 +85,20 @@ function EntryCtrl($scope, Entry) {
   var j = -5, k = 6;
   addEventListener('scroll', function(e) {
 
-    if (document.body.scrollTop == 0) {
+    if (document.body.scrollTop < 20) {
 
       $scope.$apply(function() {
         var e = makeEntry(j--);
         $scope.entries.push(e);
-        window.scrollTo(0, 1);
+        window.scrollTo(0, 88);
       });
 
-    } else if (document.body.scrollTop + window.innerHeight == document.body.scrollHeight) {
+    } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
 
       $scope.$apply(function() {
         var e = makeEntry(k++);
         $scope.entries.push(e);
-        window.scrollTo(0, document.body.scrollTop + window.innerHeight-1);
+        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88);
       });
     }
 
@@ -119,7 +119,12 @@ function EntryCtrl($scope, Entry) {
       year: date.getFullYear(),
       ordinal: ordinal(this.date),
       text: '',
-      offset: i
+      offset: i,
+      ribbon0: false,
+      ribbon1: false,
+      ribbon2: false,
+      ribbon3: false,
+      ribbon4: false,
 
     });
 
