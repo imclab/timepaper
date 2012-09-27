@@ -14,6 +14,7 @@ angular.module('entry').directive('expandingArea', function() {
 
       var area = e.querySelector('textarea');
       var span = e.querySelector('span');
+      var entry = e.parentElement.parentElement.parentElement;
       var change = function() {
         span.textContent = area.value;
       };
@@ -25,17 +26,28 @@ angular.module('entry').directive('expandingArea', function() {
       e.classList.add('active');
 
       area.addEventListener('focus', function() {
-        e.parentElement.classList.add('focus');
+        entry.classList.add('focus');
       });
       area.addEventListener('blur', function() {
-        e.parentElement.classList.remove('focus');
+        entry.classList.remove('focus');
+      });
+
+      area.addEventListener('mouseover', function() {
+        entry.classList.add('hover');
+      });
+      area.addEventListener('mouseout', function() {
+        entry.classList.remove('hover');
+      });
+
+      e.parentElement.addEventListener('click', function() {
+        area.focus();
       });
 
       _.defer(function() {
 
-        if (e.parentElement.classList.contains('today')) {
-          var rect = e.parentElement.getBoundingClientRect();
-          window.scrollTo(0, rect.top - window.innerHeight/2 + rect.height);
+        if (entry.classList.contains('today')) {
+          var rect = entry.getBoundingClientRect();
+          window.scrollTo(0, rect.top - window.innerHeight/2 + rect.height/2);
         }
       })
 
@@ -57,29 +69,9 @@ function EntryCtrl($scope, Entry) {
 
     if ($scope.entries.length == 0) {
 
-      angular.forEach(_.range(-20, 20), function(i) {
+      angular.forEach(_.range(-5, 5), function(i) {
         
-        var date = new Date();
-        date.setDate(today.getDate()+i);
-
-        console.log(i);;
-
-
-        var e = new Entry({
-          
-          time: Math.floor(date.getTime()/millis)*millis,
-
-          day: days[date.getDay()],
-          date: date.getDate(),
-          month: months[date.getMonth()],
-          year: date.getFullYear(),
-          ordinal: ordinal(this.date),
-          text: ' ',
-          offset: i
-
-        });
-
-
+        var e = makeEntry(i);
 
         e.$save();
         $scope.entries.push(e);
@@ -89,6 +81,52 @@ function EntryCtrl($scope, Entry) {
     }
     
   });
+
+  var j = -5, k = 6;
+  addEventListener('scroll', function(e) {
+
+    if (document.body.scrollTop == 0) {
+
+      $scope.$apply(function() {
+        var e = makeEntry(j--);
+        $scope.entries.push(e);
+        window.scrollTo(0, 1);
+      });
+
+    } else if (document.body.scrollTop + window.innerHeight == document.body.scrollHeight) {
+
+      $scope.$apply(function() {
+        var e = makeEntry(k++);
+        $scope.entries.push(e);
+        window.scrollTo(0, document.body.scrollTop + window.innerHeight-1);
+      });
+    }
+
+  }, false);
+
+  function makeEntry(i) {
+
+    var date = new Date();
+    date.setDate(today.getDate()+i);
+
+    var e = new Entry({
+      
+      time: Math.floor(date.getTime()/millis)*millis,
+
+      day: days[date.getDay()],
+      date: date.getDate(),
+      month: months[date.getMonth()],
+      year: date.getFullYear(),
+      ordinal: ordinal(this.date),
+      text: '',
+      offset: i
+
+    });
+
+    return e;
+
+  }
+
 
 };
 

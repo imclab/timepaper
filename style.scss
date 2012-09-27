@@ -1,23 +1,22 @@
 @import "always/_always";
 
-$bg: #f9f9f9;
-$fg: #3d2b24;
-$wknd: #9ffff9;
+$bg: #fafafa;
+$fg: #545C5C;
+$wknd: #C4F5EE;
 $edit: #f6f0e5;
 
-@mixin entry-class($bg, $header: $fg, $bottom: false) {
-  $b: darken($bg, 10%);
-  background-color: $bg;
+@mixin entry-class($bg, $header: $fg) {
+  $b: darken($bg, 6%);
+  content wrapper, colors {
+    background-color: $bg;
+  }
   header {
-    border-color: $b;
-    @if $bottom { border-bottom: 1px solid $b; }
+    border-bottom-color: $b;
+    
     color: $header;
     wrapper {
       background-color: $bg;
     }
-  }
-  &:not(.focus) .expandingArea:hover {
-    border-color: $b;
   }
 }
 
@@ -39,7 +38,11 @@ body {
   padding-top: 20px;
   background-color: $bg;
   color: $fg;
+  overflow-x: hidden;
+
+
 }
+
 
 #entries { 
   background-color: $bg;
@@ -47,33 +50,102 @@ body {
 
 entry { 
 
+
+  position: relative;
   display: inline-block;
+  vertical-align: top;
   width: 100%;
 
-  @include prefix(transition, all 0.2s);
-
   &.weekend { 
-    @include entry-class(mix($bg, $wknd, 92%), mix($wknd, $fg, 50%));
+    @include entry-class(mix($bg, $wknd, 80%), mix($wknd, $fg, 50%));
   }
 
-  &.today {
-    background: url(images/today.png) left center no-repeat;
-    header {
-      color: mix($fg, $bg, 80%);
-      border-bottom: 1px solid mix($fg, $bg, 20%);
+  &.today content wrapper {
+    background-image: url(images/today.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+
+  img {
+    display: none;
+    position: absolute;
+    margin-top: -1px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 20;
+  }
+
+  &.hover, &:hover, &.focus {
+    * {
+      color: #000 !important;
+    }
+    img { 
+      display: block;
     }
   }
 
 
+
+  &.empty:hover {
+    cursor: text;
+    .expandingArea {
+      border: 1px dashed mix($fg, $bg, 20%);
+    }
+  }
+  
+
 }
 
-entry:not(.focus) .expandingArea:hover { 
-  border: 1px dashed mix($fg, $bg, 20%);
+content { 
+overflow: hidden;
+width: 100%;
+}
+content wrapper { 
+
+  background-color: $bg;
+  margin: 0;
+  padding: 1px 0;
+  display: block;
+  // visibility: hidden;
+  @include prefix(transition, left 0.2s);
+  position: relative;
+  z-index: 2;
+}
+.open content wrapper {
+  left: 105%;
+  right: 100%;
+}
+
+colors { 
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  wrapper {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+  }
+  swatch { 
+    margin-right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0 2px 0px rgba(0,0,0,0.1),
+    0 1px 1px #fff,
+    0 -1px 1px rgba(255,255,255,0.2);
+    border-radius: 20px;
+    background-color: #999;
+    display: inline-block;
+
+  }
 }
 
 .expandingArea {
-
-  @include prefix(transition, all 0.2s);
 
   position: relative;
   margin: 20px 10px;
@@ -81,11 +153,14 @@ entry:not(.focus) .expandingArea:hover {
 
   > textarea,
   > pre {
+    -webkit-appearance: none;
+    -webkit-touch-callout: none;              /* disable callout, image save panel (popup) */
+    -webkit-tap-highlight-color: transparent; /* "turn off" link highlight */
     color: $fg;
     padding: 10px;
     background: transparent;
     font: 400 16px/22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 mix($fg, #fff, 00%);
+    text-shadow: 0 1px 0 mix($fg, $bg, 10%);
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -126,19 +201,24 @@ entry:not(.focus) .expandingArea:hover {
 
 header { 
   font-size: 13px;
-  margin-right: 10px;
+  position: relative;
+  z-index: 3;
+  
   color: mix($fg, $bg, 40%);
-  text-shadow: 0 1px 0 mix($bg, #fff, 10%);
+  text-shadow: 0 1px 0 mix($fg, $bg, 8%);
   border-bottom: 1px solid mix($fg, $bg, 10%);
-  @include prefix(transition, all 0.2s);
+  // border-top: 1px solid rgba(255,255,255,0.5);
+
+  margin-right: 10px;
 
   wrapper { 
     display: inline-block;
     position: absolute;
-    line-height: 0;
-    padding: 0 10px;
+    line-height: 1px;
+    padding: 0 5px 0 10px;
+    margin-top: -1px;
     background-color: $bg;
-    height: 1px;
+    height: 2px;
   }
 
 }

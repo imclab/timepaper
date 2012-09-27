@@ -12,54 +12,105 @@ pre {
 body {
   font-family: 'Radley', serif;
   padding-top: 20px;
-  background-color: #f9f9f9;
-  color: #3d2b24; }
+  background-color: #fafafa;
+  color: #545c5c;
+  overflow-x: hidden; }
 
 #entries {
-  background-color: #f9f9f9; }
+  background-color: #fafafa; }
 
 entry {
+  position: relative;
   display: inline-block;
-  width: 100%;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s; }
-  entry.weekend {
-    background-color: #f1f9f9; }
-    entry.weekend header {
-      border-color: #cdeaea;
-      color: #6e958e; }
-      entry.weekend header wrapper {
-        background-color: #f1f9f9; }
-    entry.weekend:not(.focus) .expandingArea:hover {
-      border-color: #cdeaea; }
-  entry.today {
-    background: url(images/today.png) left center no-repeat; }
-    entry.today header {
-      color: #62544e;
-      border-bottom: 1px solid #d3cfce; }
+  vertical-align: top;
+  width: 100%; }
+  entry.weekend content wrapper, entry.weekend colors {
+    background-color: #eff9f7; }
+  entry.weekend header {
+    border-bottom-color: #d9f1ec;
+    color: #8ca8a5; }
+    entry.weekend header wrapper {
+      background-color: #eff9f7; }
+  entry.today content wrapper {
+    background-image: url(images/today.png);
+    background-position: left center;
+    background-repeat: no-repeat; }
+  entry img {
+    display: none;
+    position: absolute;
+    margin-top: -1px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 20; }
+  entry.hover *, entry:hover *, entry.focus * {
+    color: #000 !important; }
+  entry.hover img, entry:hover img, entry.focus img {
+    display: block; }
+  entry.empty:hover {
+    cursor: text; }
+    entry.empty:hover .expandingArea {
+      border: 1px dashed #d8dada; }
 
-entry:not(.focus) .expandingArea:hover {
-  border: 1px dashed #d3cfce; }
+content {
+  overflow: hidden;
+  width: 100%; }
+
+content wrapper {
+  background-color: #fafafa;
+  margin: 0;
+  padding: 1px 0;
+  display: block;
+  -webkit-transition: left 0.2s;
+  -moz-transition: left 0.2s;
+  -ms-transition: left 0.2s;
+  -o-transition: left 0.2s;
+  transition: left 0.2s;
+  position: relative;
+  z-index: 2; }
+
+.open content wrapper {
+  left: 105%;
+  right: 100%; }
+
+colors {
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  text-align: center; }
+  colors wrapper {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px; }
+  colors swatch {
+    margin-right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background-color: #999;
+    display: inline-block; }
 
 .expandingArea {
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s;
   position: relative;
   margin: 20px 10px;
   border: 1px dashed transparent; }
   .expandingArea > textarea,
   .expandingArea > pre {
-    color: #3d2b24;
+    -webkit-appearance: none;
+    -webkit-touch-callout: none;
+    /* disable callout, image save panel (popup) */
+    -webkit-tap-highlight-color: transparent;
+    /* "turn off" link highlight */
+    color: #545c5c;
     padding: 10px;
     background: transparent;
     font: 400 16px/22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 white;
+    text-shadow: 0 1px 0 #e9eaea;
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
@@ -93,22 +144,20 @@ entry:not(.focus) .expandingArea:hover {
 
 header {
   font-size: 13px;
-  margin-right: 10px;
-  color: #ada6a3;
-  text-shadow: 0 1px 0 #fefefe;
-  border-bottom: 1px solid #e6e4e3;
-  -webkit-transition: all 0.2s;
-  -moz-transition: all 0.2s;
-  -ms-transition: all 0.2s;
-  -o-transition: all 0.2s;
-  transition: all 0.2s; }
+  position: relative;
+  z-index: 3;
+  color: #b7baba;
+  text-shadow: 0 1px 0 #eceded;
+  border-bottom: 1px solid #e9eaea;
+  margin-right: 10px; }
   header wrapper {
     display: inline-block;
     position: absolute;
-    line-height: 0;
-    padding: 0 10px;
-    background-color: #f9f9f9;
-    height: 1px; }
+    line-height: 1px;
+    padding: 0 5px 0 10px;
+    margin-top: -1px;
+    background-color: #fafafa;
+    height: 2px; }
 
 ordinal {
   font-size: 9px;
