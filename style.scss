@@ -108,7 +108,6 @@ ribbons {
 
 .no-touch ribbons .white {
   opacity: 0;
-  @include prefix()
   @include prefix(animation, opacity 250ms);
 }
 .no-touch entry:hover ribbons .white {
