@@ -88,17 +88,21 @@ function EntryCtrl($scope, Entry) {
     if (document.body.scrollTop < 20) {
 
       $scope.$apply(function() {
-        var e = makeEntry(j--);
-        $scope.entries.push(e);
-        window.scrollTo(0, 88);
+        for (var i = 0; i < 3; i++) {
+          var e = makeEntry(j--);
+          $scope.entries.push(e);
+        }
+        window.scrollTo(0, 88*i);
       });
 
     } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
 
       $scope.$apply(function() {
-        var e = makeEntry(k++);
-        $scope.entries.push(e);
-        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88);
+        for (var i = 0; i < 3; i++) {
+          var e = makeEntry(k++);
+          $scope.entries.push(e);
+        }
+        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88*i);
       });
     }
 
