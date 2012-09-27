@@ -1,60 +1,238 @@
-/*
-Syntax error: Invalid CSS after "...nclude prefix()": expected "}", was "@include prefix..."
-        on line 112 of ./style.scss
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent; }
 
-107: }
-108: 
-109: .no-touch ribbons .white {
-110:   opacity: 0;
-111:   @include prefix()
-112:   @include prefix(animation, opacity 250ms);
-113: }
-114: .no-touch entry:hover ribbons .white {
-115:   opacity: 1;
-116: }
-117: 
+textarea,
+pre {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0; }
 
-Backtrace:
-./style.scss:112
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:1130:in `expected'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:1066:in `expected'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:1061:in `tok!'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:519:in `block'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:512:in `ruleset'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:536:in `block_child'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:529:in `block_contents'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:70:in `stylesheet'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/scss/parser.rb:27:in `parse'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/engine.rb:342:in `_to_tree'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/engine.rb:315:in `_render'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/engine.rb:262:in `render'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:340:in `update_stylesheet'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:202:in `update_stylesheets'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `each'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:298:in `watch'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:95:in `initialize_adapter'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:31:in `start'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:31:in `initialize'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:31:in `new'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/adapters/polling.rb:31:in `start'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/vendor/listen/lib/listen/multi_listener.rb:44:in `start'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin/compiler.rb:306:in `watch'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin.rb:107:in `send'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/plugin.rb:107:in `method_missing'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/exec.rb:431:in `watch_or_update'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/exec.rb:302:in `process_result'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/exec.rb:41:in `parse'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/../lib/sass/../sass/exec.rb:21:in `parse!'
-/Users/georgebrower/.gem/ruby/1.8/gems/sass-3.2.1/bin/sass:8
-/usr/bin/sass:19:in `load'
-/usr/bin/sass:19
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"...nclude prefix()\": expected \"}\", was \"@include prefix...\"\A         on line 112 of ./style.scss\A \A 107: }\A 108: \A 109: .no-touch ribbons .white {\A 110:   opacity: 0;\A 111:   @include prefix()\A 112:   @include prefix(animation, opacity 250ms);\A 113: }\A 114: .no-touch entry:hover ribbons .white {\A 115:   opacity: 1;\A 116: }\A 117: "; }
+body {
+  font-family: 'Radley', serif;
+  padding-top: 20px;
+  background-color: #fafafa;
+  color: #545c5c;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+#entries {
+  background-color: #fafafa; }
+
+@-webkit-keyframes ribbon-appear {
+  0% {
+    margin-top: -20px;
+    opacity: 0; }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1; } }
+
+@-moz-keyframes ribbon-appear {
+  0% {
+    margin-top: -20px;
+    opacity: 0; }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1; } }
+
+@-o-keyframes ribbon-appear {
+  0% {
+    margin-top: -20px;
+    opacity: 0; }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1; } }
+
+@-ms-keyframes ribbon-appear {
+  0% {
+    margin-top: -20px;
+    opacity: 0; }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1; } }
+
+@-keyframes ribbon-appear {
+  0% {
+    margin-top: -20px;
+    opacity: 0; }
+
+  100% {
+    margin-top: 0px;
+    opacity: 1; } }
+
+entry {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%; }
+  entry.weekend content wrapper, entry.weekend colors {
+    background-color: #eff9f7; }
+  entry.weekend header {
+    border-bottom-color: #d9f1ec;
+    color: #8ca8a5; }
+    entry.weekend header wrapper {
+      background-color: #eff9f7; }
+  entry.today content wrapper {
+    background-image: url(images/today.png);
+    background-position: left center;
+    background-repeat: no-repeat; }
+  entry.hover *, entry:hover *, entry.focus * {
+    color: #000 !important; }
+
+.no-touch entry.empty:not(.open):hover {
+  cursor: text; }
+  .no-touch entry.empty:not(.open):hover .expandingArea {
+    border: 1px dashed #d8dada; }
+
+ribbons {
+  display: block;
+  position: absolute;
+  margin-top: -1px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20;
+  overflow: hidden; }
+  ribbons img:not(.white) {
+    display: block;
+    margin-left: 5px;
+    float: left;
+    -webkit-animation: ribbon-appear 400ms;
+    -moz-animation: ribbon-appear 400ms;
+    -ms-animation: ribbon-appear 400ms;
+    -o-animation: ribbon-appear 400ms;
+    animation: ribbon-appear 400ms; }
+
+.no-touch ribbons .white {
+  opacity: 0;
+  -webkit-animation: opacity 250ms;
+  -moz-animation: opacity 250ms;
+  -ms-animation: opacity 250ms;
+  -o-animation: opacity 250ms;
+  animation: opacity 250ms; }
+
+.no-touch entry:hover ribbons .white {
+  opacity: 1; }
+
+content {
+  overflow: hidden;
+  width: 100%; }
+
+content wrapper {
+  background-color: #fafafa;
+  margin: 0;
+  padding: 1px 0;
+  display: block;
+  -webkit-transition: left 200ms;
+  -moz-transition: left 200ms;
+  -ms-transition: left 200ms;
+  -o-transition: left 200ms;
+  transition: left 200ms;
+  position: relative;
+  z-index: 2; }
+
+.open content wrapper {
+  left: 105%;
+  right: 100%; }
+
+colors {
+  z-index: 1;
+  vertical-align: middle;
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0; }
+  colors wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -135px;
+    margin-top: -20px; }
+  colors swatch {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
+    border-radius: 200px;
+    background-color: #999;
+    display: inline-block; }
+    colors swatch:not(:last-of-type) {
+      margin-right: 15px; }
+
+.expandingArea {
+  position: relative;
+  margin: 20px 10px;
+  border: 1px dashed transparent; }
+  .expandingArea > textarea,
+  .expandingArea > pre {
+    color: #545c5c;
+    padding: 10px;
+    background: transparent;
+    font: 400 16px/22px Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 0 #e9eaea;
+    /* Make the text soft-wrap */
+    white-space: pre-wrap;
+    word-wrap: break-word; }
+  .expandingArea > textarea {
+    /* The border-box box model is used to allow
+     * padding whilst still keeping the overall width
+     * at exactly that of the containing element.
+     */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    /* This height is used when JS is disabled */
+    height: 100px; }
+  .expandingArea.active > textarea {
+    /* Hide any scrollbars */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* Remove WebKit user-resize widget */
+    resize: none; }
+  .expandingArea > pre {
+    display: none; }
+  .expandingArea > pre {
+    display: block;
+    /* Hide the text; just using it for sizing */
+    visibility: hidden; }
+
+header {
+  font-size: 13px;
+  position: relative;
+  z-index: 3;
+  color: #b7baba;
+  text-shadow: 0 1px 0 #eceded;
+  border-bottom: 1px solid #e9eaea;
+  margin-right: 10px; }
+  header wrapper {
+    display: inline-block;
+    position: absolute;
+    line-height: 1px;
+    padding: 0 5px 0 10px;
+    margin-top: -1px;
+    background-color: #fafafa;
+    height: 2px; }
+
+ordinal {
+  font-size: 9px;
+  vertical-align: top; }
+
+day {
+  font-style: italic; }
