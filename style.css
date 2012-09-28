@@ -1,32 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent; }
-
-textarea,
-pre {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: 0; }
-
-body {
-  font-family: 'Radley', serif;
-  padding-top: 20px;
-  background-color: #fafafa;
-  color: #545c5c;
-  overflow-x: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none; }
-
-#entries {
-  background-color: #fafafa; }
-
 @-webkit-keyframes ribbon-appear {
   0% {
     margin-top: -20px;
@@ -72,145 +43,49 @@ body {
     margin-top: 0px;
     opacity: 1; } }
 
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Radley', serif;
+  padding-top: 17px;
+  background-color: #fafafa;
+  color: #545c5c;
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
 entry {
   position: relative;
   display: inline-block;
-  vertical-align: top;
-  width: 100%; }
-  entry.weekend content wrapper, entry.weekend colors {
+  width: 100%;
+  vertical-align: top; }
+  entry.Saturday content wrapper, entry.Saturday colors, entry.Sunday content wrapper, entry.Sunday colors {
     background-color: #eff9f7; }
-  entry.weekend header {
+  entry.Saturday header, entry.Sunday header {
     border-bottom-color: #d9f1ec;
     color: #8ca8a5; }
-    entry.weekend header wrapper {
+    entry.Saturday header wrapper, entry.Sunday header wrapper {
       background-color: #eff9f7; }
   entry.today content wrapper {
     background-image: url(images/today.png);
     background-position: left center;
     background-repeat: no-repeat; }
-  entry.hover *, entry:hover *, entry.focus * {
+  entry.focus * {
     color: #000 !important; }
-
-.no-touch entry.empty:not(.open):hover {
-  cursor: text; }
-  .no-touch entry.empty:not(.open):hover .expandingArea {
-    border: 1px dashed #d8dada; }
-
-ribbons {
-  display: block;
-  position: absolute;
-  margin-top: -1px;
-  right: 15px;
-  cursor: pointer;
-  z-index: 20;
-  overflow: hidden; }
-  ribbons img:not(.white) {
-    display: block;
-    margin-left: 5px;
-    float: left;
-    -webkit-animation: ribbon-appear 400ms;
-    -moz-animation: ribbon-appear 400ms;
-    -ms-animation: ribbon-appear 400ms;
-    -o-animation: ribbon-appear 400ms;
-    animation: ribbon-appear 400ms; }
-
-.no-touch ribbons .white {
-  opacity: 0;
-  -webkit-animation: opacity 250ms;
-  -moz-animation: opacity 250ms;
-  -ms-animation: opacity 250ms;
-  -o-animation: opacity 250ms;
-  animation: opacity 250ms; }
-
-.no-touch entry:hover ribbons .white {
-  opacity: 1; }
-
-content {
-  overflow: hidden;
-  width: 100%; }
-
-content wrapper {
-  background-color: #fafafa;
-  margin: 0;
-  padding: 1px 0;
-  display: block;
-  -webkit-transition: left 200ms;
-  -moz-transition: left 200ms;
-  -ms-transition: left 200ms;
-  -o-transition: left 200ms;
-  transition: left 200ms;
-  position: relative;
-  z-index: 2; }
-
-.open content wrapper {
-  left: 100%; }
-
-colors {
-  z-index: 1;
-  vertical-align: middle;
-  display: inline-block;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0; }
-  colors wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -135px;
-    margin-top: -20px; }
-  colors swatch {
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
-    border-radius: 200px;
-    background-color: #999;
-    display: inline-block; }
-    colors swatch:not(:last-of-type) {
-      margin-right: 15px; }
-
-.expandingArea {
-  position: relative;
-  margin: 20px 10px;
-  border: 1px dashed transparent; }
-  .expandingArea > textarea,
-  .expandingArea > pre {
-    color: #545c5c;
-    padding: 10px;
-    background: transparent;
-    font: 400 16px/22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 #e9eaea;
-    /* Make the text soft-wrap */
-    white-space: pre-wrap;
-    word-wrap: break-word; }
-  .expandingArea > textarea {
-    /* The border-box box model is used to allow
-     * padding whilst still keeping the overall width
-     * at exactly that of the containing element.
-     */
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    /* This height is used when JS is disabled */
-    height: 100px; }
-  .expandingArea.active > textarea {
-    /* Hide any scrollbars */
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    /* Remove WebKit user-resize widget */
-    resize: none; }
-  .expandingArea > pre {
-    display: none; }
-  .expandingArea > pre {
-    display: block;
-    /* Hide the text; just using it for sizing */
-    visibility: hidden; }
+  .no-touch entry.empty:not(.focus):hover {
+    cursor: text; }
+    .no-touch entry.empty:not(.focus):hover .expandingArea {
+      border: 1px dashed #d8dada; }
 
 header {
   font-size: 13px;
@@ -228,10 +103,146 @@ header {
     margin-top: -1px;
     background-color: #fafafa;
     height: 2px; }
+  header ordinal {
+    font-size: 9px;
+    vertical-align: top; }
+  header day {
+    font-style: italic; }
 
-ordinal {
-  font-size: 9px;
-  vertical-align: top; }
+content {
+  overflow: hidden;
+  width: 100%; }
 
-day {
-  font-style: italic; }
+content wrapper {
+  -webkit-transition: opacity 320ms, left 320ms;
+  -moz-transition: opacity 320ms, left 320ms;
+  -ms-transition: opacity 320ms, left 320ms;
+  -o-transition: opacity 320ms, left 320ms;
+  transition: opacity 320ms, left 320ms;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 1px 0;
+  display: block;
+  position: relative;
+  z-index: 2; }
+  .open content wrapper {
+    left: -40px;
+    opacity: 0;
+    pointer-events: none; }
+
+ribbons {
+  display: none;
+  position: absolute;
+  margin-top: -1px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20;
+  overflow: hidden; }
+  ribbons img:not(.white) {
+    display: block;
+    margin-left: 5px;
+    float: left;
+    -webkit-animation: ribbon-appear 400ms;
+    -moz-animation: ribbon-appear 400ms;
+    -ms-animation: ribbon-appear 400ms;
+    -o-animation: ribbon-appear 400ms;
+    animation: ribbon-appear 400ms; }
+  .no-touch entry:hover ribbons .white {
+    opacity: 1; }
+  .no-touch ribbons .white {
+    opacity: 0; }
+
+field {
+  display: block;
+  position: relative;
+  margin: 20px 10px;
+  border: 1px dashed transparent; }
+  field > textarea,
+  field > pre {
+    color: #545c5c;
+    padding: 10px;
+    background: transparent;
+    font: 400 16px/22px Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 0 #e9eaea;
+    /* Make the text soft-wrap */
+    white-space: pre-wrap;
+    word-wrap: break-word; }
+  field > textarea {
+    /* The border-box box model is used to allow
+     * padding whilst still keeping the overall width
+     * at exactly that of the containing element.
+     */
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    /* This height is used when JS is disabled */
+    height: 100px; }
+  field.active > textarea {
+    /* Hide any scrollbars */
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    /* Remove WebKit user-resize widget */
+    resize: none; }
+  field > pre {
+    display: none; }
+  field > pre {
+    display: block;
+    /* Hide the text; just using it for sizing */
+    visibility: hidden; }
+
+colors {
+  z-index: 1;
+  vertical-align: middle;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0; }
+  colors wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -135px;
+    margin-top: -20px; }
+
+swatch {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
+  border-radius: 200px;
+  background-color: #999;
+  display: inline-block; }
+  swatch:not(:last-of-type) {
+    margin-right: 15px; }
+
+@media all and (min-width: 1050px) {
+  year, day {
+    display: none; }
+
+  entry {
+    width: 14.2857142857%; }
+    entry.today content wrapper {
+      background-image: none; }
+    entry content, entry content wrapper {
+      height: 140px;
+      overflow: auto; }
+      entry content ::-webkit-scrollbar, entry content wrapper ::-webkit-scrollbar {
+        width: 4px; }
+      entry content ::-webkit-scrollbar-thumb, entry content wrapper ::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        background-color: #d8dada; }
+    entry .expandingArea {
+      margin: 10px 10px; }
+      entry .expandingArea > textarea,
+      entry .expandingArea > pre {
+        padding: 0px 5px;
+        min-height: 117px;
+        font: 400 10px/14px Helvetica, Arial, sans-serif; }
+    entry ribbons img {
+      top: -15px;
+      position: relative; } }

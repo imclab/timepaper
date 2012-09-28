@@ -1,14 +1,13 @@
-<div id="entries">
+<entries>
 
   <entry ng-repeat="entry in entries | orderBy:'time'" 
     ng-class="{
       future: entry.time > today,
       past: entry.time < today,
-      weekend: entry.day == 'Sunday' || entry.day == 'Saturday',
       today: entry.offset == 0,
-      empty: entry.text == '' || entry.text == ' ',
+      empty: entry.text == '',
       open: entry.open
-    }">
+    }" class="{{ entry.day }}">
 
     <header>
       <wrapper>
@@ -19,23 +18,21 @@
       </wrapper>
     </header>
     
-    <ribbons ng-click="entry.open = !entry.open;"
-    ng-class="{open: entry.open}" >
-    <img ng-show="entry.ribbon0" src="images/ribbons0.png"  />
-    <img ng-show="entry.ribbon1" src="images/ribbons1.png"  />
-    <img ng-show="entry.ribbon2" src="images/ribbons2.png"  />
-    <img ng-show="entry.ribbon3" src="images/ribbons3.png"  />
-    <img ng-show="entry.ribbon4" src="images/ribbons4.png"  />
-    <!-- <img src="images/white.png" /> -->
-    <img ng-show="!entry.ribbon0 && 
-                  !entry.ribbon1 && 
-                  !entry.ribbon2 && 
-                  !entry.ribbon3 && 
-                  !entry.ribbon4" 
-                  class="white"
-                  src="images/white.png" />
+    <ribbons ng-click="entry.open = !entry.open;" ng-class="{ open: entry.open }" >
+      <img ng-show="entry.ribbon0" src="images/ribbons0.png"  />
+      <img ng-show="entry.ribbon1" src="images/ribbons1.png"  />
+      <img ng-show="entry.ribbon2" src="images/ribbons2.png"  />
+      <img ng-show="entry.ribbon3" src="images/ribbons3.png"  />
+      <img ng-show="entry.ribbon4" src="images/ribbons4.png"  />
+      <!-- <img src="images/white.png" /> -->
+      <img ng-show="!entry.ribbon0 && 
+                    !entry.ribbon1 && 
+                    !entry.ribbon2 && 
+                    !entry.ribbon3 && 
+                    !entry.ribbon4" 
+                    class="white"
+                    src="images/white.png" />
     </ribbons>
-
 
     <colors>
       <wrapper>
@@ -65,13 +62,15 @@
 
     <content>
       <wrapper>
-        <div expanding-area>
+
+        <field expanding-area>
           <pre><span></span><br></pre>
           <textarea ng-model="entry.text" ng-change="entry.update()" spellcheck="false"></textarea>
-        </div>
+        </field>
+
       </wrapper>
     </content>
 
   </entry>
 
-</div>
+</entries>

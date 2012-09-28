@@ -4,34 +4,6 @@ $bg: #fafafa;
 $fg: #545c5c;
 $wknd: #c4f5ee;
 $edit: #f6f0e5;
-* {
-  margin: 0; 
-  padding: 0;
-  -webkit-appearance: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-} 
-
-textarea,
-pre {
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  border: 0;
-}
-
-body {
-  font-family: 'Radley', serif;
-  padding-top: 20px;
-  background-color: $bg;
-  color: $fg;
-  overflow-x: hidden;
-  @include prefix(user-select, none);
-}
-
-#entries {
-  background-color: $bg;
-}
 
 @include keyframes(ribbon-appear) {
   0% {
@@ -43,7 +15,6 @@ body {
     opacity: 1;
   }
 }
-
 
 @mixin entry-class($bg, $header: $fg) {
   $b: darken($bg, 6%);
@@ -59,13 +30,33 @@ body {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Radley', serif;
+  padding-top: 17px;
+  background-color: $bg;
+  color: $fg;
+  overflow-x: hidden;
+  @include prefix(user-select, none);
+}
+
 entry {
+
   position: relative;
   display: inline-block;
-  vertical-align: top;
   width: 100%;
+  vertical-align: top;
 
-  &.weekend {
+  &.Saturday, &.Sunday {
     @include entry-class(mix($bg, $wknd, 80%), mix($wknd, $fg, 50%));
   }
 
@@ -75,43 +66,43 @@ entry {
     background-repeat: no-repeat;
   }
 
-  &.hover, &:hover, &.focus {
-    * {
-      color: #000 !important;
+  &.focus * {
+    color: #000 !important;
+  }
+
+  .no-touch &.empty:not(.focus):hover {
+    cursor: text;
+    .expandingArea {
+      border: 1px dashed mix($fg, $bg, 20%);
     }
   }
-
 }
 
-.no-touch entry.empty:not(.open):hover {
-  cursor: text;
-  .expandingArea {
-    border: 1px dashed mix($fg, $bg, 20%);
+header {
+  font-size: 13px;
+  position: relative;
+  z-index: 3;
+  color: mix($fg, $bg, 40%);
+  text-shadow: 0 1px 0 mix($fg, $bg, 8%);
+  border-bottom: 1px solid mix($fg, $bg, 10%);
+  // border-top: 1px solid rgba(255,255,255,0.5);
+  margin-right: 10px;
+  wrapper {
+    display: inline-block;
+    position: absolute;
+    line-height: 1px;
+    padding: 0 5px 0 10px;
+    margin-top: -1px;
+    background-color: $bg;
+    height: 2px;
+  } 
+  ordinal {
+    font-size: 9px;
+    vertical-align: top;
   }
-}
-
-ribbons {
-  display: block;
-  position: absolute;
-  margin-top: -1px;
-  right: 15px;
-  cursor: pointer;
-  z-index: 20;
-  img:not(.white) {
-    display: block;
-    margin-left: 5px;
-    float: left;
-    @include prefix(animation, ribbon-appear 400ms);
+  day {
+    font-style: italic;
   }
-  overflow: hidden;
-}
-
-.no-touch ribbons .white {
-  opacity: 0;
-  @include prefix(animation, opacity 250ms);
-}
-.no-touch entry:hover ribbons .white {
-  opacity: 1;
 }
 
 content {
@@ -120,50 +111,53 @@ content {
 }
 
 content wrapper {
+  
+  @include prefix(transition, opacity 320ms, left 320ms);
+
   background-color: $bg;
   margin: 0;
   padding: 1px 0;
   display: block;
   // visibility: hidden;
-  @include prefix(transition, left 200ms);
+  
   position: relative;
   z-index: 2;
+
+  .open & {
+    left: -40px;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
-.open content wrapper {
-  left: 100%;
-}
-
-colors {
-  z-index: 1;
-  vertical-align: middle;
-  display: inline-block;
+ribbons {
+  
+  display: none;//block;
   position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -135px;
-    margin-top: -20px;
+  margin-top: -1px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20;
+  overflow: hidden;
+
+  img:not(.white) {
+    display: block;
+    margin-left: 5px;
+    float: left;
+    @include prefix(animation, ribbon-appear 400ms);
   }
-  swatch {
-    &:not(:last-of-type) { 
-      margin-right: 15px;
-    }
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
-    border-radius: 200px;
-    background-color: #999;
-    display: inline-block;
+  
+
+  .no-touch entry:hover & .white {
+    opacity: 1;
+  }
+  .no-touch & .white {
+    opacity: 0;
   }
 }
 
-.expandingArea {
+field {
+  display: block;
   position: relative;
   margin: 20px 10px;
   border: 1px dashed transparent;
@@ -211,31 +205,71 @@ colors {
   }
 }
 
-header {
-  font-size: 13px;
-  position: relative;
-  z-index: 3;
-  color: mix($fg, $bg, 40%);
-  text-shadow: 0 1px 0 mix($fg, $bg, 8%);
-  border-bottom: 1px solid mix($fg, $bg, 10%);
-  // border-top: 1px solid rgba(255,255,255,0.5);
-  margin-right: 10px;
+colors {
+  
+  z-index: 1;
+  vertical-align: middle;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  
   wrapper {
-    display: inline-block;
     position: absolute;
-    line-height: 1px;
-    padding: 0 5px 0 10px;
-    margin-top: -1px;
-    background-color: $bg;
-    height: 2px;
-  } 
+    top: 50%;
+    left: 50%;
+    margin-left: -135px;
+    margin-top: -20px;
+  }
 }
 
-ordinal {
-  font-size: 9px;
-  vertical-align: top;
+swatch {
+  &:not(:last-of-type) { 
+    margin-right: 15px;
+  }
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
+  border-radius: 200px;
+  background-color: #999;
+  display: inline-block;
 }
 
-day {
-  font-style: italic;
+@media all and (min-width: 1050px) {
+  year, day { 
+    display: none;
+  }
+  entry {
+  
+    width: 14.2857142857%;
+    &.today content wrapper {
+      background-image: none;
+    }
+
+    content, content wrapper {
+      height: 140px;
+      overflow: auto;
+      ::-webkit-scrollbar {
+         width: 4px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 100px;
+        background-color: mix($bg, $fg, 80%);
+      }
+    }
+    .expandingArea {
+      margin: 10px 10px;
+      > textarea,
+      > pre {
+        padding: 0px 5px ;
+        min-height: 117px;
+        font: 400 10px/14px Helvetica, Arial, sans-serif;
+      }
+    }
+    ribbons img {
+      top: -15px;
+      position: relative;
+    }
+  }
 }

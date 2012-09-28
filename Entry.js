@@ -69,7 +69,7 @@ function EntryCtrl($scope, Entry) {
 
     if ($scope.entries.length == 0) {
 
-      angular.forEach(_.range(-5, 5), function(i) {
+      angular.forEach(_.range(-39, 40), function(i) {
         
         var e = makeEntry(i);
 
@@ -82,13 +82,13 @@ function EntryCtrl($scope, Entry) {
     
   });
 
-  var j = -6, k = 6;
+  var j = -40, k = 40;
   addEventListener('scroll', function(e) {
 
     if (document.body.scrollTop < 20) {
 
       $scope.$apply(function() {
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 7; i++) {
           var e = makeEntry(j--);
           $scope.entries.push(e);
         }
@@ -98,7 +98,7 @@ function EntryCtrl($scope, Entry) {
     } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
 
       $scope.$apply(function() {
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 7; i++) {
           var e = makeEntry(k++);
           $scope.entries.push(e);
         }
