@@ -1,10 +1,8 @@
-<entries 
-  on-resize="maintainFocus()"
-  on-user-scroll="clearFocus()">
+<entries maintain-focus="entry">
 
   <entry 
-    class="{{entry.timestamp|day}}"
-    scroll-to="entry.offset == 0"
+    class="{{entry.timestamp|day}} {{entry.timestamp|month}}"
+    scroll-to-this="entry.timestamp == today"
     ng-repeat="entry in entries | orderBy:'timestamp'" 
     ng-class="{
       future: entry.timestamp > today,

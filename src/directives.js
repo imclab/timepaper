@@ -35,7 +35,6 @@ angular.module('entry')
   }
 })
 
-
 .directive('expandingArea', function() {
 
   return function($scope, element, attrs) {
@@ -59,48 +58,61 @@ angular.module('entry')
 
 .directive('lendsFocusUp', function() {
   return function($scope, element, attrs) {
+
     var child = element;
     var levelsUp = parseInt(attrs.lendsFocusUp);
-    while (levelsUp--) {
+
+    while (levelsUp--)
       element = element.parent();
-    }
-    child.bind('focus', function() {
-      element.addClass('focus');
-    });
-    child.bind('blur', function() {
-      element.removeClass('focus');
-    });
-    child.bind('mouseover', function() {
-      element.addClass('hover');
-    });
-    child.bind('mouseout', function() {
-      element.removeClass('hover');
-    });
-    element.bind('click', function() {
-      area.focus();
-    });
+
+    child.bind('focus',     function() { element.addClass('focus'); });
+    child.bind('blur',      function() { element.removeClass('focus'); });
+    child.bind('mouseover', function() { element.addClass('hover'); });
+    child.bind('mouseout',  function() { element.removeClass('hover'); });
+    element.bind('click',   function() { child.focus(); });
+
   }
 })
 
-.directive('onResize', function() {
+// Needs work.
+.directive('maintainFocus', function() {
+
   return function($scope, element, attrs) {
+
+    var prevCentered;
+    var centerType = attrs.maintainFocus.toUpperCase();
+
     $(window).bind('resize', function() {
-      $scope.$apply(attrs.onResize);
+
+      var centeredElement = document.elementFromPoint(window.innerWidth/2, window.innerHeight/2);
+
+      // Possible that the center isn't over an entry ...
+      while (centeredElement && centeredElement.nodeName != centerType) {
+        centeredElement = centeredElement.parentElement;
+      }
+
+      if (prevCentered) {
+        var rect = prevCentered.getBoundingClientRect();
+        var t = rect.top + document.body.scrollTop + rect.height/2 - window.innerHeight/2;
+        window.scrollTo(0, t)
+      } else if (centeredElement) {
+        prevCentered = centeredElement;
+      }
+
     });
+
+    $(window).bind('mousewheel', function() {
+      prevCentered = undefined;
+    });
+
   }
+
 })
 
-.directive('onUserScroll', function() {
-  return function($scope, element, attrs) {
-    element.bind('scroll', function() {
-      $scope.$apply(attrs.onUserScroll);
-    });
-  }
-})
 
-.directive('scrollTo', function() {
+.directive('scrollToThis', function() {
   return function($scope, element, attrs) {
-    if ($scope.$eval(attrs.scrollTo)) {
+    if ($scope.$eval(attrs.scrollToThis)) {
       _.defer(function() {
         var rect = element[0].getBoundingClientRect();
         window.scrollTo(0, rect.top - window.innerHeight/2 + rect.height/2);

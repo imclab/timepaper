@@ -1,7 +1,7 @@
 angular.module('mongolab', ['ngResource']).factory('Entry', function($resource) {
 
   var Entry = $resource('https://api.mongolab.com/api/1/databases'+
-    '/timepaper/collections/entries18/:id',
+    '/timepaper/collections/entries22/:id',
       { apiKey: '506225c4e4b0db84a758c9e3' }, {
         update: { method: 'PUT' },
         save: { method: 'POST' }
