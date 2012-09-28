@@ -4,7 +4,7 @@
     ng-class="{
       future: entry.time > today,
       past: entry.time < today,
-      today: entry.offset == 0,
+      today: entry.offset == 1,
       empty: entry.text == '',
       open: entry.open
     }" class="{{ entry.day }}">

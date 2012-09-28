@@ -82,29 +82,62 @@ function EntryCtrl($scope, Entry) {
     
   });
 
-  var j = -40, k = 40;
-  addEventListener('scroll', function(e) {
+  // var prevScroll, markScroll = true;
+  // var scrollTo = function(height) {
+  //   height = Math.round(height * prevScroll - window.innerHeight/2);
+  //     window.scrollTo(0, height);
+  //   };
+  // window.addEventListener('resize', function(e) {
 
-    if (document.body.scrollTop < 20) {
+  //   var height = document.body.scrollHeight;
+  //   var scroll = (document.body.scrollTop + window.innerHeight/2)/height;
+  //   if (prevScroll) {
+  //     scrollTo(height);
+  //   } else {
+  //     prevScroll = scroll;
+  //   }
+  // }, true);
 
-      $scope.$apply(function() {
-        for (var i = 0; i < 7; i++) {
-          var e = makeEntry(j--);
-          $scope.entries.push(e);
-        }
-        window.scrollTo(0, 88);
-      });
-
-    } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
-
-      $scope.$apply(function() {
-        for (var i = 0; i < 7; i++) {
-          var e = makeEntry(k++);
-          $scope.entries.push(e);
-        }
-        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88);
-      });
+  var prevCentered;
+  window.addEventListener('resize', function(e) {
+    
+    var centeredElement = document.elementFromPoint(window.innerWidth/2, window.innerHeight/2);
+    while (centeredElement && centeredElement.nodeName != 'ENTRY') {
+      centeredElement = centeredElement.parentElement;
     }
+    if (prevCentered) {
+      var rect = prevCentered.getBoundingClientRect();
+      var t = rect.top + document.body.scrollTop + rect.height/2 - window.innerHeight/2;
+      window.scrollTo(0, t)
+    } else if (centeredElement) { 
+      prevCentered = centeredElement;
+    }
+
+  }, false);
+
+  // var j = -40, k = 40;
+  addEventListener('mousewheel', function(e) {
+    prevCentered = undefined;
+  //   if (document.body.scrollTop < 20) {
+
+  //     $scope.$apply(function() {
+  //       for (var i = 0; i < 7; i++) {
+  //         var e = makeEntry(j--);
+  //         $scope.entries.push(e);
+  //       }
+  //       window.scrollTo(0, 88);
+  //     });
+
+  //   } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
+
+  //     $scope.$apply(function() {
+  //       for (var i = 0; i < 7; i++) {
+  //         var e = makeEntry(k++);
+  //         $scope.entries.push(e);
+  //       }
+  //       window.scrollTo(0, document.body.scrollTop + window.innerHeight-88);
+  //     });
+  //   }
 
   }, false);
 

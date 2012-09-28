@@ -69,13 +69,25 @@ entry {
   display: inline-block;
   width: 100%;
   vertical-align: top; }
-  entry.Saturday content wrapper, entry.Saturday colors, entry.Sunday content wrapper, entry.Sunday colors {
+  entry.Saturday, entry.Sunday {
     background-color: #eff9f7; }
-  entry.Saturday header, entry.Sunday header {
-    border-bottom-color: #d9f1ec;
-    color: #8ca8a5; }
-    entry.Saturday header wrapper, entry.Sunday header wrapper {
-      background-color: #eff9f7; }
+    entry.Saturday:after, entry.Sunday:after {
+      background-image: -webkit-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
+      background-image: -moz-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
+      background-image: -ms-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
+      background-image: -o-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
+      background-image: linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%); }
+    entry.Saturday header, entry.Sunday header {
+      border-bottom-color: #d9f1ec;
+      color: #8ca8a5; }
+      entry.Saturday header wrapper, entry.Sunday header wrapper {
+        background-color: #eff9f7; }
+      entry.Saturday header:before, entry.Sunday header:before {
+        background-image: -webkit-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
+        background-image: -moz-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
+        background-image: -ms-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
+        background-image: -o-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
+        background-image: linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%); }
   entry.today content wrapper {
     background-image: url(images/today.png);
     background-position: left center;
@@ -86,6 +98,19 @@ entry {
     cursor: text; }
     .no-touch entry.empty:not(.focus):hover .expandingArea {
       border: 1px dashed #d8dada; }
+  entry:after {
+    z-index: 2;
+    background-image: -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
+    background-image: -moz-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
+    background-image: -ms-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
+    background-image: -o-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
+    background-image: linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
+    width: 100%;
+    bottom: 0;
+    height: 15px;
+    display: block;
+    content: ' ';
+    position: absolute; }
 
 header {
   font-size: 13px;
@@ -107,6 +132,19 @@ header {
     vertical-align: top; }
   header day {
     font-style: italic; }
+  header:before {
+    z-index: -1;
+    background-image: -webkit-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
+    background-image: -moz-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
+    background-image: -ms-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
+    background-image: -o-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
+    background-image: linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
+    width: 100%;
+    top: 1px;
+    height: 15px;
+    display: block;
+    content: ' ';
+    position: absolute; }
 
 content {
   overflow: hidden;
@@ -118,7 +156,6 @@ content wrapper {
   -ms-transition: opacity 320ms, left 320ms;
   -o-transition: opacity 320ms, left 320ms;
   transition: opacity 320ms, left 320ms;
-  background-color: #fafafa;
   margin: 0;
   padding: 1px 0;
   display: block;
@@ -272,9 +309,10 @@ swatch {
       margin: 10px 10px; }
       entry field > textarea,
       entry field > pre {
+        text-shadow: none;
         padding: 0px 5px;
         min-height: 117px;
-        font: 400 10px/14px Helvetica, Arial, sans-serif; }
+        font: 400 11px/14px Helvetica, Arial, sans-serif; }
     entry ribbons img {
       top: -15px;
       position: relative; } }

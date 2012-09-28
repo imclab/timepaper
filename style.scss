@@ -18,14 +18,18 @@ $edit: #f6f0e5;
 
 @mixin entry-class($bg, $header: $fg) {
   $b: darken($bg, 6%);
-  content wrapper, colors {
-    background-color: $bg;
+  background-color: $bg;
+  &:after {
+    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 70%);
   }
   header {
     border-bottom-color: $b;
     color: $header;
     wrapper {
       background-color: $bg;
+    }
+    &:before {
+      @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
     }
   }
 }
@@ -50,6 +54,7 @@ body {
 }
 
 entry {
+
 
   position: relative;
   display: inline-block;
@@ -76,6 +81,17 @@ entry {
       border: 1px dashed mix($fg, $bg, 20%);
     }
   }
+
+  &:after {
+    z-index: 2;
+    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 70%);
+    width: 100%;
+    bottom: 0;
+    height: 15px;
+    display: block;
+    content: ' ';
+    position: absolute;
+  }
 }
 
 header {
@@ -87,6 +103,7 @@ header {
   border-bottom: 1px solid mix($fg, $bg, 10%);
   // border-top: 1px solid rgba(255,255,255,0.5);
   // margin-right: 10px;
+  
   wrapper {
     display: inline-block;
     position: absolute;
@@ -103,6 +120,19 @@ header {
   day {
     font-style: italic;
   }
+
+  &:before {
+    z-index: -1;
+    @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
+    width: 100%;
+    top: 1px;
+    height: 15px;
+    display: block;
+    content: ' ';
+    position: absolute;
+  }
+
+
 }
 
 content {
@@ -114,7 +144,7 @@ content wrapper {
   
   @include prefix(transition, opacity 320ms, left 320ms);
 
-  background-color: $bg;
+  // background-color: $bg;
   margin: 0;
   padding: 1px 0;
   display: block;
@@ -265,7 +295,6 @@ swatch {
   entry:not(.Monday):not(.Friday) header wrapper { 
     display: none;
   }
-
 }
 
 @media all and (min-width: 1050px) {
@@ -314,9 +343,10 @@ swatch {
       margin: 10px 10px;
       > textarea,
       > pre {
+        text-shadow: none;
         padding: 0px 5px;
         min-height: 117px;
-        font: 400 10px/14px Helvetica, Arial, sans-serif;
+        font: 400 11px/14px Helvetica, Arial, sans-serif;
       }
     }
     ribbons img {
