@@ -131,8 +131,7 @@ content wrapper {
 }
 
 .open content wrapper {
-  left: 105%;
-  right: 100%;
+  left: 100%;
 }
 
 colors {
@@ -229,7 +228,7 @@ header {
     margin-top: -1px;
     background-color: $bg;
     height: 2px;
-  }
+  } 
 }
 
 ordinal {

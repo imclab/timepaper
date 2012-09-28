@@ -143,8 +143,7 @@ content wrapper {
   z-index: 2; }
 
 .open content wrapper {
-  left: 105%;
-  right: 100%; }
+  left: 100%; }
 
 colors {
   z-index: 1;

@@ -82,7 +82,7 @@ function EntryCtrl($scope, Entry) {
     
   });
 
-  var j = -5, k = 6;
+  var j = -6, k = 6;
   addEventListener('scroll', function(e) {
 
     if (document.body.scrollTop < 20) {
