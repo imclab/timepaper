@@ -86,7 +86,7 @@ header {
   text-shadow: 0 1px 0 mix($fg, $bg, 8%);
   border-bottom: 1px solid mix($fg, $bg, 10%);
   // border-top: 1px solid rgba(255,255,255,0.5);
-  margin-right: 10px;
+  // margin-right: 10px;
   wrapper {
     display: inline-block;
     position: absolute;
@@ -213,6 +213,7 @@ colors {
   width: 100%;
   top: 0;
   bottom: 0;
+  display: none;
   
   wrapper {
     position: absolute;
@@ -236,13 +237,52 @@ swatch {
   display: inline-block;
 }
 
+@media all and (max-width: 1050px) and (min-width: 750px) {
+
+  .Friday, .Saturday, .Sunday { 
+    width: 33.333333%;
+    field {
+      margin: 15px;
+      > textarea,
+      > pre {
+        font: 400 14px/20px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
+
+  .Monday, .Tuesday, .Wednesday, .Thursday { 
+    width: 25%;
+    field {
+      margin: 15px;
+      > textarea,
+      > pre {
+        padding: 5px;
+        font: 400 11px/16px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
+
+  entry:not(.Monday):not(.Friday) header wrapper { 
+    display: none;
+  }
+
+}
+
 @media all and (min-width: 1050px) {
+
   year, day { 
     display: none;
   }
+  header wrapper { 
+    padding-left: 0px;
+    padding-left: 2px;
+  }
+
   entry {
   
+    // width: #{100/7}%;
     width: 14.2857142857%;
+
     &.today content wrapper {
       background-image: none;
     }
@@ -250,19 +290,31 @@ swatch {
     content, content wrapper {
       height: 140px;
       overflow: auto;
+    }
+
+    content { 
+      ::-webkit-scrollbar {
+         width: 0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: transparentize($fg, 1);
+      }
+    }
+
+    &.focus, &.hover, &:hover {
       ::-webkit-scrollbar {
          width: 4px;
       }
-      ::-webkit-scrollbar-thumb {
-        border-radius: 100px;
-        background-color: mix($bg, $fg, 80%);
+      content ::-webkit-scrollbar-thumb {
+        background-color: transparentize($fg, 0.935);
       }
     }
-    .expandingArea {
+
+    field {
       margin: 10px 10px;
       > textarea,
       > pre {
-        padding: 0px 5px ;
+        padding: 0px 5px;
         min-height: 117px;
         font: 400 10px/14px Helvetica, Arial, sans-serif;
       }

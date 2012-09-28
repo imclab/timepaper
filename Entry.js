@@ -92,7 +92,7 @@ function EntryCtrl($scope, Entry) {
           var e = makeEntry(j--);
           $scope.entries.push(e);
         }
-        window.scrollTo(0, 88*i);
+        window.scrollTo(0, 88);
       });
 
     } else if (document.body.scrollTop + window.innerHeight >= document.body.scrollHeight - 20) {
@@ -102,7 +102,7 @@ function EntryCtrl($scope, Entry) {
           var e = makeEntry(k++);
           $scope.entries.push(e);
         }
-        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88*i);
+        window.scrollTo(0, document.body.scrollTop + window.innerHeight-88);
       });
     }
 

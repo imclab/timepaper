@@ -93,8 +93,7 @@ header {
   z-index: 3;
   color: #b7baba;
   text-shadow: 0 1px 0 #eceded;
-  border-bottom: 1px solid #e9eaea;
-  margin-right: 10px; }
+  border-bottom: 1px solid #e9eaea; }
   header wrapper {
     display: inline-block;
     position: absolute;
@@ -201,7 +200,8 @@ colors {
   position: absolute;
   width: 100%;
   top: 0;
-  bottom: 0; }
+  bottom: 0;
+  display: none; }
   colors wrapper {
     position: absolute;
     top: 50%;
@@ -220,9 +220,38 @@ swatch {
   swatch:not(:last-of-type) {
     margin-right: 15px; }
 
+@media all and (max-width: 1050px) and (min-width: 750px) {
+  .Friday, .Saturday, .Sunday {
+    width: 33.333333%; }
+    .Friday field, .Saturday field, .Sunday field {
+      margin: 15px; }
+      .Friday field > textarea,
+      .Friday field > pre, .Saturday field > textarea,
+      .Saturday field > pre, .Sunday field > textarea,
+      .Sunday field > pre {
+        font: 400 14px/20px Helvetica, Arial, sans-serif; }
+
+  .Monday, .Tuesday, .Wednesday, .Thursday {
+    width: 25%; }
+    .Monday field, .Tuesday field, .Wednesday field, .Thursday field {
+      margin: 15px; }
+      .Monday field > textarea,
+      .Monday field > pre, .Tuesday field > textarea,
+      .Tuesday field > pre, .Wednesday field > textarea,
+      .Wednesday field > pre, .Thursday field > textarea,
+      .Thursday field > pre {
+        padding: 5px;
+        font: 400 11px/16px Helvetica, Arial, sans-serif; }
+
+  entry:not(.Monday):not(.Friday) header wrapper {
+    display: none; } }
 @media all and (min-width: 1050px) {
   year, day {
     display: none; }
+
+  header wrapper {
+    padding-left: 0px;
+    padding-left: 2px; }
 
   entry {
     width: 14.2857142857%; }
@@ -231,15 +260,18 @@ swatch {
     entry content, entry content wrapper {
       height: 140px;
       overflow: auto; }
-      entry content ::-webkit-scrollbar, entry content wrapper ::-webkit-scrollbar {
-        width: 4px; }
-      entry content ::-webkit-scrollbar-thumb, entry content wrapper ::-webkit-scrollbar-thumb {
-        border-radius: 100px;
-        background-color: #d8dada; }
-    entry .expandingArea {
+    entry content ::-webkit-scrollbar {
+      width: 0; }
+    entry content ::-webkit-scrollbar-thumb {
+      background-color: rgba(84, 92, 92, 0); }
+    entry.focus ::-webkit-scrollbar, entry.hover ::-webkit-scrollbar, entry:hover ::-webkit-scrollbar {
+      width: 4px; }
+    entry.focus content ::-webkit-scrollbar-thumb, entry.hover content ::-webkit-scrollbar-thumb, entry:hover content ::-webkit-scrollbar-thumb {
+      background-color: rgba(84, 92, 92, 0.065); }
+    entry field {
       margin: 10px 10px; }
-      entry .expandingArea > textarea,
-      entry .expandingArea > pre {
+      entry field > textarea,
+      entry field > pre {
         padding: 0px 5px;
         min-height: 117px;
         font: 400 10px/14px Helvetica, Arial, sans-serif; }
