@@ -94,9 +94,9 @@ entry {
     background-repeat: no-repeat; }
   entry.focus * {
     color: #000 !important; }
-  .no-touch entry.empty:not(.focus):hover {
+  .no-touch entry.empty:hover:not(.focus) {
     cursor: text; }
-    .no-touch entry.empty:not(.focus):hover .expandingArea {
+    .no-touch entry.empty:hover:not(.focus) field {
       border: 1px dashed #d8dada; }
   entry:after {
     z-index: 2;
@@ -166,28 +166,6 @@ content wrapper {
     opacity: 0;
     pointer-events: none; }
 
-ribbons {
-  display: none;
-  position: absolute;
-  margin-top: -1px;
-  right: 15px;
-  cursor: pointer;
-  z-index: 20;
-  overflow: hidden; }
-  ribbons img:not(.white) {
-    display: block;
-    margin-left: 5px;
-    float: left;
-    -webkit-animation: ribbon-appear 400ms;
-    -moz-animation: ribbon-appear 400ms;
-    -ms-animation: ribbon-appear 400ms;
-    -o-animation: ribbon-appear 400ms;
-    animation: ribbon-appear 400ms; }
-  .no-touch entry:hover ribbons .white {
-    opacity: 1; }
-  .no-touch ribbons .white {
-    opacity: 0; }
-
 field {
   display: block;
   position: relative;
@@ -230,32 +208,6 @@ field {
     display: block;
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
-
-colors {
-  z-index: 1;
-  vertical-align: middle;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  bottom: 0;
-  display: none; }
-  colors wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -135px;
-    margin-top: -20px; }
-
-swatch {
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.1), 0 1px 1px white, 0 -1px 1px rgba(255, 255, 255, 0.2);
-  border-radius: 200px;
-  background-color: #999;
-  display: inline-block; }
-  swatch:not(:last-of-type) {
-    margin-right: 15px; }
 
 @media all and (max-width: 1050px) and (min-width: 750px) {
   .Friday, .Saturday, .Sunday {
@@ -310,9 +262,9 @@ swatch {
       entry field > textarea,
       entry field > pre {
         text-shadow: none;
-        padding: 0px 5px;
+        padding: 0;
         min-height: 117px;
-        font: 400 11px/14px Helvetica, Arial, sans-serif; }
+        font: 400 11px/15px Helvetica, Arial, sans-serif; }
     entry ribbons img {
       top: -15px;
       position: relative; } }
