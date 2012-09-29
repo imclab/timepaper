@@ -1,8 +1,8 @@
 @import "always/_always";
 
-$bg: #fafafa;
+$bg: #fff;
 $fg: #545c5c;
-$wknd: #c4f5ee;
+$wknd: #ddd;
 $edit: #f6f0e5;
 
 @include keyframes(ribbon-appear) {
@@ -45,7 +45,8 @@ $edit: #f6f0e5;
 }
 
 body {
-  font-family: 'Radley', serif;
+  // font-family: 'Radley', serif;
+  font-family: sans-serif;
   padding-top: 17px;
   background-color: $bg;
   color: $fg;
@@ -84,8 +85,8 @@ entry {
 
   &:after {
     z-index: 2;
-    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 70%);
-    width: 90%;
+    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
+    width: -webkit-calc(100% - 4px);
     bottom: 0;
     height: 15px;
     display: block;
@@ -95,7 +96,7 @@ entry {
 }
 
 header {
-  font-size: 13px;
+  font-size: 11px;
   position: relative;
   z-index: 3;
   color: mix($fg, $bg, 40%);
@@ -107,22 +108,29 @@ header {
     position: absolute;
     line-height: 1px;
     padding: 0 5px 0 10px;
-    margin-top: -1px;
+    // margin-top: -1px;
     background-color: $bg;
     height: 2px;
   } 
   ordinal {
+    display: inline-block;
+    display: none;
     font-size: 9px;
     vertical-align: top;
+    margin-top: -2px;
+    margin-left: 1px;
   }
   day {
-    font-style: italic;
+    &:after { 
+      content: ',';
+    }
+    // font-style: italic;
   }
 
   &:before {
     z-index: -1;
     @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
-    width: 90%;
+    width: -webkit-calc(100% - 4px);
     top: 1px;
     height: 15px;
     display: block;
@@ -205,46 +213,67 @@ field {
   }
 }
 
-@media all and (max-width: 1050px) and (min-width: 750px) {
+// @media all and (max-width: 1050px) and (min-width: 750px) {
 
-  .Friday, .Saturday, .Sunday { 
-    width: 33.333333%;
-    field {
-      margin: 15px;
-      > textarea,
-      > pre {
-        font: 400 14px/20px Helvetica, Arial, sans-serif;
-      }
-    }
-  }
+//   ordinal {
+//     display: none;
+//   }
 
-  .Monday, .Tuesday, .Wednesday, .Thursday { 
-    width: 25%;
-    field {
-      margin: 15px;
-      > textarea,
-      > pre {
-        padding: 5px;
-        font: 400 11px/16px Helvetica, Arial, sans-serif;
-      }
-    }
-  }
+//   year { 
+//     display: none;
+//   }
 
-  entry:not(.Monday):not(.Friday) header wrapper { 
-    display: none;
-  }
-}
+//   .Friday, .Saturday, .Sunday { 
+//     width: 33.333333%;
+//     field {
+//       margin: 15px;
+//       > textarea,
+//       > pre {
+//         font: 400 14px/20px Helvetica, Arial, sans-serif;
+//       }
+//     }
+//   }
 
-@media all and (min-width: 1050px) {
+//   .Monday, .Tuesday, .Wednesday, .Thursday { 
+//     width: 25%;
+//     field {
+//       margin: 15px;
+//       > textarea,
+//       > pre {
+//         padding: 5px;
+//         font: 400 11px/16px Helvetica, Arial, sans-serif;
+//       }
+//     }
+//   }
+
+//   entry:not(.Monday):not(.Friday) year { 
+//     display: none;
+//   }
+
+// }
+
+@media all and (min-width: 850px) {
 
   year, day { 
     display: none;
   }
+
   header wrapper { 
-    padding-left: 0px;
-    padding-left: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 
+  ordinal {
+    display: none;
+  }
+
+  entry:not(.date-1) { 
+    month {
+      display: none;  
+    }
+    
+  }
+  
   entry {
   
     // width: #{100/7}%;

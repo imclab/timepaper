@@ -53,9 +53,9 @@
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: 'Radley', serif;
+  font-family: sans-serif;
   padding-top: 17px;
-  background-color: #fafafa;
+  background-color: white;
   color: #545c5c;
   overflow-x: hidden;
   -webkit-user-select: none;
@@ -70,24 +70,24 @@ entry {
   width: 100%;
   vertical-align: top; }
   entry.Saturday, entry.Sunday {
-    background-color: #eff9f7; }
+    background-color: #f8f8f8; }
     entry.Saturday:after, entry.Sunday:after {
-      background-image: -webkit-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
-      background-image: -moz-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
-      background-image: -ms-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
-      background-image: -o-linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%);
-      background-image: linear-gradient(top, rgba(239, 249, 247, 0) 0%, #eff9f7 70%); }
+      background-image: -webkit-linear-gradient(top, rgba(248, 248, 248, 0) 0%, #f8f8f8 70%);
+      background-image: -moz-linear-gradient(top, rgba(248, 248, 248, 0) 0%, #f8f8f8 70%);
+      background-image: -ms-linear-gradient(top, rgba(248, 248, 248, 0) 0%, #f8f8f8 70%);
+      background-image: -o-linear-gradient(top, rgba(248, 248, 248, 0) 0%, #f8f8f8 70%);
+      background-image: linear-gradient(top, rgba(248, 248, 248, 0) 0%, #f8f8f8 70%); }
     entry.Saturday header, entry.Sunday header {
-      border-bottom-color: #d9f1ec;
-      color: #8ca8a5; }
+      border-bottom-color: #e9e9e9;
+      color: #989c9c; }
       entry.Saturday header wrapper, entry.Sunday header wrapper {
-        background-color: #eff9f7; }
+        background-color: #f8f8f8; }
       entry.Saturday header:before, entry.Sunday header:before {
-        background-image: -webkit-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
-        background-image: -moz-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
-        background-image: -ms-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
-        background-image: -o-linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%);
-        background-image: linear-gradient(top, #eff9f7 30%, rgba(239, 249, 247, 0) 100%); }
+        background-image: -webkit-linear-gradient(top, #f8f8f8 30%, rgba(248, 248, 248, 0) 100%);
+        background-image: -moz-linear-gradient(top, #f8f8f8 30%, rgba(248, 248, 248, 0) 100%);
+        background-image: -ms-linear-gradient(top, #f8f8f8 30%, rgba(248, 248, 248, 0) 100%);
+        background-image: -o-linear-gradient(top, #f8f8f8 30%, rgba(248, 248, 248, 0) 100%);
+        background-image: linear-gradient(top, #f8f8f8 30%, rgba(248, 248, 248, 0) 100%); }
   entry.today content wrapper {
     background-image: url(images/today.png);
     background-position: left center;
@@ -97,15 +97,15 @@ entry {
   .no-touch entry.empty:hover:not(.focus) {
     cursor: text; }
     .no-touch entry.empty:hover:not(.focus) field {
-      border: 1px dashed #d8dada; }
+      border: 1px dashed #dcdede; }
   entry:after {
     z-index: 2;
-    background-image: -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
-    background-image: -moz-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
-    background-image: -ms-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
-    background-image: -o-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
-    background-image: linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 70%);
-    width: 90%;
+    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background-image: linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    width: -webkit-calc(100% - 4px);
     bottom: 0;
     height: 15px;
     display: block;
@@ -113,33 +113,36 @@ entry {
     position: absolute; }
 
 header {
-  font-size: 13px;
+  font-size: 11px;
   position: relative;
   z-index: 3;
-  color: #b7baba;
-  text-shadow: 0 1px 0 #eceded;
-  border-bottom: 1px solid #e9eaea; }
+  color: #babdbd;
+  text-shadow: 0 1px 0 #f1f1f1;
+  border-bottom: 1px solid #edeeee; }
   header wrapper {
     display: inline-block;
     position: absolute;
     line-height: 1px;
     padding: 0 5px 0 10px;
-    margin-top: -1px;
-    background-color: #fafafa;
+    background-color: white;
     height: 2px; }
   header ordinal {
+    display: inline-block;
+    display: none;
     font-size: 9px;
-    vertical-align: top; }
-  header day {
-    font-style: italic; }
+    vertical-align: top;
+    margin-top: -2px;
+    margin-left: 1px; }
+  header day:after {
+    content: ','; }
   header:before {
     z-index: -1;
-    background-image: -webkit-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
-    background-image: -moz-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
-    background-image: -ms-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
-    background-image: -o-linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
-    background-image: linear-gradient(top, #fafafa 30%, rgba(250, 250, 250, 0) 100%);
-    width: 90%;
+    background-image: -webkit-linear-gradient(top, white 30%, rgba(255, 255, 255, 0) 100%);
+    background-image: -moz-linear-gradient(top, white 30%, rgba(255, 255, 255, 0) 100%);
+    background-image: -ms-linear-gradient(top, white 30%, rgba(255, 255, 255, 0) 100%);
+    background-image: -o-linear-gradient(top, white 30%, rgba(255, 255, 255, 0) 100%);
+    background-image: linear-gradient(top, white 30%, rgba(255, 255, 255, 0) 100%);
+    width: -webkit-calc(100% - 4px);
     top: 1px;
     height: 15px;
     display: block;
@@ -177,7 +180,7 @@ field {
     padding: 10px;
     background: transparent;
     font: 400 16px/22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 #e9eaea;
+    text-shadow: 0 1px 0 #edeeee;
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
@@ -209,38 +212,19 @@ field {
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
 
-@media all and (max-width: 1050px) and (min-width: 750px) {
-  .Friday, .Saturday, .Sunday {
-    width: 33.333333%; }
-    .Friday field, .Saturday field, .Sunday field {
-      margin: 15px; }
-      .Friday field > textarea,
-      .Friday field > pre, .Saturday field > textarea,
-      .Saturday field > pre, .Sunday field > textarea,
-      .Sunday field > pre {
-        font: 400 14px/20px Helvetica, Arial, sans-serif; }
-
-  .Monday, .Tuesday, .Wednesday, .Thursday {
-    width: 25%; }
-    .Monday field, .Tuesday field, .Wednesday field, .Thursday field {
-      margin: 15px; }
-      .Monday field > textarea,
-      .Monday field > pre, .Tuesday field > textarea,
-      .Tuesday field > pre, .Wednesday field > textarea,
-      .Wednesday field > pre, .Thursday field > textarea,
-      .Thursday field > pre {
-        padding: 5px;
-        font: 400 11px/16px Helvetica, Arial, sans-serif; }
-
-  entry:not(.Monday):not(.Friday) header wrapper {
-    display: none; } }
-@media all and (min-width: 1050px) {
+@media all and (min-width: 850px) {
   year, day {
     display: none; }
 
   header wrapper {
-    padding-left: 0px;
-    padding-left: 2px; }
+    padding-left: 4px;
+    padding-right: 4px; }
+
+  ordinal {
+    display: none; }
+
+  entry:not(.date-1) month {
+    display: none; }
 
   entry {
     width: 14.2857142857%; }

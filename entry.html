@@ -1,9 +1,15 @@
 <entries maintain-focus="entry">
 
   <entry 
-    class="{{entry.timestamp|day}} {{entry.timestamp|month}}"
+
+    class="{{entry.timestamp|day}} 
+           {{entry.timestamp|month}}
+           date-{{entry.timestamp|date}}"
+
     scroll-to-this="entry.timestamp == today"
+    
     ng-repeat="entry in entries | orderBy:'timestamp'" 
+
     ng-class="{
       future: entry.timestamp > today,
       past: entry.timestamp < today,
