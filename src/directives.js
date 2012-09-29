@@ -25,7 +25,7 @@ angular.module('entry')
 .filter('ordinal', function () {
   return function(timestamp) {
      var s = ['th','st','nd','rd'], v = new Date(timestamp).getDate() % 100;
-     return s[(v-20)%10]||s[v]||s[0];
+     return s[(v-20)%10] || s[v] || s[0];
   }
 })
 
@@ -69,7 +69,7 @@ angular.module('entry')
     child.bind('blur',      function() { element.removeClass('focus'); });
     child.bind('mouseover', function() { element.addClass('hover'); });
     child.bind('mouseout',  function() { element.removeClass('hover'); });
-    element.bind('click',   function() { child.focus(); });
+    element.bind('click',   function() { child[0].focus(); });
 
   }
 })
@@ -82,7 +82,7 @@ angular.module('entry')
     var prevCentered;
     var centerType = attrs.maintainFocus.toUpperCase();
 
-    $(window).bind('resize', function() {
+    angular.element(window).bind('resize', function() {
 
       var centeredElement = document.elementFromPoint(window.innerWidth/2, window.innerHeight/2);
 
@@ -101,14 +101,13 @@ angular.module('entry')
 
     });
 
-    $(window).bind('mousewheel', function() {
+    angular.element(window).bind('mousewheel', function() {
       prevCentered = undefined;
     });
 
   }
 
 })
-
 
 .directive('scrollToThis', function() {
   return function($scope, element, attrs) {

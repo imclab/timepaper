@@ -85,7 +85,7 @@ entry {
   &:after {
     z-index: 2;
     @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 70%);
-    width: 100%;
+    width: 90%;
     bottom: 0;
     height: 15px;
     display: block;
@@ -122,7 +122,7 @@ header {
   &:before {
     z-index: -1;
     @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
-    width: 100%;
+    width: 90%;
     top: 1px;
     height: 15px;
     display: block;
