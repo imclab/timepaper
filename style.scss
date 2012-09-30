@@ -226,25 +226,16 @@ field textarea {
   }
   textarea { 
     // border: 1px solid blue;
-    width: 100%;
+    @include prefix-value(width, calc(100% - 40px));
     padding: 20px;
+    
     background: #fff;
     resize: none;
   }
 }
-// .touch entry.focus { 
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   z-index: 1000;
-//   textarea { 
-//     height: 960px;
-//   }
-//   background: red;
-//   // border: 1px solid magenta;
-// }
+.touch entry.focus textarea {
+  height: 1000px;
+}
 
 .no-touch field {
   display: block;
