@@ -216,6 +216,36 @@ content wrapper {
 
 }
 
+field textarea { 
+  font: 400 16px / 22px Helvetica, Arial, sans-serif;
+}
+
+.touch field { 
+  span, pre, br { 
+    display: none;
+  }
+  textarea { 
+    // border: 1px solid blue;
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    resize: none;
+  }
+}
+.touch entry.focus { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  textarea { 
+    height: 960px;
+  }
+  background: red;
+  // border: 1px solid magenta;
+}
+
 .no-touch field {
   display: block;
   position: relative;
@@ -226,10 +256,7 @@ content wrapper {
     color: $fg;
     padding: 10px;
     background: transparent;
-    font: 400 16px / 22px Helvetica, Arial, sans-serif;
-    .no-touch & { 
-      text-shadow: 0 1px 0 mix($fg, $bg, 10%);
-    }
+    text-shadow: 0 1px 0 mix($fg, $bg, 10%);
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
