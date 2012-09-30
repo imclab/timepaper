@@ -246,7 +246,7 @@ field textarea {
   }
 }
 
-.no-touch field, .touch field:not(.focus) {
+ field {
   display: block;
   position: relative;
   margin: 20px 10px;
