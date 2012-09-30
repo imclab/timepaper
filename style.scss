@@ -236,12 +236,12 @@ field textarea {
 // }
 .touch entry.focus field {
   display: block;
-  height: 1000px;
+  height: 500px;
   pre, span, br { 
     display: none;
   }
   textarea { 
-    height: 1000px;
+    height: 500px;
     position: static;
   }
 }

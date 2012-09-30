@@ -151,11 +151,11 @@ field textarea {
 
 .touch entry.focus field {
   display: block;
-  height: 1000px; }
+  height: 500px; }
   .touch entry.focus field pre, .touch entry.focus field span, .touch entry.focus field br {
     display: none; }
   .touch entry.focus field textarea {
-    height: 1000px;
+    height: 500px;
     position: static; }
 
 .no-touch field, .touch field:not(.focus) {
