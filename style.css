@@ -270,7 +270,7 @@ field {
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
 
-@media all and (max-width: 1200px) and (min-width: 800px) {
+@media all and (max-width: 1199px) and (min-width: 800px) {
   ordinal {
     display: none; }
 
