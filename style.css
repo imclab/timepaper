@@ -68,91 +68,89 @@ entries {
 
 entry {
   display: inline-block;
+  cursor: text;
   position: relative;
   width: 100%;
   vertical-align: top; }
   entry:before {
     position: absolute;
-    background-color: blue;
     content: ' ';
     width: 100%;
     height: 700px;
     display: block;
     z-index: -1; }
   entry.this-month-false {
-    background-color: #f7f7f7; }
+    background-color: #f9f9f9; }
     entry.this-month-false:before {
-      background-color: #f7f7f7; }
+      background-color: #f9f9f9; }
     entry.this-month-false:after {
-      background-image: -webkit-linear-gradient(top, rgba(247, 247, 247, 0) 0%, #f7f7f7 100%);
-      background-image: linear-gradient(top, rgba(247, 247, 247, 0) 0%, #f7f7f7 100%); }
+      background-image: -webkit-linear-gradient(top, rgba(249, 249, 249, 0) 0%, #f9f9f9 100%);
+      background-image: linear-gradient(top, rgba(249, 249, 249, 0) 0%, #f9f9f9 100%); }
     entry.this-month-false header {
-      border-bottom-color: #dedede;
+      border-bottom-color: #e0e0e0;
       color: #545c5c;
-      text-shadow: 0 1px 0 #d9d9d9; }
+      text-shadow: 0 1px 0 #dbdbdb; }
       entry.this-month-false header wrapper {
-        background-color: #f7f7f7; }
+        background-color: #f9f9f9; }
       entry.this-month-false header:before {
-        background-image: -webkit-linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%);
-        background-image: linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%); }
+        background-image: -webkit-linear-gradient(top, #f9f9f9 0%, rgba(249, 249, 249, 0) 100%);
+        background-image: linear-gradient(top, #f9f9f9 0%, rgba(249, 249, 249, 0) 100%); }
     .no-touch entry.this-month-false field > textarea, .no-touch entry.this-month-false field > pre {
-      text-shadow: 0 1px 0 #e6e7e7; }
+      text-shadow: 0 1px 0 #e8e9e9; }
     entry.this-month-false.Monday, entry.this-month-false.Tuesday, entry.this-month-false.Wednesday, entry.this-month-false.Thursday, entry.this-month-false.Friday {
-      background-color: #fafafa; }
+      background-color: whitesmoke; }
       entry.this-month-false.Monday:before, entry.this-month-false.Tuesday:before, entry.this-month-false.Wednesday:before, entry.this-month-false.Thursday:before, entry.this-month-false.Friday:before {
-        background-color: #fafafa; }
+        background-color: whitesmoke; }
       entry.this-month-false.Monday:after, entry.this-month-false.Tuesday:after, entry.this-month-false.Wednesday:after, entry.this-month-false.Thursday:after, entry.this-month-false.Friday:after {
-        background-image: -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 100%);
-        background-image: linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 100%); }
+        background-image: -webkit-linear-gradient(top, rgba(245, 245, 245, 0) 0%, whitesmoke 100%);
+        background-image: linear-gradient(top, rgba(245, 245, 245, 0) 0%, whitesmoke 100%); }
       entry.this-month-false.Monday header, entry.this-month-false.Tuesday header, entry.this-month-false.Wednesday header, entry.this-month-false.Thursday header, entry.this-month-false.Friday header {
-        border-bottom-color: #e1e1e1;
+        border-bottom-color: gainsboro;
         color: #545c5c;
-        text-shadow: 0 1px 0 gainsboro; }
+        text-shadow: 0 1px 0 #d7d7d7; }
         entry.this-month-false.Monday header wrapper, entry.this-month-false.Tuesday header wrapper, entry.this-month-false.Wednesday header wrapper, entry.this-month-false.Thursday header wrapper, entry.this-month-false.Friday header wrapper {
-          background-color: #fafafa; }
+          background-color: whitesmoke; }
         entry.this-month-false.Monday header:before, entry.this-month-false.Tuesday header:before, entry.this-month-false.Wednesday header:before, entry.this-month-false.Thursday header:before, entry.this-month-false.Friday header:before {
-          background-image: -webkit-linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
-          background-image: linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%); }
+          background-image: -webkit-linear-gradient(top, whitesmoke 0%, rgba(245, 245, 245, 0) 100%);
+          background-image: linear-gradient(top, whitesmoke 0%, rgba(245, 245, 245, 0) 100%); }
       .no-touch entry.this-month-false.Monday field > textarea, .no-touch entry.this-month-false.Monday field > pre, .no-touch entry.this-month-false.Tuesday field > textarea, .no-touch entry.this-month-false.Tuesday field > pre, .no-touch entry.this-month-false.Wednesday field > textarea, .no-touch entry.this-month-false.Wednesday field > pre, .no-touch entry.this-month-false.Thursday field > textarea, .no-touch entry.this-month-false.Thursday field > pre, .no-touch entry.this-month-false.Friday field > textarea, .no-touch entry.this-month-false.Friday field > pre {
-        text-shadow: 0 1px 0 #e9eaea; }
+        text-shadow: 0 1px 0 #e4e5e5; }
   entry.this-month-true {
-    background-color: #eaf9fc; }
+    background-color: #effbfc; }
     entry.this-month-true:before {
-      background-color: #eaf9fc; }
+      background-color: #effbfc; }
     entry.this-month-true:after {
-      background-image: -webkit-linear-gradient(top, rgba(234, 249, 252, 0) 0%, #eaf9fc 100%);
-      background-image: linear-gradient(top, rgba(234, 249, 252, 0) 0%, #eaf9fc 100%); }
+      background-image: -webkit-linear-gradient(top, rgba(239, 251, 252, 0) 0%, #effbfc 100%);
+      background-image: linear-gradient(top, rgba(239, 251, 252, 0) 0%, #effbfc 100%); }
     entry.this-month-true header {
-      border-bottom-color: #d0e0e3;
+      border-bottom-color: #d6e1e2;
       color: #545c5c;
-      text-shadow: 0 1px 0 #cddbdd; }
+      text-shadow: 0 1px 0 #d2dcdd; }
       entry.this-month-true header wrapper {
-        background-color: #eaf9fc; }
+        background-color: #effbfc; }
       entry.this-month-true header:before {
-        background-image: -webkit-linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%);
-        background-image: linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%); }
+        background-image: -webkit-linear-gradient(top, #effbfc 0%, rgba(239, 251, 252, 0) 100%);
+        background-image: linear-gradient(top, #effbfc 0%, rgba(239, 251, 252, 0) 100%); }
     .no-touch entry.this-month-true field > textarea, .no-touch entry.this-month-true field > pre {
-      text-shadow: 0 1px 0 #dbe9ec; }
+      text-shadow: 0 1px 0 #dfebec; }
     entry.this-month-true.Monday, entry.this-month-true.Tuesday, entry.this-month-true.Wednesday, entry.this-month-true.Thursday, entry.this-month-true.Friday {
-      background-color: #f3fcfd; }
+      background-color: #e5f8fb; }
       entry.this-month-true.Monday:before, entry.this-month-true.Tuesday:before, entry.this-month-true.Wednesday:before, entry.this-month-true.Thursday:before, entry.this-month-true.Friday:before {
-        background-color: #f3fcfd; }
+        background-color: #e5f8fb; }
       entry.this-month-true.Monday:after, entry.this-month-true.Tuesday:after, entry.this-month-true.Wednesday:after, entry.this-month-true.Thursday:after, entry.this-month-true.Friday:after {
-        background-image: -webkit-linear-gradient(top, rgba(243, 252, 253, 0) 0%, #f3fcfd 100%);
-        background-image: linear-gradient(top, rgba(243, 252, 253, 0) 0%, #f3fcfd 100%); }
+        background-image: -webkit-linear-gradient(top, rgba(229, 248, 251, 0) 0%, #e5f8fb 100%);
+        background-image: linear-gradient(top, rgba(229, 248, 251, 0) 0%, #e5f8fb 100%); }
       entry.this-month-true.Monday header, entry.this-month-true.Tuesday header, entry.this-month-true.Wednesday header, entry.this-month-true.Thursday header, entry.this-month-true.Friday header {
-        border-bottom-color: #d8e4e5;
+        border-bottom-color: #cddde0;
         color: #545c5c;
-        text-shadow: 0 1px 0 #d5ddde; }
+        text-shadow: 0 1px 0 #c9dadc; }
         entry.this-month-true.Monday header wrapper, entry.this-month-true.Tuesday header wrapper, entry.this-month-true.Wednesday header wrapper, entry.this-month-true.Thursday header wrapper, entry.this-month-true.Friday header wrapper {
-          background-color: #f3fcfd; }
+          background-color: #e5f8fb; }
         entry.this-month-true.Monday header:before, entry.this-month-true.Tuesday header:before, entry.this-month-true.Wednesday header:before, entry.this-month-true.Thursday header:before, entry.this-month-true.Friday header:before {
-          background-image: -webkit-linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%);
-          background-image: linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%); }
+          background-image: -webkit-linear-gradient(top, #e5f8fb 0%, rgba(229, 248, 251, 0) 100%);
+          background-image: linear-gradient(top, #e5f8fb 0%, rgba(229, 248, 251, 0) 100%); }
       .no-touch entry.this-month-true.Monday field > textarea, .no-touch entry.this-month-true.Monday field > pre, .no-touch entry.this-month-true.Tuesday field > textarea, .no-touch entry.this-month-true.Tuesday field > pre, .no-touch entry.this-month-true.Wednesday field > textarea, .no-touch entry.this-month-true.Wednesday field > pre, .no-touch entry.this-month-true.Thursday field > textarea, .no-touch entry.this-month-true.Thursday field > pre, .no-touch entry.this-month-true.Friday field > textarea, .no-touch entry.this-month-true.Friday field > pre {
-        text-shadow: 0 1px 0 #e3ecec; }
-  entry.focus * {
-    color: #000 !important; }
+        text-shadow: 0 1px 0 #d6e8eb; }
   entry:after {
     z-index: 2;
     background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
@@ -170,7 +168,7 @@ header {
   position: relative;
   z-index: 3;
   color: #babdbd;
-  border-bottom: 1px solid #edeeee; }
+  border-bottom: 1px dotted #edeeee; }
   .today header wrapper:after {
     display: inline-block;
     content: ' ';
@@ -200,6 +198,8 @@ header {
     content: ','; }
   header:before {
     z-index: -1;
+    -webkit-transition: background-image 0.3s linear;
+    transition: background-image 0.3s linear;
     background-image: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0) 100%);
     background-image: linear-gradient(top, white 0%, rgba(255, 255, 255, 0) 100%);
     width: -webkit-calc(100% - 8px);
@@ -296,7 +296,6 @@ field {
       .Tuesday field > pre, .Wednesday field > textarea,
       .Wednesday field > pre, .Thursday field > textarea,
       .Thursday field > pre {
-        padding: 5px;
         font: 400 11px/16px Helvetica, Arial, sans-serif; }
 
   entry:not(.Monday):not(.Friday) year {
@@ -327,7 +326,7 @@ field {
     entry.today content wrapper {
       background-image: none; }
     entry content, entry content wrapper {
-      height: 100px;
+      height: 125px;
       overflow: hidden; }
     entry.focus ::-webkit-scrollbar {
       width: 4px; }
@@ -341,7 +340,6 @@ field {
       entry field > pre {
         text-shadow: none;
         padding: 0;
-        min-height: 117px;
         font: 400 11px/15px Helvetica, Arial, sans-serif; }
     entry ribbons img {
       top: -15px;

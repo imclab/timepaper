@@ -83,10 +83,10 @@ entries {
 
 @mixin month-class($color) {
   // $color: desaturate($color, 60%);
-    $mbg: mix($color, #fff, 9%);
+    $mbg: mix($color, #fff, 7%);
     @include entry-class($mbg);
   &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
-    $mbg: mix($color, #fff, 5%);
+    $mbg: mix($color, #fff, 11%);
     @include entry-class($mbg);
   }
 }
@@ -94,6 +94,7 @@ entries {
 entry {
 
   display: inline-block;
+  cursor: text;
   position: relative;
 
   width: 100%;
@@ -101,8 +102,8 @@ entry {
   // height: 300px;
 
   &:before { 
+    
     position: absolute;
-    background-color: blue; //colorfill hack for week view!
     content: ' ';
     width: 100%;
     height: 700px;
@@ -135,10 +136,15 @@ entry {
   //   background-repeat: no-repeat;
   // }
 
-  &.focus * {
-    color: #000 !important;
-  }
-
+  // &.focus {
+  //   @include month-class(#ff0);
+  // }
+  // &:not(.focus) {
+  //   &:hover, &.hover {
+  //     @include month-class(#fff);
+  //   }
+  // }
+  
   // .no-touch &.empty:hover:not(.focus) { 
   //   cursor: text;
   //   field {
@@ -165,7 +171,7 @@ header {
   position: relative;
   z-index: 3;
   color: mix($fg, $bg, 40%);
-  border-bottom: 1px solid mix($fg, $bg, 10%);
+  border-bottom: 1px dotted mix($fg, $bg, 10%);
   
   .today & wrapper:after {
     display: inline-block;
@@ -207,6 +213,7 @@ header {
 
   &:before {
     z-index: -1;
+    @include prefix(transition, background-image 0.3s linear);
     @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
     @include prefix-value(width, calc(100% - 8px));
     top: 1px;
@@ -320,7 +327,7 @@ field {
       margin: 15px;
       > textarea,
       > pre {
-        padding: 5px;
+        // padding: 5px;
         font: 400 11px/16px Helvetica, Arial, sans-serif;
       }
     }
@@ -374,7 +381,7 @@ field {
     }
 
     content, content wrapper {
-      height: 100px;
+      height: 125px;
       overflow: hidden;
 
     }
@@ -395,11 +402,12 @@ field {
 
     field {
       margin: 7px 9px;
+
       > textarea,
       > pre {
         text-shadow: none;
         padding: 0;
-        min-height: 117px;
+
         font: 400 11px/15px Helvetica, Arial, sans-serif;
       }
     }
