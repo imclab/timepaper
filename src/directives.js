@@ -162,6 +162,7 @@ angular.module('entry')
 
 .directive('reachTop', function() {
   return function($scope, element, attrs) {
+    if (Modernizr.touch) return;
     angular.element(window).bind('scroll', function() {
       if (document.body.scrollTop < 200) {
         $scope.$apply(function() {
@@ -174,6 +175,7 @@ angular.module('entry')
 })
 .directive('reachBottom', function() {
   return function($scope, element, attrs) {
+    if (Modernizr.touch) return;
     angular.element(window).bind('scroll', function() {
       if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 200) {
         $scope.$apply(function() {
