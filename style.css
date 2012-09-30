@@ -146,10 +146,6 @@ content wrapper {
     opacity: 0;
     pointer-events: none; }
 
-.touch entry.focus field > textarea,
-.touch entry.focus field > pre {
-  height: 500px; }
-
 field {
   display: block;
   position: relative;

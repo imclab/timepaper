@@ -219,7 +219,7 @@ content wrapper {
 .touch entry.focus field { 
   > textarea,
   > pre { 
-    height: 500px;
+    // min-height: 500px;
   }
 }
 
