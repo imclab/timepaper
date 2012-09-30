@@ -150,6 +150,7 @@ angular.module('entry')
 
 .directive('scrollToThis', function() {
   return function($scope, element, attrs) {
+    if (Modernizr.touch) return;
     if ($scope.$eval(attrs.scrollToThis)) {
       _.defer(function() {
         var rect = element[0].getBoundingClientRect();
