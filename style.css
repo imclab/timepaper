@@ -152,8 +152,8 @@ field textarea {
 .touch field span, .touch field pre, .touch field br {
   display: none; }
 .touch field textarea {
-  width: -webkit-calc(100% - 60px);
-  width: calc(100% - 60px);
+  width: -webkit-calc(100% - 20px);
+  width: calc(100% - 20px);
   padding: 20px;
   background: #fff;
   resize: none; }
