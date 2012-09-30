@@ -157,17 +157,6 @@ field textarea {
   background: #fff;
   resize: none; }
 
-.touch entry.focus {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-  background: red; }
-  .touch entry.focus textarea {
-    height: 960px; }
-
 .no-touch field {
   display: block;
   position: relative;
