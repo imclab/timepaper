@@ -112,7 +112,7 @@ entry {
   &:after {
     z-index: 2;
     @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
-    @include calc(width, '100% - 4px');
+    @include prefix-value(width, calc(100% - 4px));
     bottom: 0;
     height: 15px;
     display: block;
@@ -156,7 +156,7 @@ header {
   &:before {
     z-index: -1;
     @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
-    @include calc(width, '100% - 4px');
+    @include prefix-value(width, calc(100% - 4px));
     top: 1px;
     height: 15px;
     display: block;
