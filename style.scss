@@ -202,7 +202,9 @@ field {
     padding: 10px;
     background: transparent;
     font: 400 16px / 22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 mix($fg, $bg, 10%);
+    .no-touch & { 
+      text-shadow: 0 1px 0 mix($fg, $bg, 10%);
+    }
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;

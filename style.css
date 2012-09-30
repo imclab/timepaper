@@ -105,10 +105,12 @@ field {
     padding: 10px;
     background: transparent;
     font: 400 16px/22px Helvetica, Arial, sans-serif;
-    text-shadow: 0 1px 0 #edeeee;
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
+    .no-touch field > textarea, .no-touch
+    field > pre {
+      text-shadow: 0 1px 0 #edeeee; }
   field > textarea {
     /* The border-box box model is used to allow
      * padding whilst still keeping the overall width
