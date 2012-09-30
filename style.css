@@ -155,8 +155,7 @@ field textarea {
   .touch entry.focus field pre, .touch entry.focus field span, .touch entry.focus field br {
     display: none; }
   .touch entry.focus field textarea {
-    height: 500px;
-    position: static; }
+    height: 400px; }
 
 .no-touch field, .touch field:not(.focus) {
   display: block;
@@ -168,10 +167,13 @@ field textarea {
     color: #545c5c;
     padding: 10px;
     background: transparent;
-    text-shadow: 0 1px 0 #edeeee;
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
+    .no-touch .no-touch field > textarea, .no-touch
+    .no-touch field > pre, .no-touch .touch field:not(.focus) > textarea, .no-touch
+    .touch field:not(.focus) > pre {
+      text-shadow: 0 1px 0 #edeeee; }
   .no-touch field > textarea, .touch field:not(.focus) > textarea {
     /* The border-box box model is used to allow
      * padding whilst still keeping the overall width

@@ -241,8 +241,8 @@ field textarea {
     display: none;
   }
   textarea { 
-    height: 500px;
-    position: static;
+    height: 400px;
+    
   }
 }
 
@@ -255,7 +255,7 @@ field textarea {
     color: $fg;
     padding: 10px;
     background: transparent;
-    text-shadow: 0 1px 0 mix($fg, $bg, 10%);
+    .no-touch & { text-shadow: 0 1px 0 mix($fg, $bg, 10%); }
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
