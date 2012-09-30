@@ -216,6 +216,13 @@ content wrapper {
 
 }
 
+.touch entry.focus field { 
+  > textarea,
+  > pre { 
+    height: 500px;
+  }
+}
+
 field {
   display: block;
   position: relative;
