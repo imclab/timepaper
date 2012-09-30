@@ -93,7 +93,6 @@ angular.module('entry')
 
   return function($scope, element, attrs) {
 
-    if (Modernizr.touch) return;
 
     element.addClass('expandingArea');
     element.addClass('active');
@@ -105,7 +104,7 @@ angular.module('entry')
       span.text(area.val());
     };
 
-    area.bind('input', change);
+    area.bind(Modernizr.touch ? 'blur' : 'input', change);
     _.defer(change);
 
   }
@@ -115,8 +114,6 @@ angular.module('entry')
 .directive('maintainFocus', function() {
 
   return function($scope, element, attrs) {
-
-    if (Modernizr.touch) return;
 
     var prevCentered;
     var centerType = attrs.maintainFocus.toUpperCase();

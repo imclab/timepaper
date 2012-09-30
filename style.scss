@@ -220,23 +220,25 @@ field textarea {
   font: 400 16px / 22px Helvetica, Arial, sans-serif;
 }
 
-.touch field { 
-  span, pre, br { 
-    display: none;
-  }
-  textarea { 
-    // border: 1px solid blue;
-    @include prefix-value(width, calc(100% - 20px));
-    padding: 20px;
-    background: #fff;
-    resize: none;
-  }
-}
-.touch entry.focus textarea {
-  height: 1000px;
-}
+// .touch field { 
+//   padding: 20px;
+//   span, pre, br { 
+//     display: none;
+//   }
+//   textarea { 
+//     // border: 1px solid blue;
+//     // @include prefix-value(width, calc(100% - 20px));
+//     width: 100%;
+    
+//     background: #fff;
+//     resize: none;
+//   }
+// }
+// .touch entry.focus textarea {
+//   height: 1000px;
+// }
 
-.no-touch field {
+field {
   display: block;
   position: relative;
   margin: 20px 10px;

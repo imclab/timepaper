@@ -149,25 +149,13 @@ content wrapper {
 field textarea {
   font: 400 16px/22px Helvetica, Arial, sans-serif; }
 
-.touch field span, .touch field pre, .touch field br {
-  display: none; }
-.touch field textarea {
-  width: -webkit-calc(100% - 20px);
-  width: calc(100% - 20px);
-  padding: 20px;
-  background: #fff;
-  resize: none; }
-
-.touch entry.focus textarea {
-  height: 1000px; }
-
-.no-touch field {
+field {
   display: block;
   position: relative;
   margin: 20px 10px;
   border: 1px dashed transparent; }
-  .no-touch field > textarea,
-  .no-touch field > pre {
+  field > textarea,
+  field > pre {
     color: #545c5c;
     padding: 10px;
     background: transparent;
@@ -175,7 +163,7 @@ field textarea {
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
-  .no-touch field > textarea {
+  field > textarea {
     /* The border-box box model is used to allow
      * padding whilst still keeping the overall width
      * at exactly that of the containing element.
@@ -187,7 +175,7 @@ field textarea {
     width: 100%;
     /* This height is used when JS is disabled */
     height: 100px; }
-  .no-touch field.active > textarea {
+  field.active > textarea {
     /* Hide any scrollbars */
     overflow: hidden;
     position: absolute;
@@ -196,9 +184,9 @@ field textarea {
     height: 100%;
     /* Remove WebKit user-resize widget */
     resize: none; }
-  .no-touch field > pre {
+  field > pre {
     display: none; }
-  .no-touch field > pre {
+  field > pre {
     display: block;
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
