@@ -1,4 +1,8 @@
-<entries maintain-focus="entry">
+<entries 
+  
+  maintain-focus="entry"
+  reach-top="addTop()"
+  reach-bottom="addBottom()">
 
   <entry 
 
@@ -8,7 +12,7 @@
 
     scroll-to-this="entry.timestamp == today"
     
-    ng-repeat="entry in entries | orderBy:'timestamp'" 
+    ng-repeat="entry in entries | orderBy:'timestamp' " 
 
     ng-class="{
       future: entry.timestamp > today,
@@ -35,7 +39,8 @@
           <pre><span></span><br></pre>
           <textarea 
             ng-model="entry.text" 
-            ng-change="entry.update()" 
+            ng-change="!Modernizr.touch && entry.update()"
+            ng-blur="Modernizr.touch && entry.update()" 
             spellcheck="false"
             lends-focus-up="4">
           </textarea>

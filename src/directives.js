@@ -35,6 +35,16 @@ angular.module('entry')
   }
 })
 
+/* http://jsfiddle.net/2ZzZB/56/
+ * We already have a limitTo filter built-in to angular,
+ * let's make a startFrom filter */
+.filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+})
+
 .directive('expandingArea', function() {
 
   return function($scope, element, attrs) {
@@ -60,7 +70,7 @@ angular.module('entry')
   return function($scope, element, attrs) {
 
     var child = element;
-    var levelsUp = parseInt(attrs.lendsFocusUp);
+    var levelsUp = +attrs.lendsFocusUp;
 
     while (levelsUp--)
       element = element.parent();
@@ -117,5 +127,30 @@ angular.module('entry')
         window.scrollTo(0, rect.top - window.innerHeight/2 + rect.height/2);
       });
     }
+  }
+})
+
+.directive('reachTop', function() {
+  return function($scope, element, attrs) {
+    angular.element(window).bind('scroll', function() {
+      if (document.body.scrollTop < 200) {
+        $scope.$apply(function() {
+          $scope.$eval(attrs.reachTop);
+        });
+        window.scrollTo(0, 340*5.5);
+      }
+    });
+  }
+})
+.directive('reachBottom', function() {
+  return function($scope, element, attrs) {
+    angular.element(window).bind('scroll', function() {
+      if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 200) {
+        $scope.$apply(function() {
+          $scope.$eval(attrs.reachBottom);
+        });
+        // window.scrollTo(0, document.body.scrollHeight - window.innerHeight - 340);
+      }
+    });
   }
 })

@@ -1,38 +1,20 @@
 @import "always/_always";
+$vendors: -webkit-, '';
 
 $bg: #fff;
 $fg: #545c5c;
-$wknd: #ddd;
 $edit: #f6f0e5;
 
-@include keyframes(ribbon-appear) {
-  0% {
-    margin-top: -20px;
-    opacity: 0;
-  }
-  100% {
-    margin-top: 0px;
-    opacity: 1;
-  }
-}
-
-@mixin entry-class($bg, $header: $fg) {
-  $b: darken($bg, 6%);
-  background-color: $bg;
-  &:after {
-    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 70%);
-  }
-  header {
-    border-bottom-color: $b;
-    color: $header;
-    wrapper {
-      background-color: $bg;
-    }
-    &:before {
-      @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
-    }
-  }
-}
+// @include keyframes(ribbon-appear) {
+//   0% {
+//     margin-top: -20px;
+//     opacity: 0;
+//   }
+//   100% {
+//     margin-top: 0px;
+//     opacity: 1;
+//   }
+// }
 
 * {
   margin: 0;
@@ -52,6 +34,40 @@ body {
   color: $fg;
   overflow-x: hidden;
   @include prefix(user-select, none);
+      
+}
+
+::-webkit-scrollbar {
+   width: 0;
+}
+
+@mixin entry-class($bg, $header: $fg) {
+  $b: desaturate(darken($bg, 10%), 50%);
+  background-color: $bg;
+  &:after {
+    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
+  }
+  header {
+    border-bottom-color: $b;
+    color: $header;
+    text-shadow: none;//0 1px 0 mix($bg, #fff, 38%);
+    wrapper {
+      background-color: $bg;
+    }
+    &:before {
+      @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
+    }
+  }
+}
+
+@mixin month-class($color) {
+  // $color: desaturate($color, 60%);
+    $mbg: mix($color, #fff, 5%);
+    @include entry-class($mbg);
+  &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
+    $mbg: mix($color, #fff, 9%);
+    @include entry-class($mbg);
+  }
 }
 
 entry {
@@ -61,9 +77,19 @@ entry {
   width: 100%;
   vertical-align: top;
 
-  &.Saturday, &.Sunday {
-    @include entry-class(mix($bg, $wknd, 80%), mix($wknd, $fg, 50%));
-  }
+  // &.August { @include month-class(#ff0); }
+  // &.September { @include month-class(#bbb); }
+  // &.October { @include month-class(#0ff); }
+  // &.November { @include month-class(#f35); }
+  // &.December { @include month-class(#1d18f5); }
+  // &.January { @include month-class(#0081f7); }
+  // &.February { @include month-class(#00ffee); }
+  // &.March { @include month-class(#00ff8e); }
+  // &.April { @include month-class(#00ff4f); }
+  // &.May { @include month-class(#6efe50); }
+  // &.June { @include month-class(#fefe53); }
+  // &.July { @include month-class(#ff7d2c); }
+
 
   &.today content wrapper {
     background-image: url(images/today.png);
@@ -75,18 +101,18 @@ entry {
     color: #000 !important;
   }
 
-  .no-touch &.empty:hover:not(.focus) { 
-    cursor: text;
-    field {
-      border: 1px dashed mix($fg, $bg, 20%);
-    }
+  // .no-touch &.empty:hover:not(.focus) { 
+  //   cursor: text;
+  //   field {
+  //     border: 1px dashed mix($fg, $bg, 20%);
+  //   }
   
-  }
+  // }
 
   &:after {
     z-index: 2;
     @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
-    width: -webkit-calc(100% - 4px);
+    @include calc(width, '100% - 4px');
     bottom: 0;
     height: 15px;
     display: block;
@@ -101,7 +127,7 @@ header {
   z-index: 3;
   color: mix($fg, $bg, 40%);
   text-shadow: 0 1px 0 mix($fg, $bg, 8%);
-  border-bottom: 1px solid mix($fg, $bg, 10%);
+  border-bottom: 1px dotted mix($fg, $bg, 10%);
   
   wrapper {
     display: inline-block;
@@ -129,8 +155,8 @@ header {
 
   &:before {
     z-index: -1;
-    @include linear-gradient-stops(top, $bg 30%, transparentize($bg, 1) 100%);
-    width: -webkit-calc(100% - 4px);
+    @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
+    @include calc(width, '100% - 4px');
     top: 1px;
     height: 15px;
     display: block;
@@ -162,6 +188,7 @@ content wrapper {
     opacity: 0;
     pointer-events: none;
   }
+
 }
 
 field {
@@ -276,6 +303,10 @@ field {
   
   entry {
   
+    &.Monday:first-of-type { 
+      margin-left: 14.2857142857%;
+    }
+
     // width: #{100/7}%;
     width: 14.2857142857%;
 
@@ -285,7 +316,11 @@ field {
 
     content, content wrapper {
       height: 140px;
-      overflow: auto;
+      overflow: hidden;
+    }
+
+    &.focus {
+      content wrapper { overflow: auto; }
     }
 
     content { 

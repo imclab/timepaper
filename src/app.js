@@ -1,29 +1,58 @@
 angular.module('entry', ['mongolab']).config(function($routeProvider) {
   $routeProvider.
-    when('', { controller: EntryCtrl, templateUrl: 'entry.html' }).
-    otherwise({ redirectTo: '' });
+    when('/:tableId', { controller: EntryCtrl, templateUrl: 'entry.html' }).
+    otherwise({ redirectTo: 'demo' });
 });
 
-function EntryCtrl($scope, Entry) {
+function EntryCtrl($scope, $route, $routeParams, Entry) {
   
+  
+  Entry = Entry($routeParams.tableId);
+
   var d = today();
+  var day_in_millis = 86400000;
+  var add_on_scroll = 84;
+
   $scope.today = d.getTime();
+
+  
+  $scope.pageSize = 100;
+
   $scope.entries = Entry.query({}, function() {
 
-
     if ($scope.entries.length == 0) {
-
-      angular.forEach(_.range(-47, 50), function(i) {
-        
-        var e = makeEntry(i);
-        e.$save();
-        $scope.entries.push(e);
-
-      });
-
+      initDatabase();
     }
+
+    $scope.entries.sort(function(a, b) {
+      return a.timestamp - b.timestamp;
+    })
+
+    angular.forEach($scope.entries, function(entry) {
+      if (entry.timestamp == $scope.today) {
+        $scope.todaysEntry = entry;
+        $scope.firstEntry = -$scope.entries.indexOf($scope.todaysEntry);
+        $scope.lastEntry = $scope.entries.length + $scope.firstEntry;
+      }
+    })
     
   });
+
+  $scope.addTop = function() {
+    angular.forEach(_.range($scope.firstEntry-add_on_scroll, $scope.firstEntry), function(j) {
+
+      $scope.entries.unshift(makeEntry(j));
+    });
+    $scope.firstEntry -= add_on_scroll;
+  };
+
+  $scope.addBottom = function() {
+    angular.forEach(_.range($scope.lastEntry, $scope.lastEntry+add_on_scroll), function(j) {
+      
+      $scope.entries.push(makeEntry(j));
+    });
+    $scope.lastEntry += add_on_scroll;
+  };
 
   function makeEntry(i) {
 
@@ -35,8 +64,17 @@ function EntryCtrl($scope, Entry) {
       text: ''
     });
 
+
     return e;
 
+  }
+
+  function initDatabase() {
+    angular.forEach(_.range(-47, 50), function(i) {
+      var e = makeEntry(i);
+      e.$save();
+      $scope.entries.push(e);
+    });
   }
 
   function today() {
