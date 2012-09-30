@@ -41,9 +41,13 @@
             ng-model="entry.text" 
 
             touch-change="entry.update()" 
+            ng-change="updateExceptTouch(entry)"
 
             spellcheck="false"
-            lends-focus-up="4">
+
+            lends-focus-up="4"
+            starts-focused="entry.timestamp == today"
+            >
           </textarea>
         </field>
 

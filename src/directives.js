@@ -45,6 +45,50 @@ angular.module('entry')
     }
 })
 
+
+.directive('lendsFocusUp', function() {
+  return function($scope, element, attrs) {
+
+    var child = element;
+    var raw = child[0];
+    var levelsUp = +attrs.lendsFocusUp;
+
+    while (levelsUp--)
+      element = element.parent();
+
+    child.bind('focus',     function() { element.addClass('focus'); });
+    child.bind('blur',      function() { element.removeClass('focus'); });
+    child.bind('mouseover', function() { element.addClass('hover'); });
+    child.bind('mouseout',  function() { element.removeClass('hover'); });
+    element.bind('click',   function() { raw.focus(); });
+
+    if ($scope.$eval(attrs.startsFocused)) {
+
+
+      setTimeout(function() {
+        raw.focus();
+        setPosition(raw.value.length);
+        element.addClass('focus');
+      }, 200);
+
+    }
+    
+    function setPosition(pos) {
+      if (raw.setSelectionRange) {
+        raw.setSelectionRange(pos, pos);
+      } else if (raw.createTextRange) {
+        var range = raw.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+      }
+    }  
+
+  }
+
+})
+
 .directive('expandingArea', function() {
 
   return function($scope, element, attrs) {
@@ -67,25 +111,6 @@ angular.module('entry')
   }
 
 })
-
-.directive('lendsFocusUp', function() {
-  return function($scope, element, attrs) {
-
-    var child = element;
-    var levelsUp = +attrs.lendsFocusUp;
-
-    while (levelsUp--)
-      element = element.parent();
-
-    child.bind('focus',     function() { element.addClass('focus'); });
-    child.bind('blur',      function() { element.removeClass('focus'); });
-    child.bind('mouseover', function() { element.addClass('hover'); });
-    child.bind('mouseout',  function() { element.removeClass('hover'); });
-    element.bind('click',   function() { child[0].focus(); });
-
-  }
-})
-
 // Needs work.
 .directive('maintainFocus', function() {
 
@@ -161,7 +186,8 @@ angular.module('entry')
 
 .directive('touchChange', function() {
   return function($scope, element, attrs) {
-    element.bind(Modernizr.touch ? 'blur' : 'keydown', function() {
+    if (!Modernizr.touch) return;
+    element.bind('blur', function() {
       $scope.$apply(function() {
         $scope.$eval(attrs.touchChange);
       });

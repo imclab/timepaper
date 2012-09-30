@@ -33,8 +33,17 @@ body {
   background-color: $bg;
   color: $fg;
   overflow-x: hidden;
-  @include prefix(user-select, none);
-      
+    @include prefix(user-select, none);     
+}
+
+
+@include keyframes(fade-in) {
+  0% { opacity: 0 }
+  30% { opacity: 0 }
+  100% { opacity: 1 }
+}
+entries { 
+  @include prefix(animation, fade-in 1300ms);
 }
 
 ::-webkit-scrollbar {
@@ -91,11 +100,11 @@ entry {
   // &.July { @include month-class(#ff7d2c); }
 
 
-  &.today content wrapper {
-    background-image: url(images/today.png);
-    background-position: left center;
-    background-repeat: no-repeat;
-  }
+  // &.today content wrapper {
+  //   background-image: url(images/today.png);
+  //   background-position: left center;
+  //   background-repeat: no-repeat;
+  // }
 
   &.focus * {
     color: #000 !important;
@@ -114,6 +123,7 @@ entry {
     @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
     @include prefix-value(width, calc(100% - 4px));
     bottom: 0;
+
     height: 15px;
     display: block;
     content: ' ';
@@ -129,6 +139,20 @@ header {
   text-shadow: 0 1px 0 mix($fg, $bg, 8%);
   border-bottom: 1px solid mix($fg, $bg, 10%);
   
+  .today & wrapper:after {
+    display: inline-block;
+    content: ' ';
+    float: right;
+    margin-right: 2px;
+    margin-left: 5px;
+    margin-top: -3px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    background: #f03;
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+  }
+
   wrapper {
     display: inline-block;
     position: absolute;
@@ -156,8 +180,9 @@ header {
   &:before {
     z-index: -1;
     @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
-    @include prefix-value(width, calc(100% - 4px));
+    @include prefix-value(width, calc(100% - 8px));
     top: 1px;
+    margin-left: 4px;
     height: 15px;
     display: block;
     content: ' ';
@@ -242,46 +267,46 @@ field {
   }
 }
 
-// @media all and (max-width: 1050px) and (min-width: 750px) {
+@media all and (max-width: 1200px) and (min-width: 800px) {
 
-//   ordinal {
-//     display: none;
-//   }
+  ordinal {
+    display: none;
+  }
 
-//   year { 
-//     display: none;
-//   }
+  year { 
+    display: none;
+  }
 
-//   .Friday, .Saturday, .Sunday { 
-//     width: 33.333333%;
-//     field {
-//       margin: 15px;
-//       > textarea,
-//       > pre {
-//         font: 400 14px/20px Helvetica, Arial, sans-serif;
-//       }
-//     }
-//   }
+  .Friday, .Saturday, .Sunday { 
+    width: 33.333333%;
+    field {
+      margin: 15px;
+      > textarea,
+      > pre {
+        font: 400 14px/20px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
 
-//   .Monday, .Tuesday, .Wednesday, .Thursday { 
-//     width: 25%;
-//     field {
-//       margin: 15px;
-//       > textarea,
-//       > pre {
-//         padding: 5px;
-//         font: 400 11px/16px Helvetica, Arial, sans-serif;
-//       }
-//     }
-//   }
+  .Monday, .Tuesday, .Wednesday, .Thursday { 
+    width: 25%;
+    field {
+      margin: 15px;
+      > textarea,
+      > pre {
+        padding: 5px;
+        font: 400 11px/16px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
 
-//   entry:not(.Monday):not(.Friday) year { 
-//     display: none;
-//   }
+  entry:not(.Monday):not(.Friday) year { 
+    display: none;
+  }
 
-// }
+}
 
-@media all and (min-width: 850px) {
+@media all and (min-width: 1200px) {
 
   year, day { 
     display: none;
@@ -290,6 +315,7 @@ field {
   header wrapper { 
     padding-left: 4px;
     padding-right: 4px;
+    font-weight: bold;
   }
 
   ordinal {
@@ -339,7 +365,7 @@ field {
          width: 4px;
       }
       content ::-webkit-scrollbar-thumb {
-        background-color: transparentize($fg, 0.935);
+        background-color: transparentize($fg, 0.735);
       }
     }
 

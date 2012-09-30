@@ -17,6 +17,10 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   $scope.today = d.getTime();
   $scope.pageSize = 100;
 
+  $scope.updateExceptTouch = function(entry) {
+    !Modernizr.touch && entry.update();
+  };
+
   $scope.entries = Entry.query({}, function() {
 
     if ($scope.entries.length == 0) {

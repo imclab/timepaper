@@ -16,6 +16,50 @@ body {
   -webkit-user-select: none;
   user-select: none; }
 
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  30% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  30% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  30% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+
+  30% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+entries {
+  -webkit-animation: fade-in 1300ms;
+  animation: fade-in 1300ms; }
+
 ::-webkit-scrollbar {
   width: 0; }
 
@@ -24,10 +68,6 @@ entry {
   display: inline-block;
   width: 100%;
   vertical-align: top; }
-  entry.today content wrapper {
-    background-image: url(images/today.png);
-    background-position: left center;
-    background-repeat: no-repeat; }
   entry.focus * {
     color: #000 !important; }
   entry:after {
@@ -49,6 +89,18 @@ header {
   color: #babdbd;
   text-shadow: 0 1px 0 #f1f1f1;
   border-bottom: 1px solid #edeeee; }
+  .today header wrapper:after {
+    display: inline-block;
+    content: ' ';
+    float: right;
+    margin-right: 2px;
+    margin-left: 5px;
+    margin-top: -3px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    background: #f03;
+    width: 5px;
+    height: 5px;
+    border-radius: 10px; }
   header wrapper {
     display: inline-block;
     position: absolute;
@@ -69,9 +121,10 @@ header {
     z-index: -1;
     background-image: -webkit-linear-gradient(top, white 0%, rgba(255, 255, 255, 0) 100%);
     background-image: linear-gradient(top, white 0%, rgba(255, 255, 255, 0) 100%);
-    width: -webkit-calc(100% - 4px);
-    width: calc(100% - 4px);
+    width: -webkit-calc(100% - 8px);
+    width: calc(100% - 8px);
     top: 1px;
+    margin-left: 4px;
     height: 15px;
     display: block;
     content: ' ';
@@ -139,13 +192,45 @@ field {
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
 
-@media all and (min-width: 850px) {
+@media all and (max-width: 1200px) and (min-width: 800px) {
+  ordinal {
+    display: none; }
+
+  year {
+    display: none; }
+
+  .Friday, .Saturday, .Sunday {
+    width: 33.333333%; }
+    .Friday field, .Saturday field, .Sunday field {
+      margin: 15px; }
+      .Friday field > textarea,
+      .Friday field > pre, .Saturday field > textarea,
+      .Saturday field > pre, .Sunday field > textarea,
+      .Sunday field > pre {
+        font: 400 14px/20px Helvetica, Arial, sans-serif; }
+
+  .Monday, .Tuesday, .Wednesday, .Thursday {
+    width: 25%; }
+    .Monday field, .Tuesday field, .Wednesday field, .Thursday field {
+      margin: 15px; }
+      .Monday field > textarea,
+      .Monday field > pre, .Tuesday field > textarea,
+      .Tuesday field > pre, .Wednesday field > textarea,
+      .Wednesday field > pre, .Thursday field > textarea,
+      .Thursday field > pre {
+        padding: 5px;
+        font: 400 11px/16px Helvetica, Arial, sans-serif; }
+
+  entry:not(.Monday):not(.Friday) year {
+    display: none; } }
+@media all and (min-width: 1200px) {
   year, day {
     display: none; }
 
   header wrapper {
     padding-left: 4px;
-    padding-right: 4px; }
+    padding-right: 4px;
+    font-weight: bold; }
 
   ordinal {
     display: none; }
@@ -171,7 +256,7 @@ field {
     entry.focus ::-webkit-scrollbar, entry.hover ::-webkit-scrollbar, entry:hover ::-webkit-scrollbar {
       width: 4px; }
     entry.focus content ::-webkit-scrollbar-thumb, entry.hover content ::-webkit-scrollbar-thumb, entry:hover content ::-webkit-scrollbar-thumb {
-      background-color: rgba(84, 92, 92, 0.065); }
+      background-color: rgba(84, 92, 92, 0.265); }
     entry field {
       margin: 10px 10px; }
       entry field > textarea,
