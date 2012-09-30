@@ -35,6 +35,13 @@ angular.module('entry')
   }
 })
 
+.filter('thisMonth', function() {
+  return function(timestamp) {
+    return new Date(timestamp).getMonth() == new Date().getMonth() &&
+    new Date(timestamp).getYear() == new Date().getYear();
+  }
+})
+
 /* http://jsfiddle.net/2ZzZB/56/
  * We already have a limitTo filter built-in to angular,
  * let's make a startFrom filter */
@@ -105,12 +112,8 @@ angular.module('entry')
     };
 
     _.defer(change);
-    
-    if (Modernizr.touch) {
-      change = _.debounce(change, 1000);
-    }
-
-    area.bind('input', change);
+    area.bind('input', Modernizr.touch ? _.debounce(change, 1000) : change);
+    Modernizr.touch && area.bind('blur', change);
 
   }
 

@@ -7,6 +7,9 @@
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent; }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  opacity: 0; }
+
 body {
   font-family: sans-serif;
   padding-top: 17px;
@@ -64,10 +67,82 @@ entries {
   width: 0; }
 
 entry {
-  position: relative;
   display: inline-block;
+  position: relative;
   width: 100%;
   vertical-align: top; }
+  entry:before {
+    position: absolute;
+    background-color: blue;
+    content: ' ';
+    width: 100%;
+    height: 700px;
+    display: block;
+    z-index: -1; }
+  entry.this-month-false {
+    background-color: #f7f7f7; }
+    entry.this-month-false:before {
+      background-color: #f7f7f7; }
+    entry.this-month-false:after {
+      background-image: -webkit-linear-gradient(top, rgba(247, 247, 247, 0) 0%, #f7f7f7 100%);
+      background-image: linear-gradient(top, rgba(247, 247, 247, 0) 0%, #f7f7f7 100%); }
+    entry.this-month-false header {
+      border-bottom-color: #dedede;
+      color: #545c5c;
+      text-shadow: none; }
+      entry.this-month-false header wrapper {
+        background-color: #f7f7f7; }
+      entry.this-month-false header:before {
+        background-image: -webkit-linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%);
+        background-image: linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%); }
+    entry.this-month-false.Monday, entry.this-month-false.Tuesday, entry.this-month-false.Wednesday, entry.this-month-false.Thursday, entry.this-month-false.Friday {
+      background-color: #fafafa; }
+      entry.this-month-false.Monday:before, entry.this-month-false.Tuesday:before, entry.this-month-false.Wednesday:before, entry.this-month-false.Thursday:before, entry.this-month-false.Friday:before {
+        background-color: #fafafa; }
+      entry.this-month-false.Monday:after, entry.this-month-false.Tuesday:after, entry.this-month-false.Wednesday:after, entry.this-month-false.Thursday:after, entry.this-month-false.Friday:after {
+        background-image: -webkit-linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 100%);
+        background-image: linear-gradient(top, rgba(250, 250, 250, 0) 0%, #fafafa 100%); }
+      entry.this-month-false.Monday header, entry.this-month-false.Tuesday header, entry.this-month-false.Wednesday header, entry.this-month-false.Thursday header, entry.this-month-false.Friday header {
+        border-bottom-color: #e1e1e1;
+        color: #545c5c;
+        text-shadow: none; }
+        entry.this-month-false.Monday header wrapper, entry.this-month-false.Tuesday header wrapper, entry.this-month-false.Wednesday header wrapper, entry.this-month-false.Thursday header wrapper, entry.this-month-false.Friday header wrapper {
+          background-color: #fafafa; }
+        entry.this-month-false.Monday header:before, entry.this-month-false.Tuesday header:before, entry.this-month-false.Wednesday header:before, entry.this-month-false.Thursday header:before, entry.this-month-false.Friday header:before {
+          background-image: -webkit-linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
+          background-image: linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%); }
+  entry.this-month-true {
+    background-color: #eaf9fc; }
+    entry.this-month-true:before {
+      background-color: #eaf9fc; }
+    entry.this-month-true:after {
+      background-image: -webkit-linear-gradient(top, rgba(234, 249, 252, 0) 0%, #eaf9fc 100%);
+      background-image: linear-gradient(top, rgba(234, 249, 252, 0) 0%, #eaf9fc 100%); }
+    entry.this-month-true header {
+      border-bottom-color: #d0e0e3;
+      color: #545c5c;
+      text-shadow: none; }
+      entry.this-month-true header wrapper {
+        background-color: #eaf9fc; }
+      entry.this-month-true header:before {
+        background-image: -webkit-linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%);
+        background-image: linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%); }
+    entry.this-month-true.Monday, entry.this-month-true.Tuesday, entry.this-month-true.Wednesday, entry.this-month-true.Thursday, entry.this-month-true.Friday {
+      background-color: #f3fcfd; }
+      entry.this-month-true.Monday:before, entry.this-month-true.Tuesday:before, entry.this-month-true.Wednesday:before, entry.this-month-true.Thursday:before, entry.this-month-true.Friday:before {
+        background-color: #f3fcfd; }
+      entry.this-month-true.Monday:after, entry.this-month-true.Tuesday:after, entry.this-month-true.Wednesday:after, entry.this-month-true.Thursday:after, entry.this-month-true.Friday:after {
+        background-image: -webkit-linear-gradient(top, rgba(243, 252, 253, 0) 0%, #f3fcfd 100%);
+        background-image: linear-gradient(top, rgba(243, 252, 253, 0) 0%, #f3fcfd 100%); }
+      entry.this-month-true.Monday header, entry.this-month-true.Tuesday header, entry.this-month-true.Wednesday header, entry.this-month-true.Thursday header, entry.this-month-true.Friday header {
+        border-bottom-color: #d8e4e5;
+        color: #545c5c;
+        text-shadow: none; }
+        entry.this-month-true.Monday header wrapper, entry.this-month-true.Tuesday header wrapper, entry.this-month-true.Wednesday header wrapper, entry.this-month-true.Thursday header wrapper, entry.this-month-true.Friday header wrapper {
+          background-color: #f3fcfd; }
+        entry.this-month-true.Monday header:before, entry.this-month-true.Tuesday header:before, entry.this-month-true.Wednesday header:before, entry.this-month-true.Thursday header:before, entry.this-month-true.Friday header:before {
+          background-image: -webkit-linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%);
+          background-image: linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%); }
   entry.focus * {
     color: #000 !important; }
   entry:after {
@@ -97,8 +172,8 @@ header {
     margin-left: 5px;
     margin-top: -3px;
     background: #f03;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 10px; }
   header wrapper {
     display: inline-block;
@@ -221,7 +296,11 @@ field {
         font: 400 11px/16px Helvetica, Arial, sans-serif; }
 
   entry:not(.Monday):not(.Friday) year {
-    display: none; } }
+    display: none; }
+
+  content, content wrapper {
+    position: relative;
+    bottom: 0; } }
 @media all and (min-width: 1200px) {
   year, day {
     display: none; }
@@ -244,7 +323,7 @@ field {
     entry.today content wrapper {
       background-image: none; }
     entry content, entry content wrapper {
-      height: 140px;
+      height: 100px;
       overflow: hidden; }
     entry.focus content wrapper {
       overflow: auto; }
@@ -257,7 +336,7 @@ field {
     entry.focus content ::-webkit-scrollbar-thumb, entry.hover content ::-webkit-scrollbar-thumb, entry:hover content ::-webkit-scrollbar-thumb {
       background-color: rgba(84, 92, 92, 0.265); }
     entry field {
-      margin: 10px 10px; }
+      margin: 7px 9px; }
       entry field > textarea,
       entry field > pre {
         text-shadow: none;

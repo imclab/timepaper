@@ -26,6 +26,10 @@ $edit: #f6f0e5;
   -webkit-tap-highlight-color: transparent;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  opacity: 0;
+}
+
 body {
   // font-family: 'Radley', serif;
   font-family: sans-serif;
@@ -50,41 +54,56 @@ entries {
    width: 0;
 }
 
-@mixin entry-class($bg, $header: $fg) {
-  $b: desaturate(darken($bg, 10%), 50%);
-  background-color: $bg;
+@mixin entry-class($mbg, $header: $fg) {
+  $b: desaturate(darken($mbg, 10%), 50%);
+  background-color: $mbg;
+  &:before { 
+    background-color: $mbg;
+  }
   &:after {
-    @include linear-gradient-stops(top, transparentize($bg, 1) 0%, $bg 100%);
+    @include linear-gradient-stops(top, transparentize($mbg, 1) 0%, $mbg 100%);
   }
   header {
     border-bottom-color: $b;
     color: $header;
     text-shadow: none;//0 1px 0 mix($bg, #fff, 38%);
     wrapper {
-      background-color: $bg;
+      background-color: $mbg;
     }
     &:before {
-      @include linear-gradient-stops(top, $bg 0%, transparentize($bg, 1) 100%);
+      @include linear-gradient-stops(top, $mbg 0%, transparentize($mbg, 1) 100%);
     }
   }
 }
 
 @mixin month-class($color) {
   // $color: desaturate($color, 60%);
-    $mbg: mix($color, #fff, 5%);
+    $mbg: mix($color, #fff, 9%);
     @include entry-class($mbg);
   &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
-    $mbg: mix($color, #fff, 9%);
+    $mbg: mix($color, #fff, 5%);
     @include entry-class($mbg);
   }
 }
 
 entry {
 
-  position: relative;
   display: inline-block;
+  position: relative;
+
   width: 100%;
   vertical-align: top;
+  // height: 300px;
+
+  &:before { 
+    position: absolute;
+    background-color: blue; //colorfill hack for week view!
+    content: ' ';
+    width: 100%;
+    height: 700px;
+    display: block;
+    z-index: -1;
+  }
 
   // &.August { @include month-class(#ff0); }
   // &.September { @include month-class(#bbb); }
@@ -99,7 +118,12 @@ entry {
   // &.June { @include month-class(#fefe53); }
   // &.July { @include month-class(#ff7d2c); }
 
-
+  &.this-month-false { 
+    @include month-class(#aaa);
+  }
+  &.this-month-true { 
+    @include month-class(#1BC6E0);
+  }
   // &.today content wrapper {
   //   background-image: url(images/today.png);
   //   background-position: left center;
@@ -148,8 +172,8 @@ header {
     margin-top: -3px; 
     // box-shadow: 0 1px 0 rgba(0,0,0,0.3);
     background: #f03;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 10px;
   }
 
@@ -305,6 +329,11 @@ field {
     display: none;
   }
 
+  content, content wrapper { 
+    position: relative;
+    bottom: 0;
+  }
+
 }
 
 @media all and (min-width: 1200px) {
@@ -344,7 +373,7 @@ field {
     }
 
     content, content wrapper {
-      height: 140px;
+      height: 100px;
       overflow: hidden;
     }
 
@@ -371,7 +400,7 @@ field {
     }
 
     field {
-      margin: 10px 10px;
+      margin: 7px 9px;
       > textarea,
       > pre {
         text-shadow: none;
