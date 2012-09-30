@@ -73,7 +73,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   }
 
   function initDatabase() {
-    angular.forEach(_.range(0, 2), function(i) {
+    angular.forEach(_.range(-200, 200), function(i) {
       var e = makeEntry(i);
       e.$save();
       $scope.entries.push(e);
