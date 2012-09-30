@@ -74,7 +74,7 @@ entries {
       @include linear-gradient-stops(top, $mbg 0%, transparentize($mbg, 1) 100%);
     }
   }
-  field {
+  .no-touch & field {
     > textarea, > pre {
       text-shadow: 0 1px 0 mix($fg, $mbg, 10%);
     }
@@ -256,8 +256,6 @@ field {
     padding: 10px;
     background: transparent;
     font: 400 16px / 22px Helvetica, Arial, sans-serif;
-    // .no-touch & { 
-    // }
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -378,27 +376,20 @@ field {
     content, content wrapper {
       height: 100px;
       overflow: hidden;
+
     }
+
 
     &.focus {
-      content wrapper { overflow: auto; }
-    }
 
-    content { 
-      ::-webkit-scrollbar {
-         width: 0;
-      }
-      ::-webkit-scrollbar-thumb {
-        background-color: transparentize($fg, 1);
-      }
-    }
-
-    &.focus, &.hover, &:hover {
       ::-webkit-scrollbar {
          width: 4px;
       }
       content ::-webkit-scrollbar-thumb {
-        background-color: transparentize($fg, 0.735);
+        background-color: transparentize($fg, 0.85);
+      }
+      content, content wrapper { 
+        overflow: auto;
       }
     }
 
