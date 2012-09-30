@@ -49,7 +49,7 @@ angular.module('entry')
 
   return function($scope, element, attrs) {
 
-    if (Modernizr.touch) return;
+    
 
     element.addClass('expandingArea');
     element.addClass('active');
