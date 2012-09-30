@@ -127,7 +127,7 @@ header {
   z-index: 3;
   color: mix($fg, $bg, 40%);
   text-shadow: 0 1px 0 mix($fg, $bg, 8%);
-  border-bottom: 1px dotted mix($fg, $bg, 10%);
+  border-bottom: 1px solid mix($fg, $bg, 10%);
   
   wrapper {
     display: inline-block;

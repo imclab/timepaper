@@ -89,6 +89,8 @@ angular.module('entry')
 
   return function($scope, element, attrs) {
 
+    if (Modernizr.touch) return;
+
     var prevCentered;
     var centerType = attrs.maintainFocus.toUpperCase();
 
@@ -151,6 +153,16 @@ angular.module('entry')
         });
         // window.scrollTo(0, document.body.scrollHeight - window.innerHeight - 340);
       }
+    });
+  }
+})
+
+.directive('touchChange', function() {
+  return function($scope, element, attrs) {
+    element.bind(Modernizr.touch ? 'blur' : 'keydown', function() {
+      $scope.$apply(function() {
+        $scope.$eval(attrs.touchChange);
+      });
     });
   }
 })

@@ -48,7 +48,7 @@ header {
   z-index: 3;
   color: #babdbd;
   text-shadow: 0 1px 0 #f1f1f1;
-  border-bottom: 1px dotted #edeeee; }
+  border-bottom: 1px solid #edeeee; }
   header wrapper {
     display: inline-block;
     position: absolute;

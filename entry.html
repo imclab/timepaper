@@ -39,8 +39,9 @@
           <pre><span></span><br></pre>
           <textarea 
             ng-model="entry.text" 
-            ng-change="!Modernizr.touch && entry.update()"
-            ng-blur="Modernizr.touch && entry.update()" 
+
+            touch-change="entry.update()" 
+
             spellcheck="false"
             lends-focus-up="4">
           </textarea>

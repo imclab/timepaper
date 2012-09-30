@@ -6,6 +6,7 @@ angular.module('entry', ['mongolab']).config(function($routeProvider) {
 
 function EntryCtrl($scope, $route, $routeParams, Entry) {
   
+  console.log(Modernizr.touch, $routeParams.tableId)
   
   Entry = Entry($routeParams.tableId);
 
@@ -14,8 +15,6 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   var add_on_scroll = 84;
 
   $scope.today = d.getTime();
-
-  
   $scope.pageSize = 100;
 
   $scope.entries = Entry.query({}, function() {
