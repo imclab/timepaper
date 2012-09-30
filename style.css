@@ -89,12 +89,14 @@ entry {
     entry.this-month-false header {
       border-bottom-color: #dedede;
       color: #545c5c;
-      text-shadow: none; }
+      text-shadow: 0 1px 0 #d9d9d9; }
       entry.this-month-false header wrapper {
         background-color: #f7f7f7; }
       entry.this-month-false header:before {
         background-image: -webkit-linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%);
         background-image: linear-gradient(top, #f7f7f7 0%, rgba(247, 247, 247, 0) 100%); }
+    entry.this-month-false field > textarea, entry.this-month-false field > pre {
+      text-shadow: 0 1px 0 #e6e7e7; }
     entry.this-month-false.Monday, entry.this-month-false.Tuesday, entry.this-month-false.Wednesday, entry.this-month-false.Thursday, entry.this-month-false.Friday {
       background-color: #fafafa; }
       entry.this-month-false.Monday:before, entry.this-month-false.Tuesday:before, entry.this-month-false.Wednesday:before, entry.this-month-false.Thursday:before, entry.this-month-false.Friday:before {
@@ -105,12 +107,14 @@ entry {
       entry.this-month-false.Monday header, entry.this-month-false.Tuesday header, entry.this-month-false.Wednesday header, entry.this-month-false.Thursday header, entry.this-month-false.Friday header {
         border-bottom-color: #e1e1e1;
         color: #545c5c;
-        text-shadow: none; }
+        text-shadow: 0 1px 0 gainsboro; }
         entry.this-month-false.Monday header wrapper, entry.this-month-false.Tuesday header wrapper, entry.this-month-false.Wednesday header wrapper, entry.this-month-false.Thursday header wrapper, entry.this-month-false.Friday header wrapper {
           background-color: #fafafa; }
         entry.this-month-false.Monday header:before, entry.this-month-false.Tuesday header:before, entry.this-month-false.Wednesday header:before, entry.this-month-false.Thursday header:before, entry.this-month-false.Friday header:before {
           background-image: -webkit-linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%);
           background-image: linear-gradient(top, #fafafa 0%, rgba(250, 250, 250, 0) 100%); }
+      entry.this-month-false.Monday field > textarea, entry.this-month-false.Monday field > pre, entry.this-month-false.Tuesday field > textarea, entry.this-month-false.Tuesday field > pre, entry.this-month-false.Wednesday field > textarea, entry.this-month-false.Wednesday field > pre, entry.this-month-false.Thursday field > textarea, entry.this-month-false.Thursday field > pre, entry.this-month-false.Friday field > textarea, entry.this-month-false.Friday field > pre {
+        text-shadow: 0 1px 0 #e9eaea; }
   entry.this-month-true {
     background-color: #eaf9fc; }
     entry.this-month-true:before {
@@ -121,12 +125,14 @@ entry {
     entry.this-month-true header {
       border-bottom-color: #d0e0e3;
       color: #545c5c;
-      text-shadow: none; }
+      text-shadow: 0 1px 0 #cddbdd; }
       entry.this-month-true header wrapper {
         background-color: #eaf9fc; }
       entry.this-month-true header:before {
         background-image: -webkit-linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%);
         background-image: linear-gradient(top, #eaf9fc 0%, rgba(234, 249, 252, 0) 100%); }
+    entry.this-month-true field > textarea, entry.this-month-true field > pre {
+      text-shadow: 0 1px 0 #dbe9ec; }
     entry.this-month-true.Monday, entry.this-month-true.Tuesday, entry.this-month-true.Wednesday, entry.this-month-true.Thursday, entry.this-month-true.Friday {
       background-color: #f3fcfd; }
       entry.this-month-true.Monday:before, entry.this-month-true.Tuesday:before, entry.this-month-true.Wednesday:before, entry.this-month-true.Thursday:before, entry.this-month-true.Friday:before {
@@ -137,12 +143,14 @@ entry {
       entry.this-month-true.Monday header, entry.this-month-true.Tuesday header, entry.this-month-true.Wednesday header, entry.this-month-true.Thursday header, entry.this-month-true.Friday header {
         border-bottom-color: #d8e4e5;
         color: #545c5c;
-        text-shadow: none; }
+        text-shadow: 0 1px 0 #d5ddde; }
         entry.this-month-true.Monday header wrapper, entry.this-month-true.Tuesday header wrapper, entry.this-month-true.Wednesday header wrapper, entry.this-month-true.Thursday header wrapper, entry.this-month-true.Friday header wrapper {
           background-color: #f3fcfd; }
         entry.this-month-true.Monday header:before, entry.this-month-true.Tuesday header:before, entry.this-month-true.Wednesday header:before, entry.this-month-true.Thursday header:before, entry.this-month-true.Friday header:before {
           background-image: -webkit-linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%);
           background-image: linear-gradient(top, #f3fcfd 0%, rgba(243, 252, 253, 0) 100%); }
+      entry.this-month-true.Monday field > textarea, entry.this-month-true.Monday field > pre, entry.this-month-true.Tuesday field > textarea, entry.this-month-true.Tuesday field > pre, entry.this-month-true.Wednesday field > textarea, entry.this-month-true.Wednesday field > pre, entry.this-month-true.Thursday field > textarea, entry.this-month-true.Thursday field > pre, entry.this-month-true.Friday field > textarea, entry.this-month-true.Friday field > pre {
+        text-shadow: 0 1px 0 #e3ecec; }
   entry.focus * {
     color: #000 !important; }
   entry:after {
@@ -162,7 +170,6 @@ header {
   position: relative;
   z-index: 3;
   color: #babdbd;
-  text-shadow: 0 1px 0 #f1f1f1;
   border-bottom: 1px solid #edeeee; }
   .today header wrapper:after {
     display: inline-block;
@@ -170,7 +177,7 @@ header {
     float: right;
     margin-right: 2px;
     margin-left: 5px;
-    margin-top: -3px;
+    margin-top: -2px;
     background: #f03;
     width: 4px;
     height: 4px;
@@ -235,9 +242,6 @@ field {
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
-    .no-touch field > textarea, .no-touch
-    field > pre {
-      text-shadow: 0 1px 0 #edeeee; }
   field > textarea {
     /* The border-box box model is used to allow
      * padding whilst still keeping the overall width

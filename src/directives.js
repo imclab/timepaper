@@ -173,7 +173,7 @@ angular.module('entry')
         $scope.$apply(function() {
           $scope.$eval(attrs.reachTop);
         });
-        window.scrollTo(0, 340*5.5);
+        window.scrollTo(0, 250*5.5);
       }
     });
   }
@@ -182,7 +182,7 @@ angular.module('entry')
   return function($scope, element, attrs) {
     if (Modernizr.touch) return;
     angular.element(window).bind('scroll', function() {
-      if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 200) {
+      if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 200 - 700) {
         $scope.$apply(function() {
           $scope.$eval(attrs.reachBottom);
         });

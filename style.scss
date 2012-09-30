@@ -66,12 +66,17 @@ entries {
   header {
     border-bottom-color: $b;
     color: $header;
-    text-shadow: none;//0 1px 0 mix($bg, #fff, 38%);
+    text-shadow: 0 1px 0 mix($mbg, #000, 88%);
     wrapper {
       background-color: $mbg;
     }
     &:before {
       @include linear-gradient-stops(top, $mbg 0%, transparentize($mbg, 1) 100%);
+    }
+  }
+  field {
+    > textarea, > pre {
+      text-shadow: 0 1px 0 mix($fg, $mbg, 10%);
     }
   }
 }
@@ -160,7 +165,6 @@ header {
   position: relative;
   z-index: 3;
   color: mix($fg, $bg, 40%);
-  text-shadow: 0 1px 0 mix($fg, $bg, 8%);
   border-bottom: 1px solid mix($fg, $bg, 10%);
   
   .today & wrapper:after {
@@ -169,7 +173,7 @@ header {
     float: right;
     margin-right: 2px;
     margin-left: 5px;
-    margin-top: -3px; 
+    margin-top: -2px; 
     // box-shadow: 0 1px 0 rgba(0,0,0,0.3);
     background: #f03;
     width: 4px;
@@ -252,9 +256,8 @@ field {
     padding: 10px;
     background: transparent;
     font: 400 16px / 22px Helvetica, Arial, sans-serif;
-    .no-touch & { 
-      text-shadow: 0 1px 0 mix($fg, $bg, 10%);
-    }
+    // .no-touch & { 
+    // }
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word;
