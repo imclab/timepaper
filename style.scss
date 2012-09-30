@@ -226,9 +226,8 @@ field textarea {
   }
   textarea { 
     // border: 1px solid blue;
-    @include prefix-value(width, calc(100% - 40px));
+    @include prefix-value(width, calc(100% - 60px));
     padding: 20px;
-    
     background: #fff;
     resize: none;
   }
