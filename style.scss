@@ -234,15 +234,22 @@ field textarea {
 //     resize: none;
 //   }
 // }
-// .touch entry.focus textarea {
-//   height: 1000px;
-// }
+.touch entry.focus field {
+  display: block;
+  height: 1000px;
+  pre, span, br { 
+    display: none;
+  }
+  textarea { 
+    height: 1000px;
+    position: static;
+  }
+}
 
-field {
+.no-touch field, .touch field:not(.focus) {
   display: block;
   position: relative;
   margin: 20px 10px;
-  border: 1px dashed transparent;
   > textarea,
   > pre {
     color: $fg;

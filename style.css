@@ -149,13 +149,22 @@ content wrapper {
 field textarea {
   font: 400 16px/22px Helvetica, Arial, sans-serif; }
 
-field {
+.touch entry.focus field {
+  display: block;
+  height: 1000px; }
+  .touch entry.focus field pre, .touch entry.focus field span, .touch entry.focus field br {
+    display: none; }
+  .touch entry.focus field textarea {
+    height: 1000px;
+    position: static; }
+
+.no-touch field, .touch field:not(.focus) {
   display: block;
   position: relative;
-  margin: 20px 10px;
-  border: 1px dashed transparent; }
-  field > textarea,
-  field > pre {
+  margin: 20px 10px; }
+  .no-touch field > textarea,
+  .no-touch field > pre, .touch field:not(.focus) > textarea,
+  .touch field:not(.focus) > pre {
     color: #545c5c;
     padding: 10px;
     background: transparent;
@@ -163,7 +172,7 @@ field {
     /* Make the text soft-wrap */
     white-space: pre-wrap;
     word-wrap: break-word; }
-  field > textarea {
+  .no-touch field > textarea, .touch field:not(.focus) > textarea {
     /* The border-box box model is used to allow
      * padding whilst still keeping the overall width
      * at exactly that of the containing element.
@@ -175,7 +184,7 @@ field {
     width: 100%;
     /* This height is used when JS is disabled */
     height: 100px; }
-  field.active > textarea {
+  .no-touch field.active > textarea, .touch field:not(.focus).active > textarea {
     /* Hide any scrollbars */
     overflow: hidden;
     position: absolute;
@@ -184,9 +193,9 @@ field {
     height: 100%;
     /* Remove WebKit user-resize widget */
     resize: none; }
-  field > pre {
+  .no-touch field > pre, .touch field:not(.focus) > pre {
     display: none; }
-  field > pre {
+  .no-touch field > pre, .touch field:not(.focus) > pre {
     display: block;
     /* Hide the text; just using it for sizing */
     visibility: hidden; }
