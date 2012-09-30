@@ -104,8 +104,13 @@ angular.module('entry')
       span.text(area.val());
     };
 
-    area.bind(Modernizr.touch ? 'blur' : 'input', change);
     _.defer(change);
+    
+    if (Modernizr.touch) {
+      change = _.debounce(change, 1000);
+    }
+
+    area.bind('input', change);
 
   }
 
