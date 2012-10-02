@@ -4,6 +4,8 @@
   reach-top="addTop()"
   reach-bottom="addBottom()">
 
+  <pointer class="above" ng-class="{ showing: pointer < 0 }"></pointer>
+
   <entry 
 
     class="{{entry.timestamp|day}} 
@@ -13,6 +15,7 @@
 
 
     scroll-to-this="entry.timestamp == today"
+    point-to-this="entry.timestamp == today"
     
     ng-repeat="entry in entries | orderBy:'timestamp' " 
 
@@ -48,6 +51,7 @@
             spellcheck="false"
 
             lends-focus-up="4"
+
             starts-focused="entry.timestamp == today"
             >
           </textarea>
@@ -57,5 +61,7 @@
     </content>
 
   </entry>
+
+  <pointer class="below" ng-class="{ showing: pointer > 0 }"></pointer>
 
 </entries>
