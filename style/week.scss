@@ -1,0 +1,45 @@
+@import "_shared";
+
+@media screen and (max-width: 1199px) and (min-width: 800px) {
+
+  ordinal {
+    display: none;
+  }
+
+  year { 
+    display: none;
+  }
+
+  .Friday, .Saturday, .Sunday { 
+    width: 33.333333%;
+    field {
+      margin: 10px;
+      > textarea,
+      > pre {
+        font: 400 12px/18px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
+
+  .Monday, .Tuesday, .Wednesday, .Thursday { 
+    width: 25%;
+    field {
+      margin: 10px;
+      > textarea,
+      > pre {
+        
+        font: 400 12px/18px Helvetica, Arial, sans-serif;
+      }
+    }
+  }
+
+  entry:not(.Monday):not(.Friday) header wrapper { 
+    display: none;
+  }
+
+  content, content wrapper { 
+    position: relative;
+    bottom: 0;
+  }
+
+}

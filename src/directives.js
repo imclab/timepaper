@@ -118,6 +118,7 @@ angular.module('entry')
   }
 
 })
+
 // Needs work.
 .directive('maintainFocus', function() {
 
@@ -128,7 +129,7 @@ angular.module('entry')
 
     angular.element(window).bind('resize', function() {
 
-      var centeredElement = document.elementFromPoint(window.innerWidth/2, window.innerHeight/2);
+      var centeredElement = document.querySelector('entry.focus') || document.elementFromPoint(window.innerWidth/2, window.innerHeight/2);
 
       // Possible that the center isn't over an entry ...
       while (centeredElement && centeredElement.nodeName != centerType) {
@@ -161,6 +162,24 @@ angular.module('entry')
         var rect = element[0].getBoundingClientRect();
         window.scrollTo(0, rect.top - window.innerHeight/2 + rect.height/2);
       });
+    }
+  }
+})
+
+.directive('pointToThis', function() {
+  return function($scope, element, attrs) {
+    $scope.pointer = 0;
+    if ($scope.$eval(attrs.pointToThis)) {
+      var raw = element[0];
+      var onScroll = function() {
+        _.defer(function() {
+          $scope.$apply(function() {
+            $scope.pointTo(raw);  
+          })
+        });
+      };
+      angular.element(window).bind('scroll', onScroll);
+      onScroll();
     }
   }
 })

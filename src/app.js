@@ -6,8 +6,6 @@ angular.module('entry', ['mongolab']).config(function($routeProvider) {
 
 function EntryCtrl($scope, $route, $routeParams, Entry) {
   
-  console.log(Modernizr.touch, $routeParams.tableId)
-  
   Entry = Entry($routeParams.tableId);
 
   var d = today();
@@ -16,10 +14,22 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.today = d.getTime();
   $scope.pageSize = 100;
+  $scope.pointer = -1;
 
   $scope.updateExceptTouch = function(entry) {
     !Modernizr.touch && entry.update();
   };
+
+  $scope.pointTo = function(element) {
+    var box = element.getBoundingClientRect();
+    var p = 0;
+    if (box.top < 0) {
+      p = -1;
+    } else if (box.bottom > window.innerHeight) {
+      p = 1;
+    }
+    $scope.pointer = p;
+  }
 
   $scope.entries = Entry.query({}, function() {
 

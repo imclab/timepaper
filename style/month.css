@@ -1,0 +1,39 @@
+@media screen and (min-width: 1200px) {
+  year, day {
+    display: none; }
+
+  header wrapper {
+    padding-left: 4px;
+    padding-right: 4px; }
+
+  ordinal {
+    display: none; }
+
+  entry:not(.date-1) month {
+    display: none; }
+
+  entry {
+    width: 14.2857142857%; }
+    entry.Monday:first-of-type {
+      margin-left: 14.2857142857%; }
+    entry.today content wrapper {
+      background-image: none; }
+    entry content, entry content wrapper {
+      height: 140px;
+      overflow: hidden; }
+    entry.focus ::-webkit-scrollbar {
+      width: 4px; }
+    entry.focus content ::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.15); }
+    entry.focus content, entry.focus content wrapper {
+      overflow: auto; }
+    entry field {
+      margin: 10px 12px; }
+      entry field > textarea,
+      entry field > pre {
+        text-shadow: none;
+        padding: 0;
+        font: 400 11px/15px Helvetica, Arial, sans-serif; }
+    entry ribbons img {
+      top: -15px;
+      position: relative; } }
