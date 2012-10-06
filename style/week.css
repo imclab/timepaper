@@ -13,7 +13,7 @@
       .Friday field > pre, .Saturday field > textarea,
       .Saturday field > pre, .Sunday field > textarea,
       .Sunday field > pre {
-        font: 400 12px/18px Helvetica, Arial, sans-serif; }
+        font: 400 11px/16px Helvetica, Arial, sans-serif; }
 
   .Monday, .Tuesday, .Wednesday, .Thursday {
     width: 25%; }
@@ -24,9 +24,9 @@
       .Tuesday field > pre, .Wednesday field > textarea,
       .Wednesday field > pre, .Thursday field > textarea,
       .Thursday field > pre {
-        font: 400 12px/18px Helvetica, Arial, sans-serif; }
+        font: 400 11px/16px Helvetica, Arial, sans-serif; }
 
-  entry:not(.Monday):not(.Friday) header wrapper {
+  entry:not(.Monday):not(.Friday):not(.today) date, entry:not(.Monday):not(.Friday):not(.today) month, entry:not(.Monday):not(.Friday):not(.today) day:after {
     display: none; }
 
   content, content wrapper {

@@ -10,13 +10,14 @@
     display: none;
   }
 
+
   .Friday, .Saturday, .Sunday { 
     width: 33.333333%;
     field {
       margin: 10px;
       > textarea,
       > pre {
-        font: 400 12px/18px Helvetica, Arial, sans-serif;
+        font: 400 11px/16px Helvetica, Arial, sans-serif;
       }
     }
   }
@@ -28,13 +29,15 @@
       > textarea,
       > pre {
         
-        font: 400 12px/18px Helvetica, Arial, sans-serif;
+        font: 400 11px/16px Helvetica, Arial, sans-serif;
       }
     }
   }
 
-  entry:not(.Monday):not(.Friday) header wrapper { 
-    display: none;
+  entry:not(.Monday):not(.Friday):not(.today) { 
+    date, month, day:after { 
+      display: none;
+    }
   }
 
   content, content wrapper { 

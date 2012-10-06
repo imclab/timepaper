@@ -8,6 +8,11 @@
 
 @mixin entry-class($mbg, $header) {
   background-color: $mbg;
+
+  &:after { 
+    @include linear-gradient-stops(top, transparentize($mbg, 1) 0%, transparentize($mbg, 0) 100%);
+  }
+
   &:before { 
     background-color: $mbg;
   }
@@ -58,6 +63,14 @@ entry {
   width: 100%;
   vertical-align: top;
 
+  &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
+    @include entry-class(#fefefe, #888);
+  }
+
+  &.Saturday, &.Sunday {
+    @include entry-class(#EBF7F4, #888);
+  }
+
   &:before { 
     position: absolute;
     content: ' ';
@@ -67,13 +80,17 @@ entry {
     z-index: -1;
   }
 
-  &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
-    @include entry-class(#fefefe, #aaa);
+  &:after {
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    display: block;
+    content: ' ';
+    position: absolute;
+    
   }
 
-  &.Saturday, &.Sunday {
-    @include entry-class(#fafefd, #9bb3b1);
-  }
 
 }
 
@@ -83,15 +100,16 @@ header {
   position: relative;
   z-index: 3;
   border-bottom: 1px solid transparent;
-  
+
+
   .today & wrapper:after {
     display: inline-block;
     content: ' ';
     float: right;
-    margin: -2px 2px 0 5px;
+    margin: -3px 2px 0 5px;
     background: $red;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     border-radius: 10px;
   }
 
@@ -118,17 +136,6 @@ header {
     }
     font-style: italic;
   }
-  &:before {
-    z-index: 2;
-    @include linear-gradient-stops(top, transparentize(#000, 1) 0%, transparentize(#000, 0.99) 100%);
-    width: 100%;
-    bottom: 0;
-    height: 3px;
-    display: block;
-    content: ' ';
-    position: absolute;
-  }
-
 }
 
 content {
@@ -192,7 +199,23 @@ field {
 
 pointer { 
 
-  $size: 40px;
+  $size: 20px;
+
+  @include prefix(transition, margin 0.2s ease-out, opacity 0.2s);
+  @include prefix(animation, fade-in 2s);
+
+  opacity: 0;
+  cursor: pointer;
+  background: $red;
+  box-shadow: inset 0 2px 0 rgba(0,0,0,0.1), 0 2px 0 rgba(255, 255, 255, 0.5);
+  display: block;
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  margin-left: - $size / 2;
+  width: $size;
+  height: $size / 2;
+
 
   &:hover { 
     background: lighten($red, 10%);
@@ -203,20 +226,6 @@ pointer {
     margin-bottom: 0 !important;
     opacity: 1;
   }
-
-  @include prefix(transition, margin 0.2s ease-out, opacity 0.2s);
-
-    opacity: 0;
-  cursor: pointer;
-  background: $red;
-  box-shadow: inset 0 2px 0 rgba(0,0,0,0.1), 0 2px 0 #fff;
-  display: block;
-  position: fixed;
-  z-index: 10;
-  left: 50%;
-  margin-left: - $size / 2;
-  width: $size;
-  height: $size / 2;  
   
   &.above { 
     border-radius: 0 0 $size $size;

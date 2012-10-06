@@ -23,9 +23,9 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   $scope.pointTo = function(element) {
     var box = element.getBoundingClientRect();
     var p = 0;
-    if (box.top < 0) {
+    if (box.bottom < 0) {
       p = -1;
-    } else if (box.bottom > window.innerHeight) {
+    } else if (box.top > window.innerHeight) {
       p = 1;
     }
     $scope.pointer = p;

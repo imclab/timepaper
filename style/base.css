@@ -67,6 +67,34 @@ entry {
   position: relative;
   width: 100%;
   vertical-align: top; }
+  entry.Monday, entry.Tuesday, entry.Wednesday, entry.Thursday, entry.Friday {
+    background-color: #fefefe; }
+    entry.Monday:after, entry.Tuesday:after, entry.Wednesday:after, entry.Thursday:after, entry.Friday:after {
+      background-image: -webkit-linear-gradient(top, rgba(254, 254, 254, 0) 0%, #fefefe 100%);
+      background-image: linear-gradient(top, rgba(254, 254, 254, 0) 0%, #fefefe 100%); }
+    entry.Monday:before, entry.Tuesday:before, entry.Wednesday:before, entry.Thursday:before, entry.Friday:before {
+      background-color: #fefefe; }
+    entry.Monday header, entry.Tuesday header, entry.Wednesday header, entry.Thursday header, entry.Friday header {
+      border-bottom-color: #f4f4f4;
+      color: #888888; }
+      entry.Monday header wrapper, entry.Tuesday header wrapper, entry.Wednesday header wrapper, entry.Thursday header wrapper, entry.Friday header wrapper {
+        background-color: #fefefe; }
+    .no-touch entry.Monday field > textarea, .no-touch entry.Monday field > pre, .no-touch entry.Tuesday field > textarea, .no-touch entry.Tuesday field > pre, .no-touch entry.Wednesday field > textarea, .no-touch entry.Wednesday field > pre, .no-touch entry.Thursday field > textarea, .no-touch entry.Thursday field > pre, .no-touch entry.Friday field > textarea, .no-touch entry.Friday field > pre {
+      text-shadow: 0 1px 0 #f2f2f2; }
+  entry.Saturday, entry.Sunday {
+    background-color: #ebf7f4; }
+    entry.Saturday:after, entry.Sunday:after {
+      background-image: -webkit-linear-gradient(top, rgba(235, 247, 244, 0) 0%, #ebf7f4 100%);
+      background-image: linear-gradient(top, rgba(235, 247, 244, 0) 0%, #ebf7f4 100%); }
+    entry.Saturday:before, entry.Sunday:before {
+      background-color: #ebf7f4; }
+    entry.Saturday header, entry.Sunday header {
+      border-bottom-color: #e1ecea;
+      color: #888888; }
+      entry.Saturday header wrapper, entry.Sunday header wrapper {
+        background-color: #ebf7f4; }
+    .no-touch entry.Saturday field > textarea, .no-touch entry.Saturday field > pre, .no-touch entry.Sunday field > textarea, .no-touch entry.Sunday field > pre {
+      text-shadow: 0 1px 0 #e1ebe9; }
   entry:before {
     position: absolute;
     content: ' ';
@@ -74,28 +102,14 @@ entry {
     height: 700px;
     display: block;
     z-index: -1; }
-  entry.Monday, entry.Tuesday, entry.Wednesday, entry.Thursday, entry.Friday {
-    background-color: #fefefe; }
-    entry.Monday:before, entry.Tuesday:before, entry.Wednesday:before, entry.Thursday:before, entry.Friday:before {
-      background-color: #fefefe; }
-    entry.Monday header, entry.Tuesday header, entry.Wednesday header, entry.Thursday header, entry.Friday header {
-      border-bottom-color: #f4f4f4;
-      color: #aaaaaa; }
-      entry.Monday header wrapper, entry.Tuesday header wrapper, entry.Wednesday header wrapper, entry.Thursday header wrapper, entry.Friday header wrapper {
-        background-color: #fefefe; }
-    .no-touch entry.Monday field > textarea, .no-touch entry.Monday field > pre, .no-touch entry.Tuesday field > textarea, .no-touch entry.Tuesday field > pre, .no-touch entry.Wednesday field > textarea, .no-touch entry.Wednesday field > pre, .no-touch entry.Thursday field > textarea, .no-touch entry.Thursday field > pre, .no-touch entry.Friday field > textarea, .no-touch entry.Friday field > pre {
-      text-shadow: 0 1px 0 whitesmoke; }
-  entry.Saturday, entry.Sunday {
-    background-color: #fafefd; }
-    entry.Saturday:before, entry.Sunday:before {
-      background-color: #fafefd; }
-    entry.Saturday header, entry.Sunday header {
-      border-bottom-color: #ecf8f5;
-      color: #9bb3b1; }
-      entry.Saturday header wrapper, entry.Sunday header wrapper {
-        background-color: #fafefd; }
-    .no-touch entry.Saturday field > textarea, .no-touch entry.Saturday field > pre, .no-touch entry.Sunday field > textarea, .no-touch entry.Sunday field > pre {
-      text-shadow: 0 1px 0 #f0f6f5; }
+  entry:after {
+    z-index: 2;
+    width: 100%;
+    bottom: 0;
+    height: 20px;
+    display: block;
+    content: ' ';
+    position: absolute; }
 
 header {
   font-size: 13px;
@@ -106,10 +120,10 @@ header {
     display: inline-block;
     content: ' ';
     float: right;
-    margin: -2px 2px 0 5px;
+    margin: -3px 2px 0 5px;
     background: #ff0033;
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
     border-radius: 10px; }
   header wrapper {
     display: inline-block;
@@ -128,16 +142,6 @@ header {
     font-style: italic; }
     header day:after {
       content: ','; }
-  header:before {
-    z-index: 2;
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 100%);
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 100%);
-    width: 100%;
-    bottom: 0;
-    height: 3px;
-    display: block;
-    content: ' ';
-    position: absolute; }
 
 content {
   overflow: hidden;
@@ -190,17 +194,19 @@ field {
 pointer {
   -webkit-transition: margin 0.2s ease-out, opacity 0.2s;
   transition: margin 0.2s ease-out, opacity 0.2s;
+  -webkit-animation: fade-in 2s;
+  animation: fade-in 2s;
   opacity: 0;
   cursor: pointer;
   background: #ff0033;
-  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1), 0 2px 0 white;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.1), 0 2px 0 rgba(255, 255, 255, 0.5);
   display: block;
   position: fixed;
   z-index: 10;
   left: 50%;
-  margin-left: -20px;
-  width: 40px;
-  height: 20px; }
+  margin-left: -10px;
+  width: 20px;
+  height: 10px; }
   pointer:hover {
     background: #ff335c; }
   pointer.showing {
@@ -208,10 +214,10 @@ pointer {
     margin-bottom: 0 !important;
     opacity: 1; }
   pointer.above {
-    border-radius: 0 0 40px 40px;
+    border-radius: 0 0 20px 20px;
     top: 0;
-    margin-top: -40px; }
+    margin-top: -20px; }
   pointer.below {
-    border-radius: 40px 40px 0 0;
+    border-radius: 20px 20px 0 0;
     bottom: 0;
-    margin-bottom: -40px; }
+    margin-bottom: -20px; }
