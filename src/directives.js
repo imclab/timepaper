@@ -54,12 +54,15 @@ angular.module('entry')
 
 .directive('startsFocused', function() {
   return function($scope, element, attrs) {
-    if ($scope.$eval(attrs.startsFocused)) {
       var raw = element[0];
+    if ($scope.$eval(attrs.startsFocused)) {
+      setTimeout(function() {
+
       raw.focus();
       setPosition(raw.value.length);
+
+      }, 200)
     }
-  }
   function setPosition(pos) {
     if (raw.setSelectionRange) {
       raw.setSelectionRange(pos, pos);
@@ -71,6 +74,7 @@ angular.module('entry')
       range.select();
     }
   }  
+  }
 })
 
 .directive('lendsFocusUp', function() {
