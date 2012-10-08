@@ -13,11 +13,11 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   var d = today();
   var day_in_millis = 86400000;
-  var add_on_scroll = 84;
+  var add_on_scroll = 21;
 
   $scope.begin = 0;
   $scope.today = d.getTime();
-  $scope.pageSize = 200;
+  $scope.pageSize = 100;
   $scope.pointer = -1;
   $scope.Modernizr = Modernizr;
   $scope.updateExceptTouch = function(entry) {
@@ -74,21 +74,23 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.addTop = function() {
-    return;
+
     angular.forEach(_.range($scope.firstEntry-add_on_scroll, $scope.firstEntry), function(j) {
       $scope.entries.unshift(makeEntry(j));
     });
     $scope.firstEntry -= add_on_scroll;
-    $scope.lastEntry -= add_on_scroll;
 
   };
 
   $scope.addBottom = function() {
-    return;
+
     angular.forEach(_.range($scope.lastEntry, $scope.lastEntry+add_on_scroll), function(j) {
       $scope.entries.push(makeEntry(j));
     });
+
     $scope.lastEntry += add_on_scroll;
+    $scope.begin += add_on_scroll;
+
   };
 
   function makeEntry(i) {

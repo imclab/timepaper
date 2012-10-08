@@ -9,8 +9,8 @@
 @mixin entry-class($mbg, $header) {
   background-color: $mbg;
 
-  &:after { 
-    @include linear-gradient-stops(top, transparentize(#000, 1) 0%, transparentize(#000, 0.95) 100%);
+  &.overflow:after { 
+    @include radial-gradient(50% 16px, ellipse farthest-side, transparentize(#000, 0.74), transparentize(#000, 1));
   }
 
   &:before { 
@@ -47,27 +47,12 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
-  width: 4px;
-  margin-left: -6px;
-  position: absolute;
-}
-::-webkit-scrollbar-track {
-  box-shadow: inset 1px 0 2px rgba(0,0,0,0.2);
-}
-
-::-webkit-scrollbar-thumb { 
-
-   background-color: rgba(0,0,0,0.25);
-   border-radius: 20px;
-}
-
 entries { 
   @include prefix(animation, fade-in 1300ms);
 }
 
 .touch field * { 
--webkit-user-select: none;
+  -webkit-user-select: none;
 }
 
 entry {
@@ -86,24 +71,14 @@ entry {
     @include entry-class(#EBF7F4, #888);
   }
 
-  &:before { 
-    position: absolute;
-    content: ' ';
-    width: 100%;
-    height: 700px;
-    display: block;
-    z-index: -1;
-  }
-
   &:after {
     z-index: 2;
     width: 100%;
     bottom: 0;
-    height: 13px;
+    height: 8px;
     display: none;
     content: ' ';
     position: absolute;
-    
   }
 
 }

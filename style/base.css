@@ -54,21 +54,12 @@ body {
   padding-top: 17px;
   overflow-x: hidden; }
 
-::-webkit-scrollbar {
-  width: 4px;
-  margin-left: -6px;
-  position: absolute; }
-
-::-webkit-scrollbar-track {
-  box-shadow: inset 1px 0 2px rgba(0, 0, 0, 0.2); }
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.25);
-  border-radius: 20px; }
-
 entries {
   -webkit-animation: fade-in 1300ms;
   animation: fade-in 1300ms; }
+
+.touch field * {
+  -webkit-user-select: none; }
 
 entry {
   display: inline-block;
@@ -78,9 +69,9 @@ entry {
   vertical-align: top; }
   entry.Monday, entry.Tuesday, entry.Wednesday, entry.Thursday, entry.Friday {
     background-color: #fefefe; }
-    entry.Monday:after, entry.Tuesday:after, entry.Wednesday:after, entry.Thursday:after, entry.Friday:after {
-      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 100%);
-      background-image: linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 100%); }
+    entry.Monday.overflow:after, entry.Tuesday.overflow:after, entry.Wednesday.overflow:after, entry.Thursday.overflow:after, entry.Friday.overflow:after {
+      background-image: -webkit-radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
+      background-image: radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0)); }
     entry.Monday:before, entry.Tuesday:before, entry.Wednesday:before, entry.Thursday:before, entry.Friday:before {
       background-color: #fefefe; }
     entry.Monday header, entry.Tuesday header, entry.Wednesday header, entry.Thursday header, entry.Friday header {
@@ -92,9 +83,9 @@ entry {
       text-shadow: 0 1px 0 #f2f2f2; }
   entry.Saturday, entry.Sunday {
     background-color: #ebf7f4; }
-    entry.Saturday:after, entry.Sunday:after {
-      background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 100%);
-      background-image: linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 100%); }
+    entry.Saturday.overflow:after, entry.Sunday.overflow:after {
+      background-image: -webkit-radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
+      background-image: radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0)); }
     entry.Saturday:before, entry.Sunday:before {
       background-color: #ebf7f4; }
     entry.Saturday header, entry.Sunday header {
@@ -104,18 +95,11 @@ entry {
         background-color: #ebf7f4; }
     .no-touch entry.Saturday field > textarea, .no-touch entry.Saturday field > pre, .no-touch entry.Sunday field > textarea, .no-touch entry.Sunday field > pre {
       text-shadow: 0 1px 0 #e1ebe9; }
-  entry:before {
-    position: absolute;
-    content: ' ';
-    width: 100%;
-    height: 700px;
-    display: block;
-    z-index: -1; }
   entry:after {
     z-index: 2;
     width: 100%;
     bottom: 0;
-    height: 13px;
+    height: 8px;
     display: none;
     content: ' ';
     position: absolute; }
