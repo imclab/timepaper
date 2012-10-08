@@ -66,6 +66,10 @@ entries {
   @include prefix(animation, fade-in 1300ms);
 }
 
+.touch field * { 
+-webkit-user-select: none;
+}
+
 entry {
 
   display: inline-block;

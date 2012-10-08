@@ -18,17 +18,16 @@
     }"
     scroll-to-this="entry.timestamp == today"
     point-to-this="entry.timestamp == today"
-    ng-repeat="entry in entries | orderBy:'timestamp' | startFrom:begin | limitTo:pageSize ">
+    ng-repeat="entry in entries | orderBy:'timestamp' | startFrom:begin | limitTo:pageSize "
+    ng-click="solo(entry)">
 
     <header>
       <wrapper>
 
-        <a href="#/{{table}}/{{entry._id.$oid}}">
         <day>{{entry.timestamp|day}}</day> 
         <month>{{entry.timestamp|month}}</month> 
         <date>{{entry.timestamp|date}}</date><ordinal>{{entry.timestamp|ordinal}}</ordinal> 
         <year>{{entry.timestamp|year}}</year>  
-      </a>
 
       </wrapper>
     </header>
@@ -39,6 +38,7 @@
         <field expanding-area>
           <pre><span></span><br></pre>
           <textarea 
+          ng-disabled="Modernizr.touch"
             spellcheck="false"
             ng-model="entry.text" 
             ng-change="updateExceptTouch(entry)"

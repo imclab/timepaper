@@ -10,14 +10,17 @@ var smoothScroll = (function() {
     easing = easing || 0.2;
 
     function loop() {
+      var left = document.body.scrollLeft;
       var cur = document.body.scrollTop;
       var delta = (target - cur);
-      if (Math.abs(delta) > 1) {
+      if (Math.abs(delta) > 3) {
         prevLoop = requestAnimationFrame(loop);
+      } else { 
+        window.scrollTo(left, target)
       }
 
       var top = cur + delta*easing;
-      var left = document.body.scrollLeft;
+      
       window.scrollTo(left, top)
     }
 

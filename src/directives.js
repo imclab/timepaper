@@ -235,3 +235,12 @@ angular.module('entry')
     });
   }
 })
+.directive('onTouch', function() {
+  return function($scope, element, attrs) {
+    element.bind('touchstart', function() {
+      $scope.$apply(function() {
+        $scope.$eval(attrs.onTouch);
+      });
+    });
+  }
+})

@@ -19,7 +19,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   $scope.today = d.getTime();
   $scope.pageSize = 200;
   $scope.pointer = -1;
-
+  $scope.Modernizr = Modernizr;
   $scope.updateExceptTouch = function(entry) {
     !Modernizr.touch && entry.update();
   };
@@ -41,6 +41,11 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
       p = 1;
     }
     $scope.pointer = p;
+  };
+
+  $scope.solo = function(entry) {
+    if (!Modernizr.touch) return;
+    window.location = '#/'+$scope.table+'/'+entry._id.$oid;
   };
 
   $scope.entries = Entry.query({}, function() {
