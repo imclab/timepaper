@@ -52,6 +52,26 @@ angular.module('entry')
     }
 })
 
+.directive('startsFocused', function() {
+  return function($scope, element, attrs) {
+    if ($scope.$eval(attrs.startsFocused)) {
+      var raw = element[0];
+      raw.focus();
+      setPosition(raw.value.length);
+    }
+  }
+  function setPosition(pos) {
+    if (raw.setSelectionRange) {
+      raw.setSelectionRange(pos, pos);
+    } else if (raw.createTextRange) {
+      var range = raw.createTextRange();
+      range.collapse(true);
+      range.moveEnd('character', pos);
+      range.moveStart('character', pos);
+      range.select();
+    }
+  }  
+})
 
 .directive('lendsFocusUp', function() {
   return function($scope, element, attrs) {
@@ -70,27 +90,8 @@ angular.module('entry')
     element.bind('click',   function() { raw.focus(); });
 
     if ($scope.$eval(attrs.startsFocused)) {
-
-
-      setTimeout(function() {
-        raw.focus();
-        setPosition(raw.value.length);
         element.addClass('focus');
-      }, 200);
-
     }
-    
-    function setPosition(pos) {
-      if (raw.setSelectionRange) {
-        raw.setSelectionRange(pos, pos);
-      } else if (raw.createTextRange) {
-        var range = raw.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', pos);
-        range.moveStart('character', pos);
-        range.select();
-      }
-    }  
 
   }
 
