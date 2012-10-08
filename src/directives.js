@@ -124,6 +124,8 @@ angular.module('entry')
 
   return function($scope, element, attrs) {
 
+    if (Modernizr.touch) return;
+
     var prevCentered;
     var timeout;
     var centerType = attrs.maintainFocus.toUpperCase();

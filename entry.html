@@ -1,6 +1,4 @@
 <entries 
-  reach-top="addTop()"
-  reach-bottom="addBottom()"
   maintain-focus="entry">
 
   <pointer class="above" 
@@ -25,11 +23,12 @@
     <header>
       <wrapper>
 
-        <a href="#/{{table}}/{{entry._id.$oid}}"
+        <a href="#/{{table}}/{{entry._id.$oid}}">
         <day>{{entry.timestamp|day}}</day> 
         <month>{{entry.timestamp|month}}</month> 
         <date>{{entry.timestamp|date}}</date><ordinal>{{entry.timestamp|ordinal}}</ordinal> 
         <year>{{entry.timestamp|year}}</year>  
+      </a>
 
       </wrapper>
     </header>
