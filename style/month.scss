@@ -15,6 +15,10 @@
   ordinal {
     display: none;
   }
+  entry:not(.empty):after { 
+    display: block;
+  }
+
 
   entry:not(.date-1) { 
     month {
@@ -53,7 +57,7 @@
     content, content wrapper {
       height: 140px;
       overflow: hidden;
-
+      user-select: none;
     }
 
 
@@ -66,7 +70,7 @@
         background-color: transparentize(#000, 0.85);
       }
       content, content wrapper { 
-        overflow: auto;
+        // overflow: auto;
       }
     }
 
@@ -85,5 +89,9 @@
       top: -15px;
       position: relative;
     }
+  }
+
+  #over { 
+    display: block;
   }
 }

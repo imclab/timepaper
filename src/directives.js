@@ -125,6 +125,7 @@ angular.module('entry')
   return function($scope, element, attrs) {
 
     var prevCentered;
+    var timeout;
     var centerType = attrs.maintainFocus.toUpperCase();
 
     angular.element(window).bind('resize', function() {
@@ -139,7 +140,9 @@ angular.module('entry')
       if (prevCentered) {
         var rect = prevCentered.getBoundingClientRect();
         var t = rect.top + document.body.scrollTop + rect.height/2 - window.innerHeight/2;
-        window.scrollTo(0, t)
+        
+        smoothScroll(t, 1)
+        
       } else if (centeredElement) {
         prevCentered = centeredElement;
       }
@@ -188,11 +191,11 @@ angular.module('entry')
   return function($scope, element, attrs) {
     // if (Modernizr.touch) return;
     angular.element(window).bind('scroll', function() {
-      if (document.body.scrollTop < 200) {
+      if (document.body.scrollTop < 250) {
         $scope.$apply(function() {
           $scope.$eval(attrs.reachTop);
         });
-        window.scrollTo(0, 250*5.5);
+        window.scrollTo(0, 1865);
       }
     });
   }
@@ -217,6 +220,15 @@ angular.module('entry')
     element.bind('blur', function() {
       $scope.$apply(function() {
         $scope.$eval(attrs.touchChange);
+      });
+    });
+  }
+})
+.directive('focus', function() {
+  return function($scope, element, attrs) {
+    element.bind('focus', function() {
+      $scope.$apply(function() {
+        $scope.$eval(attrs.focus);
       });
     });
   }

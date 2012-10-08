@@ -1,32 +1,31 @@
 <entries 
-  
+  reach-top="addTop()"
+  reach-bottom="addBottom()"
   maintain-focus="entry">
 
-  <pointer class="above" ng-class="{ showing: pointer < 0 }"></pointer>
+  <pointer class="above" 
+           ng-class="{ showing: pointer < 0 }"
+           ng-click="scrollToToday()"><wrapper></wrapper></pointer>
 
   <entry 
-
     class="{{entry.timestamp|day}} 
            {{entry.timestamp|month}}
            date-{{entry.timestamp|date}}
            this-month-{{entry.timestamp|thisMonth}}"
-
-
-    scroll-to-this="entry.timestamp == today"
-    point-to-this="entry.timestamp == today"
-    
-    ng-repeat="entry in entries | orderBy:'timestamp' " 
-
     ng-class="{
       future: entry.timestamp > today,
       past: entry.timestamp < today,
       today: entry.timestamp == today,
       empty: entry.text == ''
-    }">
+    }"
+    scroll-to-this="entry.timestamp == today"
+    point-to-this="entry.timestamp == today"
+    ng-repeat="entry in entries | orderBy:'timestamp' | startFrom:begin | limitTo:pageSize ">
 
     <header>
       <wrapper>
 
+        <a href="#/{{table}}/{{entry._id.$oid}}"
         <day>{{entry.timestamp|day}}</day> 
         <month>{{entry.timestamp|month}}</month> 
         <date>{{entry.timestamp|date}}</date><ordinal>{{entry.timestamp|ordinal}}</ordinal> 
@@ -41,17 +40,13 @@
         <field expanding-area>
           <pre><span></span><br></pre>
           <textarea 
-            ng-model="entry.text" 
-
-            touch-change="entry.update()" 
-            ng-change="updateExceptTouch(entry)"
-
             spellcheck="false"
-
+            ng-model="entry.text" 
+            ng-change="updateExceptTouch(entry)"
+            focus="selectEntry(entry)"
+            touch-change="entry.update()" 
             lends-focus-up="4"
-
-            starts-focused="entry.timestamp == today"
-            >
+            starts-focused="entry.timestamp == today">
           </textarea>
         </field>
 
@@ -60,6 +55,8 @@
 
   </entry>
 
-  <pointer class="below" ng-class="{ showing: pointer > 0 }"></pointer>
+  <pointer class="below" 
+           ng-class="{ showing: pointer > 0 }"
+           ng-click="scrollToToday()"><wrapper></wrapper></pointer>
 
 </entries>

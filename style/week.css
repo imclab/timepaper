@@ -5,26 +5,29 @@
   year {
     display: none; }
 
+  .empty:not(.Monday):not(.Friday) header wrapper {
+    display: none; }
+
   .Friday, .Saturday, .Sunday {
     width: 33.333333%; }
     .Friday field, .Saturday field, .Sunday field {
-      margin: 10px; }
+      margin: 15px; }
       .Friday field > textarea,
       .Friday field > pre, .Saturday field > textarea,
       .Saturday field > pre, .Sunday field > textarea,
       .Sunday field > pre {
-        font: 400 11px/16px Helvetica, Arial, sans-serif; }
+        font: 400 11px/17px Helvetica, Arial, sans-serif; }
 
   .Monday, .Tuesday, .Wednesday, .Thursday {
     width: 25%; }
     .Monday field, .Tuesday field, .Wednesday field, .Thursday field {
-      margin: 10px; }
+      margin: 15px; }
       .Monday field > textarea,
       .Monday field > pre, .Tuesday field > textarea,
       .Tuesday field > pre, .Wednesday field > textarea,
       .Wednesday field > pre, .Thursday field > textarea,
       .Thursday field > pre {
-        font: 400 11px/16px Helvetica, Arial, sans-serif; }
+        font: 400 11px/17px Helvetica, Arial, sans-serif; }
 
   entry:not(.Monday):not(.Friday):not(.today) date, entry:not(.Monday):not(.Friday):not(.today) month, entry:not(.Monday):not(.Friday):not(.today) day:after {
     display: none; }

@@ -9,15 +9,18 @@
   year { 
     display: none;
   }
-
+  
+  .empty:not(.Monday):not(.Friday) header wrapper { 
+    display: none;
+  }
 
   .Friday, .Saturday, .Sunday { 
     width: 33.333333%;
     field {
-      margin: 10px;
+      margin: 15px;
       > textarea,
       > pre {
-        font: 400 11px/16px Helvetica, Arial, sans-serif;
+        font: 400 11px/17px Helvetica, Arial, sans-serif;
       }
     }
   }
@@ -25,11 +28,11 @@
   .Monday, .Tuesday, .Wednesday, .Thursday { 
     width: 25%;
     field {
-      margin: 10px;
+      margin: 15px;
       > textarea,
       > pre {
         
-        font: 400 11px/16px Helvetica, Arial, sans-serif;
+        font: 400 11px/17px Helvetica, Arial, sans-serif;
       }
     }
   }

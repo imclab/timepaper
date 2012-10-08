@@ -9,6 +9,9 @@
   ordinal {
     display: none; }
 
+  entry:not(.empty):after {
+    display: block; }
+
   entry:not(.date-1) month {
     display: none; }
 
@@ -20,13 +23,12 @@
       background-image: none; }
     entry content, entry content wrapper {
       height: 140px;
-      overflow: hidden; }
+      overflow: hidden;
+      user-select: none; }
     entry.focus ::-webkit-scrollbar {
       width: 4px; }
     entry.focus content ::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.15); }
-    entry.focus content, entry.focus content wrapper {
-      overflow: auto; }
     entry field {
       margin: 10px 12px; }
       entry field > textarea,
@@ -36,4 +38,7 @@
         font: 400 11px/15px Helvetica, Arial, sans-serif; }
     entry ribbons img {
       top: -15px;
-      position: relative; } }
+      position: relative; }
+
+  #over {
+    display: block; } }
