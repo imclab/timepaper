@@ -1,45 +1,39 @@
 @media screen and (max-width: 1199px) and (min-width: 800px) {
-  ordinal {
+  calendar ordinal {
     display: none; }
-
-  year {
+  calendar year {
     display: none; }
-
-  entry:before {
+  calendar entry:before {
     position: absolute;
     content: ' ';
     width: 100%;
     height: 700px;
     display: block;
-    z-index: -1; }
-
-  .empty:not(.Monday):not(.Friday) header wrapper {
+    -webkit-transition: background-color 0ms;
+    transition: background-color 0ms; }
+  calendar .empty:not(.Monday):not(.Friday):not(.hover):not(:hover) header wrapper {
     display: none; }
-
-  .Friday, .Saturday, .Sunday {
+  calendar .Friday, calendar .Saturday, calendar .Sunday {
     width: 33.333333%; }
-    .Friday field, .Saturday field, .Sunday field {
+    calendar .Friday field, calendar .Saturday field, calendar .Sunday field {
       margin: 15px; }
-      .Friday field > textarea,
-      .Friday field > pre, .Saturday field > textarea,
-      .Saturday field > pre, .Sunday field > textarea,
-      .Sunday field > pre {
+      calendar .Friday field > textarea,
+      calendar .Friday field > pre, calendar .Saturday field > textarea,
+      calendar .Saturday field > pre, calendar .Sunday field > textarea,
+      calendar .Sunday field > pre {
         font: 400 11px/17px Helvetica, Arial, sans-serif; }
-
-  .Monday, .Tuesday, .Wednesday, .Thursday {
+  calendar .Monday, calendar .Tuesday, calendar .Wednesday, calendar .Thursday {
     width: 25%; }
-    .Monday field, .Tuesday field, .Wednesday field, .Thursday field {
+    calendar .Monday field, calendar .Tuesday field, calendar .Wednesday field, calendar .Thursday field {
       margin: 15px; }
-      .Monday field > textarea,
-      .Monday field > pre, .Tuesday field > textarea,
-      .Tuesday field > pre, .Wednesday field > textarea,
-      .Wednesday field > pre, .Thursday field > textarea,
-      .Thursday field > pre {
+      calendar .Monday field > textarea,
+      calendar .Monday field > pre, calendar .Tuesday field > textarea,
+      calendar .Tuesday field > pre, calendar .Wednesday field > textarea,
+      calendar .Wednesday field > pre, calendar .Thursday field > textarea,
+      calendar .Thursday field > pre {
         font: 400 11px/17px Helvetica, Arial, sans-serif; }
-
-  entry:not(.Monday):not(.Friday):not(.today) date, entry:not(.Monday):not(.Friday):not(.today) month, entry:not(.Monday):not(.Friday):not(.today) day:after {
+  calendar entry:not(.Monday):not(.Friday):not(.today):not(.hover):not(:hover) date, calendar entry:not(.Monday):not(.Friday):not(.today):not(.hover):not(:hover) month, calendar entry:not(.Monday):not(.Friday):not(.today):not(.hover):not(:hover) day:after {
     display: none; }
-
-  content, content wrapper {
+  calendar content, calendar content wrapper {
     position: relative;
     bottom: 0; } }

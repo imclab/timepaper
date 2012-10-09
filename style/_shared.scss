@@ -1,5 +1,40 @@
 @import "always/_always";
-$vendors: -webkit-, '';
 
+@function border-color($color) {
+  @return desaturate(darken($color, 10%), 20%);
+}
+
+
+@mixin entry-class($mbg, $header) {
+
+  background-color: $mbg;
+
+  &.overflow:after { 
+    @include radial-gradient(50% 16px, ellipse farthest-side, transparentize(#000, 0.74), transparentize(#000, 1));
+  }
+
+  &:before { 
+    background-color: $mbg;
+  }
+
+  header {
+    border-bottom-color: border-color($mbg);
+    color: $header;
+    wrapper {
+      background-color: $mbg;
+    }
+  }
+
+  .no-touch & field {
+    > textarea, > pre {
+      text-shadow: 0 1px 0 mix($header, $mbg, 10%);
+    }
+  }
+  
+}
+
+$hover-trans: 0ms;
+$vendors: -webkit-, '';
 $fg: #555;
 $red: #f03;
+$edit: #faf8f0;

@@ -2,58 +2,65 @@
 
 @media screen and (max-width: 1199px) and (min-width: 800px) {
 
-  ordinal {
-    display: none;
-  }
+  calendar { 
 
-  year { 
-    display: none;
-  }
-  entry:before { 
-    position: absolute;
-    content: ' ';
-    width: 100%;
-    height: 700px;
-    display: block;
-    z-index: -1;
-  }
-  
-  .empty:not(.Monday):not(.Friday) header wrapper { 
-    display: none;
-  }
-
-  .Friday, .Saturday, .Sunday { 
-    width: 33.333333%;
-    field {
-      margin: 15px;
-      > textarea,
-      > pre {
-        font: 400 11px/17px Helvetica, Arial, sans-serif;
-      }
-    }
-  }
-
-  .Monday, .Tuesday, .Wednesday, .Thursday { 
-    width: 25%;
-    field {
-      margin: 15px;
-      > textarea,
-      > pre {
-        
-        font: 400 11px/17px Helvetica, Arial, sans-serif;
-      }
-    }
-  }
-
-  entry:not(.Monday):not(.Friday):not(.today) { 
-    date, month, day:after { 
+    ordinal {
       display: none;
     }
-  }
 
-  content, content wrapper { 
-    position: relative;
-    bottom: 0;
+    year { 
+      display: none;
+    }
+
+
+    entry:before { 
+      position: absolute;
+      content: ' ';
+      width: 100%;
+      height: 700px;
+      display: block;
+      // z-index: -1;
+      @include prefix(transition, background-color $hover-trans);
+    }
+    
+    .empty:not(.Monday):not(.Friday):not(.hover):not(:hover) header wrapper { 
+      display: none;
+    }
+
+    .Friday, .Saturday, .Sunday { 
+      width: 33.333333%;
+      field {
+        margin: 15px;
+        > textarea,
+        > pre {
+          font: 400 11px/17px Helvetica, Arial, sans-serif;
+        }
+      }
+    }
+
+    .Monday, .Tuesday, .Wednesday, .Thursday { 
+      width: 25%;
+      field {
+        margin: 15px;
+        > textarea,
+        > pre {
+          
+          font: 400 11px/17px Helvetica, Arial, sans-serif;
+        }
+      }
+    }
+
+    entry:not(.Monday):not(.Friday):not(.today):not(.hover):not(:hover) { 
+      date, month, day:after { 
+        display: none;
+      }
+    }
+
+    content, content wrapper { 
+      position: relative;
+      bottom: 0;
+    }
+
   }
 
 }

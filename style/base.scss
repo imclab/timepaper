@@ -6,29 +6,6 @@
   100% { opacity: 1 }
 }
 
-@mixin entry-class($mbg, $header) {
-  background-color: $mbg;
-
-  &.overflow:after { 
-    @include radial-gradient(50% 16px, ellipse farthest-side, transparentize(#000, 0.74), transparentize(#000, 1));
-  }
-
-  &:before { 
-    background-color: $mbg;
-  }
-  header {
-    border-bottom-color: desaturate(darken($mbg, 4%), 20%);
-    color: $header;
-    wrapper {
-      background-color: $mbg;
-    }
-  }
-  .no-touch & field {
-    > textarea, > pre {
-      text-shadow: 0 1px 0 mix($header, $mbg, 10%);
-    }
-  }
-}
 
 * {
   margin: 0;
@@ -43,16 +20,20 @@
 body {
   @include prefix(user-select, none);     
   font-family: 'Radley', serif;
-  padding-top: 17px;
+}
+
+ container { 
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
   overflow-x: hidden;
-}
-
-entries { 
-  @include prefix(animation, fade-in 1300ms);
-}
-
-.touch field * { 
-  -webkit-user-select: none;
+  overflow-y: auto;
+  .touch & { 
+    top: 47px;
+  }
 }
 
 entry {
@@ -63,6 +44,8 @@ entry {
   width: 100%;
   vertical-align: top;
 
+  @include prefix(transition, background-color $hover-trans);
+
   &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
     @include entry-class(#fefefe, #888);
   }
@@ -71,19 +54,24 @@ entry {
     @include entry-class(#EBF7F4, #888);
   }
 
+  &:hover {
+    @include entry-class($edit, #000);
+  }
+
   &:after {
     z-index: 2;
     width: 100%;
     bottom: 0;
-    height: 8px;
+    height: 6px;
     display: none;
     content: ' ';
     position: absolute;
   }
 
+
 }
 
-header {
+calendar header {
 
   font-size: 13px;
   position: relative;
@@ -104,6 +92,7 @@ header {
   }
 
   wrapper {
+    @include prefix(transition, color $hover-trans);
     display: inline-block;
     position: absolute;
     line-height: 0px;
@@ -121,12 +110,13 @@ header {
     margin-left: 1px;
   }
 
-  day {
-    &:after { 
-      content: ',';
-    }
-    font-style: italic;
+}
+
+day {
+  &:after { 
+    content: ',';
   }
+  font-style: italic;
 }
 
 content {

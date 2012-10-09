@@ -1,44 +1,40 @@
 @media screen and (min-width: 1200px) {
-  year, day {
+  calendar year, calendar day {
     display: none; }
-
-  header wrapper {
+  calendar header wrapper {
     padding-left: 4px;
     padding-right: 4px; }
-
-  ordinal {
+  calendar ordinal {
     display: none; }
-
-  entry:not(.empty):after {
+  calendar entry:not(.empty):after {
     display: block; }
-
-  entry:not(.date-1) month {
+  calendar entry:not(.date-1) month {
     display: none; }
-
-  entry {
+  calendar entry {
     width: 14.2857142857%; }
-    entry.Monday:first-of-type {
+    calendar entry * {
+      cursor: pointer; }
+    calendar entry.Monday:first-of-type {
       margin-left: 14.2857142857%; }
-    entry.today content wrapper {
+    calendar entry.today content wrapper {
       background-image: none; }
-    entry content, entry content wrapper {
+    calendar entry content, calendar entry content wrapper {
       height: 140px;
       overflow: hidden;
       user-select: none; }
-    entry.focus ::-webkit-scrollbar {
+    calendar entry.focus ::-webkit-scrollbar {
       width: 4px; }
-    entry.focus content ::-webkit-scrollbar-thumb {
+    calendar entry.focus content ::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.15); }
-    entry field {
+    calendar entry field {
       margin: 10px 12px; }
-      entry field > textarea,
-      entry field > pre {
+      calendar entry field > textarea,
+      calendar entry field > pre {
         text-shadow: none;
         padding: 0;
         font: 400 11px/15px Helvetica, Arial, sans-serif; }
-    entry ribbons img {
+    calendar entry ribbons img {
       top: -15px;
       position: relative; }
-
-  #over {
+  calendar #over {
     display: block; } }

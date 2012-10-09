@@ -50,23 +50,28 @@
 body {
   -webkit-user-select: none;
   user-select: none;
-  font-family: 'Radley', serif;
-  padding-top: 17px;
-  overflow-x: hidden; }
+  font-family: 'Radley', serif; }
 
-entries {
-  -webkit-animation: fade-in 1300ms;
-  animation: fade-in 1300ms; }
-
-.touch field * {
-  -webkit-user-select: none; }
+container {
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto; }
+  .touch container {
+    top: 47px; }
 
 entry {
   display: inline-block;
   cursor: text;
   position: relative;
   width: 100%;
-  vertical-align: top; }
+  vertical-align: top;
+  -webkit-transition: background-color 0ms;
+  transition: background-color 0ms; }
   entry.Monday, entry.Tuesday, entry.Wednesday, entry.Thursday, entry.Friday {
     background-color: #fefefe; }
     entry.Monday.overflow:after, entry.Tuesday.overflow:after, entry.Wednesday.overflow:after, entry.Thursday.overflow:after, entry.Friday.overflow:after {
@@ -75,7 +80,7 @@ entry {
     entry.Monday:before, entry.Tuesday:before, entry.Wednesday:before, entry.Thursday:before, entry.Friday:before {
       background-color: #fefefe; }
     entry.Monday header, entry.Tuesday header, entry.Wednesday header, entry.Thursday header, entry.Friday header {
-      border-bottom-color: #f4f4f4;
+      border-bottom-color: #e5e5e5;
       color: #888888; }
       entry.Monday header wrapper, entry.Tuesday header wrapper, entry.Wednesday header wrapper, entry.Thursday header wrapper, entry.Friday header wrapper {
         background-color: #fefefe; }
@@ -89,27 +94,41 @@ entry {
     entry.Saturday:before, entry.Sunday:before {
       background-color: #ebf7f4; }
     entry.Saturday header, entry.Sunday header {
-      border-bottom-color: #e1ecea;
+      border-bottom-color: #cee1dc;
       color: #888888; }
       entry.Saturday header wrapper, entry.Sunday header wrapper {
         background-color: #ebf7f4; }
     .no-touch entry.Saturday field > textarea, .no-touch entry.Saturday field > pre, .no-touch entry.Sunday field > textarea, .no-touch entry.Sunday field > pre {
       text-shadow: 0 1px 0 #e1ebe9; }
+  entry:hover {
+    background-color: #faf8f0; }
+    entry:hover.overflow:after {
+      background-image: -webkit-radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0));
+      background-image: radial-gradient(50% 16px, ellipse farthest-side, rgba(0, 0, 0, 0.26), rgba(0, 0, 0, 0)); }
+    entry:hover:before {
+      background-color: #faf8f0; }
+    entry:hover header {
+      border-bottom-color: #e6e2d1;
+      color: black; }
+      entry:hover header wrapper {
+        background-color: #faf8f0; }
+    .no-touch entry:hover field > textarea, .no-touch entry:hover field > pre {
+      text-shadow: 0 1px 0 #e1dfd8; }
   entry:after {
     z-index: 2;
     width: 100%;
     bottom: 0;
-    height: 8px;
+    height: 6px;
     display: none;
     content: ' ';
     position: absolute; }
 
-header {
+calendar header {
   font-size: 13px;
   position: relative;
   z-index: 3;
   border-bottom: 1px solid transparent; }
-  .today header wrapper:after {
+  .today calendar header wrapper:after {
     display: inline-block;
     content: ' ';
     float: right;
@@ -119,24 +138,27 @@ header {
     height: 6px;
     border: 2px solid #fff;
     border-radius: 10px; }
-  header wrapper {
+  calendar header wrapper {
+    -webkit-transition: color 0ms;
+    transition: color 0ms;
     display: inline-block;
     position: absolute;
     line-height: 0px;
     padding: 0 5px 0 10px;
     height: 1px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15); }
-  header ordinal {
+  calendar header ordinal {
     display: inline-block;
     display: none;
     font-size: 9px;
     vertical-align: top;
     margin-top: -2px;
     margin-left: 1px; }
-  header day {
-    font-style: italic; }
-    header day:after {
-      content: ','; }
+
+day {
+  font-style: italic; }
+  day:after {
+    content: ','; }
 
 content {
   overflow: hidden;

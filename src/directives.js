@@ -56,12 +56,13 @@ angular.module('entry')
   return function($scope, element, attrs) {
     var raw = element[0];
     if ($scope.$eval(attrs.startsFocused)) {
-      setTimeout(function() {
-
+        
+      // setTimeout(function() {
+        // console.log('yo');
         raw.focus();
         setPosition(raw.value.length);
 
-      }, 200)
+      // }, 200)
     }
     function setPosition(pos) {
       if (raw.setSelectionRange) {
@@ -112,7 +113,7 @@ angular.module('entry')
       element = element.parent();
 
     var checkOverflow = function() {
-      if (child.height() > element.height() - 20) {
+      if (child[0].offsetHeight > element[0].offsetHeight - 20) {
         element.addClass('overflow');
       } else { 
         element.removeClass('overflow');
@@ -139,11 +140,12 @@ angular.module('entry')
     var span = element.find('span');
 
     var change = function() {
-      span.text(area.val());
+      span.text(area.val() + '\n');
     };
 
     _.defer(change);
-    area.bind('input', Modernizr.touch ? _.debounce(change, 1000) : change);
+    
+   if (!Modernizr.touch) area.bind('input', change);
     Modernizr.touch && area.bind('blur', change);
 
   }

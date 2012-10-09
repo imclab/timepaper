@@ -1,8 +1,12 @@
 angular.module('entry', ['mongolab']).config(function($routeProvider) {
+  var lastTable = 'demo';
+  if (Modernizr.localstorage) {
+    lastTable = localStorage.getItem('lastTable');
+  }
   $routeProvider.
-    when('/:tableId', { controller: EntryCtrl, templateUrl: 'entry.html' }).
-    when('/:tableId/:entryId', { controller: EditCtrl, templateUrl: 'solo.html' }).
-    otherwise({ redirectTo: 'demo' });
+    when('/:tableId', { controller: EntryCtrl, templateUrl: 'templates/calendar.html' }).
+    when('/:tableId/:entryId', { controller: EditCtrl, templateUrl: 'templates/solo.html' }).
+    otherwise({ redirectTo: lastTable });
 });
 
 function EntryCtrl($scope, $route, $routeParams, Entry) {
@@ -10,6 +14,10 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   Entry = Entry($routeParams.tableId);
 
   $scope.table = $routeParams.tableId;
+
+  if (Modernizr.localstorage) {
+    lastTable = localStorage.setItem('lastTable', $scope.table);
+  }
 
   var d = today();
   var day_in_millis = 86400000;
@@ -44,8 +52,9 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.solo = function(entry) {
-    if (!Modernizr.touch) return;
-    window.location = '#/'+$scope.table+'/'+entry._id.$oid;
+    if (Modernizr.touch || window.innerWidth > 1199) {
+      window.location = '#/'+$scope.table+'/'+entry._id.$oid;
+    }
   };
 
   $scope.entries = Entry.query({}, function() {
@@ -132,5 +141,9 @@ function EditCtrl($scope, $location, $routeParams, Entry) {
   Entry.get({id: $routeParams.entryId}, function(entry) {
     $scope.entry = entry;
   });
+
+  $scope.back = function() {
+    window.location = '#/'+$routeParams.tableId;
+  };
 
 }
