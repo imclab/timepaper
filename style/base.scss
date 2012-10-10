@@ -75,10 +75,10 @@ entry {
   &.future {
     @include entry-class(mix(#657b83, #fff, 8%), #657b83);
   }
-  &.focus {
+  &.focus, &.open {
     @include entry-class($edit, #b58900);
   }
-  &:not(.focus):hover {
+  &:not(.focus):not(.open):hover {
     @include entry-class(mix($edit, #fff, 50%), #b58900);
   }
 
@@ -159,11 +159,11 @@ content wrapper {
   position: relative;
   z-index: 2;
 
-  .open & {
-    left: -40px;
-    opacity: 0;
-    pointer-events: none;
-  }
+  // .open & {
+  //   left: -40px;
+  //   opacity: 0;
+  //   pointer-events: none;
+  // }
 
 }
 
@@ -269,7 +269,6 @@ pointer {
 }
 
 editor {
-
   display: none;
   position: fixed;
   top: 0;

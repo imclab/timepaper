@@ -96,35 +96,35 @@ entry {
         border-color: #dadada; }
     .no-touch entry.future field > textarea, .no-touch entry.future field > pre {
       text-shadow: 0 1px 0 #e3e7e9; }
-  entry.focus {
+  entry.focus, entry.open {
     background-color: #f6f3ea; }
-    entry.focus.overflow:after {
+    entry.focus.overflow:after, entry.open.overflow:after {
       background-image: -webkit-radial-gradient(50% 13px, ellipse farthest-side, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
       background-image: radial-gradient(50% 13px, ellipse farthest-side, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)); }
-    entry.focus:before {
+    entry.focus:before, entry.open:before {
       background-color: #f6f3ea; }
-    entry.focus header {
+    entry.focus header, entry.open header {
       border-bottom-color: #dfdbce;
       color: #b58900; }
-      entry.focus header wrapper {
+      entry.focus header wrapper, entry.open header wrapper {
         background-color: #f6f3ea;
         border-color: #dfdbce; }
-    .no-touch entry.focus field > textarea, .no-touch entry.focus field > pre {
+    .no-touch entry.focus field > textarea, .no-touch entry.focus field > pre, .no-touch entry.open field > textarea, .no-touch entry.open field > pre {
       text-shadow: 0 1px 0 #efe8d2; }
-  entry:not(.focus):hover {
+  entry:not(.focus):not(.open):hover {
     background-color: #faf9f4; }
-    entry:not(.focus):hover.overflow:after {
+    entry:not(.focus):not(.open):hover.overflow:after {
       background-image: -webkit-radial-gradient(50% 13px, ellipse farthest-side, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
       background-image: radial-gradient(50% 13px, ellipse farthest-side, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)); }
-    entry:not(.focus):hover:before {
+    entry:not(.focus):not(.open):hover:before {
       background-color: #faf9f4; }
-    entry:not(.focus):hover header {
+    entry:not(.focus):not(.open):hover header {
       border-bottom-color: #e3e1d8;
       color: #b58900; }
-      entry:not(.focus):hover header wrapper {
+      entry:not(.focus):not(.open):hover header wrapper {
         background-color: #faf9f4;
         border-color: #e3e1d8; }
-    .no-touch entry:not(.focus):hover field > textarea, .no-touch entry:not(.focus):hover field > pre {
+    .no-touch entry:not(.focus):not(.open):hover field > textarea, .no-touch entry:not(.focus):not(.open):hover field > pre {
       text-shadow: 0 1px 0 #f3eddb; }
   entry:after {
     z-index: 2;
@@ -187,10 +187,6 @@ content wrapper {
   display: block;
   position: relative;
   z-index: 2; }
-  .open content wrapper {
-    left: -40px;
-    opacity: 0;
-    pointer-events: none; }
 
 field {
   display: block;

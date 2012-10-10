@@ -1,5 +1,11 @@
 <solo>
   <ng-include src="'templates/header.html'"></ng-include>
-  <textarea rows="40" cols="40" starts-focused="true" ng-model="entry.text"></textarea>
+  <textarea 
+    starts-focused="true" 
+    ng-model="entry.text"
+    ng-change="updateExceptTouch(entry)"
+    spellcheck="false"
+    touch-change="entry.update()">
+  </textarea>
   <button ng-click="back()">Close</button>
 </solo>

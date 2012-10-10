@@ -33,6 +33,7 @@
       calendar entry field > pre {
         text-shadow: none;
         padding: 0;
+        height: 140px;
         font: 400 11px/15px Helvetica, Arial, sans-serif; }
     calendar entry ribbons img {
       top: -15px;

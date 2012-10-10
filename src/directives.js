@@ -139,7 +139,6 @@ angular.module('entry')
 
   return function($scope, element, attrs) {
 
-    element.addClass('expandingArea');
     element.addClass('active');
 
     var area = element.find('textarea');
@@ -263,36 +262,17 @@ angular.module('entry')
   }
 })
 
-.directive('touchChange', function() {
+.directive('touchBlur', function() {
   return function($scope, element, attrs) {
     if (!Modernizr.touch) return;
     element.bind('blur', function() {
       $scope.$apply(function() {
-        $scope.$eval(attrs.touchChange);
+        $scope.$eval(attrs.touchBlur);
       });
     });
   }
 })
 
-.directive('focus', function() {
-  return function($scope, element, attrs) {
-    element.bind('focus', function() {
-      $scope.$apply(function() {
-        $scope.$eval(attrs.focus);
-      });
-    });
-  }
-})
-
-.directive('onTouch', function() {
-  return function($scope, element, attrs) {
-    element.bind('touchstart', function() {
-      $scope.$apply(function() {
-        $scope.$eval(attrs.onTouch);
-      });
-    });
-  }
-})
 .directive('revealOnLast', function() {
   var reveal = _.once(function() {
     setTimeout(function() {
