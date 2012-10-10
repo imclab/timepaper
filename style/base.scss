@@ -20,7 +20,7 @@
 body {
   @include prefix(user-select, none);     
   font-family: 'Radley', serif;
-  background: #fff;
+  background: #eee;
 }
 
 calendar {
@@ -37,7 +37,6 @@ calendar {
   &.birdseye { 
     @include prefix(transition, -webkit-transform 0.35s cubic-bezier(0.250, 0.250, 0.000, 0.990), opacity 0.3s linear);
     @include prefix(transform, scale(0.3));
-    background: #fff;
   }
 
 }
@@ -53,28 +52,48 @@ entry {
   @include prefix(transition, background-color $hover-trans);
 
   &.Monday, &.Tuesday, &.Wednesday, &.Thursday, &.Friday {
-    @include entry-class(#fefefe, #888);
+    @include entry-class(#fefefe, #b58900);
   }
 
   &.Saturday, &.Sunday {
-    @include entry-class(#EBF7F4, #888);
+    @include entry-class(#EBF7F4, #b58900);
   }
 
-  &:hover {
-    @include entry-class($edit, #000);
+
+  &.future {
+    @include entry-class(mix(#657b83, #fff, 8%), #657b83);
   }
+  &.focus {
+    @include entry-class($edit, #b58900);
+  }
+  &:not(.focus):hover {
+    @include entry-class(mix($edit, #fff, 50%), #b58900);
+  }
+
 
   &:after {
     z-index: 2;
     width: 100%;
     bottom: 0;
     height: 6px;
-    display: none;
+    opacity: 0;
+    @include prefix(transition, opacity 1s);
     content: ' ';
     position: absolute;
   }
 
+}
 
+calendar entry.today header wrapper:after {
+  display: inline-block;
+  content: ' ';
+  float: right;
+  margin: -2px 2px 0 5px;
+  background: $red;
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  box-shadow: 0 -1px 0 #fff, 1px 0 0 #fff;
 }
 
 calendar header {
@@ -85,24 +104,12 @@ calendar header {
   border-bottom: 1px solid transparent;
 
 
-  .today & wrapper:after {
-    display: inline-block;
-    content: ' ';
-    float: right;
-    margin: -4px 2px 0 5px;
-    background: $red;
-    width: 6px;
-    height: 6px;
-    border: 2px solid #fff;
-    border-radius: 10px;
-  }
-
   wrapper {
     @include prefix(transition, color $hover-trans);
     display: inline-block;
     position: absolute;
     line-height: 0px;
-    padding: 0 5px 0 10px;
+    padding: 0 5px 0 5px;
     height: 1px;
     text-shadow: 0 1px 0 rgba(0,0,0,0.15);
   } 
@@ -186,7 +193,7 @@ field {
 
 pointer { 
 
-  $size: 20px;
+  $size: 30px;
   $size2: $size + 35px;
 
   @include prefix(transition, margin 0.2s ease-out, opacity 0.2s);

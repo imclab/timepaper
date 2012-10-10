@@ -57,7 +57,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.solo = function(entry) {
-    if (Modernizr.touch || window.innerWidth > 1199) {
+    if (Modernizr.touch) {
       window.location = '#/'+$scope.table+'/'+entry._id.$oid;
     }
   };

@@ -4,8 +4,8 @@ solo header {
   left: 0;
   right: 0;
   display: block;
-  background-color: #faf8f0;
-  border-bottom: 1px solid #e6e2d1;
+  background-color: #f6f3ea;
+  border-bottom: 1px solid #dfdbce;
   color: #555555;
   text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 #cccccc;
   box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
@@ -33,12 +33,12 @@ solo button {
   color: #fff;
   box-shadow: 0 1px 0 #fff;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  background-image: -webkit-linear-gradient(top, #dacb90 0%, #cdba6a 100%);
-  background-image: linear-gradient(top, #dacb90 0%, #cdba6a 100%);
-  border: 1px solid #c7b157; }
+  background-image: -webkit-linear-gradient(top, #d0c091 0%, #c0ac6d 100%);
+  background-image: linear-gradient(top, #d0c091 0%, #c0ac6d 100%);
+  border: 1px solid #b9a15b; }
   solo button:hover {
-    background-image: -webkit-linear-gradient(top, #dacb90 0%, #c6af53 100%);
-    background-image: linear-gradient(top, #dacb90 0%, #c6af53 100%); }
+    background-image: -webkit-linear-gradient(top, #d0c091 0%, #b79f58 100%);
+    background-image: linear-gradient(top, #d0c091 0%, #b79f58 100%); }
 solo textarea {
   position: absolute;
   font: 400 16px/22px Helvetica, Arial, sans-serif;

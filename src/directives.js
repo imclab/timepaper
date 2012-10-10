@@ -109,7 +109,7 @@ angular.module('entry')
     console.log('overflow', elems.length);
     _.each(elems, function(pair) {
 
-      if (pair[0][0].offsetHeight > pair[1][0].offsetHeight - 20) {
+      if (pair[0][0].offsetHeight > pair[1][0].offsetHeight) {
         pair[1].addClass('overflow');
       } else { 
         pair[1].removeClass('overflow');
@@ -130,7 +130,7 @@ angular.module('entry')
     elems.push([child, element]);
     child.bind('input', checkOverflow);
 
-    // _.defer(checkOverflow);
+    setTimeout(checkOverflow, 1000);
   }
 
 })

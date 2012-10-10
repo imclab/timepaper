@@ -1,13 +1,14 @@
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1250px) {
   calendar year, calendar day {
     display: none; }
   calendar header wrapper {
     padding-left: 4px;
-    padding-right: 4px; }
+    padding-right: 4px;
+    text-shadow: 0 -1px 0 white, 1px 0 0 white; }
   calendar ordinal {
     display: none; }
   calendar entry:not(.empty):after {
-    display: block; }
+    opacity: 1; }
   calendar entry:not(.date-1) month {
     display: none; }
   calendar entry {

@@ -1,6 +1,6 @@
 @import "_shared";
 
-@media screen and (max-width: 1199px) and (min-width: 800px) {
+@media screen and (max-width: 1249px) and (min-width: 850px) {
 
   calendar { 
 
@@ -27,7 +27,7 @@
       @include prefix(transition, background-color $hover-trans);
     }
     
-    .empty:not(.Monday):not(.Friday):not(.hover):not(:hover) header wrapper { 
+    .empty:not(.Monday):not(.Friday):not(.focus):not(.hover):not(:hover) header wrapper { 
       display: none;
     }
 
@@ -54,7 +54,7 @@
       }
     }
 
-    entry:not(.Monday):not(.Friday):not(.today):not(.hover):not(:hover) { 
+    entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover) { 
       date, month, day:after { 
         display: none;
       }
