@@ -296,11 +296,10 @@ angular.module('entry')
 .directive('revealOnLast', function() {
   return function($scope, element, attrs) {
     if ($scope.$last === true) {
-      element.ready(function() {
+      console.log('wtf');
         setTimeout(function() {
           angular.element(document.body).addClass('reveal');
-        }, 200);
-      })
+        }, 300);
     }
   }
 });
