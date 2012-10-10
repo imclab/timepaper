@@ -22,7 +22,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.begin = 0;
   $scope.today = d.getTime();
-  $scope.pageSize = 100;
+  $scope.pageSize = 200;
   $scope.pointer = -1;
   $scope.Modernizr = Modernizr;
   $scope.birdseye = false;
@@ -84,6 +84,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.addTop = function() {
+    console.log('top');
     angular.forEach(_.range($scope.firstEntry-add_on_scroll, $scope.firstEntry), function(j) {
       $scope.entries.unshift(makeEntry(j));
     });
@@ -91,11 +92,21 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.addBottom = function() {
+    console.log('bottom');
     angular.forEach(_.range($scope.lastEntry, $scope.lastEntry+add_on_scroll), function(j) {
       $scope.entries.push(makeEntry(j));
     });
     $scope.lastEntry += add_on_scroll;
     $scope.begin += add_on_scroll;
+  };
+
+  $scope.toggleBirdseye = function() {
+      
+    if ($scope.birdseye = !$scope.birdseye) {
+      // $scope.pageSize = 400;
+    } else { 
+      // $scope.pageSize = 200;
+    }
   };
 
 
@@ -112,7 +123,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   }
 
   function initDatabase() {
-    angular.forEach(_.range(0, 50), function(i) {
+    angular.forEach(_.range(-50, 50), function(i) {
       var e = makeEntry(i);
       e.$save();
       $scope.entries.push(e);

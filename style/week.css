@@ -13,7 +13,7 @@
     display: block;
     -webkit-transition: background-color 0ms;
     transition: background-color 0ms; }
-  calendar .empty:not(.Monday):not(.Friday):not(.focus):not(.hover):not(:hover) header wrapper {
+  calendar .empty:not(.Monday):not(.Friday):not(.focus):not(.hover):not(:hover):not(.today) header wrapper {
     display: none; }
   calendar .Friday, calendar .Saturday, calendar .Sunday {
     width: 33.333333%; }
@@ -34,7 +34,7 @@
       calendar .Wednesday field > pre, calendar .Thursday field > textarea,
       calendar .Thursday field > pre {
         font: 400 11px/17px Helvetica, Arial, sans-serif; }
-  calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover) date, calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover) month, calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover) day:after {
+  calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover):not(.today) date, calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover):not(.today) month, calendar entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover):not(.today) day:after {
     display: none; }
   calendar content, calendar content wrapper {
     position: relative;

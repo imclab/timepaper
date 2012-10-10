@@ -20,6 +20,16 @@
       cursor: pointer; }
     calendar entry.Monday:first-of-type {
       margin-left: 14.2857142857%; }
+    calendar entry.Tuesday:first-of-type {
+      margin-left: 28.57143%; }
+    calendar entry.Wednesday:first-of-type {
+      margin-left: 42.85714%; }
+    calendar entry.Thursday:first-of-type {
+      margin-left: 57.14286%; }
+    calendar entry.Friday:first-of-type {
+      margin-left: 71.42857%; }
+    calendar entry.Saturday:first-of-type {
+      margin-left: 85.71429%; }
     calendar entry.today content wrapper {
       background-image: none; }
     calendar entry content, calendar entry content wrapper {

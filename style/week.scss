@@ -29,7 +29,7 @@
       @include prefix(transition, background-color $hover-trans);
     }
     
-    .empty:not(.Monday):not(.Friday):not(.focus):not(.hover):not(:hover) header wrapper { 
+    .empty:not(.Monday):not(.Friday):not(.focus):not(.hover):not(:hover):not(.today) header wrapper { 
       display: none;
     }
 
@@ -56,7 +56,7 @@
       }
     }
 
-    entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover) { 
+    entry:not(.Monday):not(.Friday):not(.today):not(.focus):not(.hover):not(:hover):not(.today) { 
       date, month, day:after { 
         display: none;
       }

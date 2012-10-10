@@ -61,8 +61,8 @@ angular.module('entry')
         raw.focus();
         setPosition(raw.value.length);
       }
-      if (Modernizr.touch) focus();
-      else setTimeout(focus, 200);
+      // if (Modernizr.touch) focus();
+      // else setTimeout(focus, 200);
 
     }
     function setPosition(pos) {
@@ -223,8 +223,8 @@ angular.module('entry')
 .directive('reachTop', function() {
   return function($scope, element, attrs) {
     // if (Modernizr.touch) return;
-    angular.element(window).bind('scroll', function() {
-      if (document.body.scrollTop < 250) {
+    angular.element(window).bind('mousewheel', function() {
+      if (document.body.scrollTop < 50) {
 
 
         var center = getCenteredElement('entry');
@@ -244,8 +244,9 @@ angular.module('entry')
 .directive('reachBottom', function() {
   return function($scope, element, attrs) {
     // if (Modernizr.touch) return;
-    angular.element(window).bind('scroll', function() {
-      if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 200) {
+    angular.element(window).bind('mousewheel', function() {
+
+      if (document.body.scrollTop > document.body.scrollHeight - window.innerHeight - 50) {
 
         var center = getCenteredElement('entry');
         var rect = center.getBoundingClientRect();
