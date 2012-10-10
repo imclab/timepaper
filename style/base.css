@@ -40,9 +40,6 @@ ng-include solo {
   -webkit-user-select: none;
   user-select: none; }
 
-ng-include.showing solo {
-  margin-left: 0; }
-
 entry {
   display: inline-block;
   cursor: text;

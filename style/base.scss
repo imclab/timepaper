@@ -46,12 +46,8 @@ ng-include solo {
   margin-left: -500px;
   @include prefix(transition, all 0.2s $easing);
   @include prefix(user-select, none);
-
 }
 
-ng-include.showing solo { 
-  margin-left: 0;
-}
 
 entry {
 
