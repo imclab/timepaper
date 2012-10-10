@@ -17,6 +17,12 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   Entry = Entry($routeParams.tableId);
 
   $scope.table = $routeParams.tableId;
+  $scope.month = window.innerWidth > 1249;
+  angular.element(window).bind('resize', function() {
+    $scope.$apply(function() {
+      $scope.month = window.innerWidth > 1249;
+    });
+  });
 
   if (Modernizr.localstorage) {
     lastTable = localStorage.setItem('lastTable', $scope.table);
@@ -28,10 +34,11 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.begin = 0;
   $scope.today = d.getTime();
-  $scope.pageSize = 80;
+  $scope.pageSize = 100;
   $scope.pointer = -1;
   $scope.Modernizr = Modernizr;
   $scope.birdseye = false;
+  $scope.drawer = false;
   
   $scope.updateExceptTouch = function(entry) {
     !Modernizr.touch && entry.update();
@@ -56,7 +63,16 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
     $scope.pointer = p;
   };
 
+  $scope.back = function() {
+    $scope.drawer = false;
+  }
+
   $scope.solo = function(entry) {
+    if ($scope.month) {
+      $scope.drawer = true;
+      document.querySelector('solo textarea').focus();
+      $scope.entry = entry;
+    }
     if (Modernizr.touch) {
       window.location = '#/'+$scope.table+'/'+entry._id.$oid;
     }
@@ -83,9 +99,6 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
     
   });
 
-  $scope.selectEntry = function(entry) {
-    $scope.selectedEntry = entry;
-  };
 
   $scope.addTop = function() {
 
@@ -144,7 +157,7 @@ function EditCtrl($scope, $location, $routeParams, Entry) {
 
   Entry = Entry($routeParams.tableId);
   Entry.get({id: $routeParams.entryId}, function(entry) {
-    $scope.entry = entry;
+    $scope.selectedEntry = entry;
   });
 
   $scope.back = function() {

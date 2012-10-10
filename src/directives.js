@@ -62,7 +62,7 @@ angular.module('entry')
         setPosition(raw.value.length);
       }
       if (Modernizr.touch) focus();
-      else setTimeout(focus, 100);
+      else setTimeout(focus, 200);
 
     }
     function setPosition(pos) {
@@ -130,7 +130,7 @@ angular.module('entry')
     elems.push([child, element]);
     child.bind('input', checkOverflow);
 
-    setTimeout(checkOverflow, 1000);
+    // setTimeout(checkOverflow, 1000);
   }
 
 })
@@ -294,12 +294,14 @@ angular.module('entry')
   }
 })
 .directive('revealOnLast', function() {
+  var reveal = _.once(function() {
+    setTimeout(function() {
+      angular.element(document.body).addClass('reveal');
+    }, 300);
+  })
   return function($scope, element, attrs) {
     if ($scope.$last === true) {
-      console.log('wtf');
-        setTimeout(function() {
-          angular.element(document.body).addClass('reveal');
-        }, 300);
+      reveal();
     }
   }
 });

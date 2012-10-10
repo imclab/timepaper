@@ -4,7 +4,6 @@
 
   calendar { 
 
-
     year, day { 
       display: none;
     }
@@ -13,20 +12,7 @@
       padding-left: 4px;
       padding-right: 4px;
       text-shadow: 0 -1px 0 #fff, 1px 0 0 #fff;
-
     }
-
-//     .date-1 header wrapper { 
-// padding: 12px 8px 0 8px;
-// border-radius: 40px 40px 0 0;
-// margin-top: -13px;
-// border-top-style: solid;
-// border-left-style: solid;
-// border-right-style: solid;
-// min-width: 10px;
-// border-top-width:   1px;
-// border-left-width:  1px;
-// border-right-width: 1px;}
 
     ordinal {
       display: none;
@@ -41,18 +27,18 @@
         display: none;  
       }    
     }
-
     
     entry {
 
-      * { cursor: pointer; }
+      width: 14.2857142857%;
+
+      * { 
+        cursor: pointer; 
+      }
 
       &.Monday:first-of-type { 
         margin-left: 14.2857142857%;
       }
-
-      // width: #{100/7}%;
-      width: 14.2857142857%;
 
       &.today content wrapper {
         background-image: none;
@@ -68,14 +54,14 @@
       &.focus {
 
         ::-webkit-scrollbar {
-         width: 4px;
-       }
+          width: 4px;
+        }
 
-       content ::-webkit-scrollbar-thumb {
-        background-color: transparentize(#000, 0.85);
-      }
+        content ::-webkit-scrollbar-thumb {
+          background-color: transparentize(#000, 0.85);
+        }
 
-      content, content wrapper { 
+        content, content wrapper { 
           // overflow: auto;
         }
         

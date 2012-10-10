@@ -1,29 +1,6 @@
-solo header {
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  background-color: #f6f3ea;
-  border-bottom: 1px solid #dfdbce;
-  color: #555555;
-  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 #cccccc;
-  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
-  margin: 0;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 15px;
-  position: fixed; }
-  solo header wrapper {
-    margin: 0;
-    height: auto; }
-solo button {
+button {
   padding: 0 10px;
   cursor: pointer;
-  position: fixed;
-  z-index: 2;
-  top: 7px;
-  right: 5px;
   text-align: center;
   font-size: 11px;
   font-weight: bold;
@@ -36,13 +13,43 @@ solo button {
   background-image: -webkit-linear-gradient(top, #d0c091 0%, #c0ac6d 100%);
   background-image: linear-gradient(top, #d0c091 0%, #c0ac6d 100%);
   border: 1px solid #b9a15b; }
-  solo button:hover {
+  button:hover {
     background-image: -webkit-linear-gradient(top, #d0c091 0%, #b79f58 100%);
     background-image: linear-gradient(top, #d0c091 0%, #b79f58 100%); }
+
+solo header {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  display: block;
+  background-color: #f6f3ea;
+  border-bottom: 1px solid #dfdbce;
+  color: #555555;
+  text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.7), 0 1px 0 #cccccc;
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 15px;
+  position: absolute; }
+  solo header wrapper {
+    margin: 0;
+    height: 18px;
+    line-height: 18px; }
+solo button {
+  position: absolute;
+  z-index: 2;
+  top: 7px;
+  right: 7px; }
 solo textarea {
   position: absolute;
   font: 400 16px/22px Helvetica, Arial, sans-serif;
   padding: 20px;
-  top: 45px;
+  top: 39px;
   left: 0;
-  right: 0; }
+  right: 0;
+  bottom: 0;
+  resize: none;
+  background-color: rgba(255, 255, 255, 0.94); }

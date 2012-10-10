@@ -38,7 +38,7 @@
           <pre><span></span><br></pre>
           <textarea 
 
-            ng-disabled="Modernizr.touch"
+            ng-disabled="Modernizr.touch || month"
             ng-model="entry.text" 
             ng-change="updateExceptTouch(entry)"
 
@@ -56,12 +56,13 @@
 
   </entry>
 
-  <!-- <ng-include src="'templates/solo.html'"></ng-include> -->
 
 </calendar>
+
+<ng-include ng-class="{ showing: drawer }" src="'templates/solo.html'"></ng-include>
 
 <pointer class="below" 
          ng-class="{ showing: pointer > 0 }"
          ng-click="scrollToToday()"><wrapper></wrapper></pointer>
 
-<button id="birdseye" ng-click="birdseye = !birdseye"></button>
+<button id="birdseye" ng-click="birdseye = !birdseye">Boom</button>
