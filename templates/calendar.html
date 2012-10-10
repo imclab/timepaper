@@ -1,17 +1,20 @@
-<calendar 
-  
-  maintain-focus="entry"
-  >
+<pointer class="above" 
+       ng-class="{ showing: pointer < 0 }"
+       ng-click="scrollToToday()"><wrapper></wrapper></pointer>
 
-  <pointer class="above" 
-           ng-class="{ showing: pointer < 0 }"
-           ng-click="scrollToToday()"><wrapper></wrapper></pointer>
+
+<calendar
+  ng-class="{ birdseye: birdseye }"
+  reach-top="addTop()"
+  reach-bottom="addBottom()"
+  maintain-focus="entry">
 
   <entry 
+
+    
     class="{{entry.timestamp|day}} 
            {{entry.timestamp|month}}
-           date-{{entry.timestamp|date}}
-           this-month-{{entry.timestamp|thisMonth}}"
+           date-{{entry.timestamp|date}}"
 
     ng-class="{
       future: entry.timestamp > today,
@@ -23,6 +26,7 @@
     scroll-to-this="entry.timestamp == today"
     point-to-this="entry.timestamp == today"
     ng-repeat="entry in entries | orderBy:'timestamp' | startFrom:begin | limitTo:pageSize"
+    reveal-on-last
     ng-click="solo(entry)">
 
     <ng-include src="'templates/header.html'"></ng-include>
@@ -52,11 +56,12 @@
 
   </entry>
 
-  <pointer class="below" 
-           ng-class="{ showing: pointer > 0 }"
-           ng-click="scrollToToday()"><wrapper></wrapper></pointer>
-
-
   <!-- <ng-include src="'templates/solo.html'"></ng-include> -->
 
 </calendar>
+
+<pointer class="below" 
+         ng-class="{ showing: pointer > 0 }"
+         ng-click="scrollToToday()"><wrapper></wrapper></pointer>
+
+<button id="birdseye" ng-click="birdseye = !birdseye"></button>

@@ -1,12 +1,15 @@
 angular.module('entry', ['mongolab']).config(function($routeProvider) {
-  var lastTable = 'demo';
+  var table = 'demo';
   if (Modernizr.localstorage) {
     lastTable = localStorage.getItem('lastTable');
+    if (lastTable) {
+      table = lastTable;
+    }
   }
   $routeProvider.
     when('/:tableId', { controller: EntryCtrl, templateUrl: 'templates/calendar.html' }).
     when('/:tableId/:entryId', { controller: EditCtrl, templateUrl: 'templates/solo.html' }).
-    otherwise({ redirectTo: lastTable });
+    otherwise({ redirectTo: table });
 });
 
 function EntryCtrl($scope, $route, $routeParams, Entry) {
@@ -28,6 +31,8 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   $scope.pageSize = 100;
   $scope.pointer = -1;
   $scope.Modernizr = Modernizr;
+  $scope.birdseye = false;
+  
   $scope.updateExceptTouch = function(entry) {
     !Modernizr.touch && entry.update();
   };

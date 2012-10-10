@@ -3,6 +3,8 @@
     display: none; }
   calendar year {
     display: none; }
+  calendar entry.Sunday:first-of-type {
+    margin-left: 66.6666666666%; }
   calendar entry:before {
     position: absolute;
     content: ' ';

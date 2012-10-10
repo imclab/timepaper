@@ -7,7 +7,7 @@ var smoothScroll = (function() {
     cancelAnimationFrame(prevLoop)
 
     target = y;
-    easing = easing || 0.2;
+    easing = easing || 0.1;
 
     function loop() {
       var left = document.body.scrollLeft;

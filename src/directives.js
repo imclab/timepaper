@@ -57,12 +57,13 @@ angular.module('entry')
     var raw = element[0];
     if ($scope.$eval(attrs.startsFocused)) {
         
-      // setTimeout(function() {
-        // console.log('yo');
+      var focus = function() {
         raw.focus();
         setPosition(raw.value.length);
+      }
+      if (Modernizr.touch) focus();
+      else setTimeout(focus, 100);
 
-      // }, 200)
     }
     function setPosition(pos) {
       if (raw.setSelectionRange) {
@@ -103,6 +104,20 @@ angular.module('entry')
 })
 
  .directive('overflow', function() {
+  var elems = [];
+  var checkOverflow = _.debounce(function() {
+    console.log('overflow', elems.length);
+    _.each(elems, function(pair) {
+
+      if (pair[0][0].offsetHeight > pair[1][0].offsetHeight - 20) {
+        pair[1].addClass('overflow');
+      } else { 
+        pair[1].removeClass('overflow');
+      }
+    });
+  }, 200);
+  // angular.element(window).bind('resize', checkOverflow);
+  
   return function($scope, element, attrs) {
 
     var child = element;
@@ -112,19 +127,10 @@ angular.module('entry')
     while (levelsUp--)
       element = element.parent();
 
-    var checkOverflow = function() {
-      if (child[0].offsetHeight > element[0].offsetHeight - 20) {
-        element.addClass('overflow');
-      } else { 
-        element.removeClass('overflow');
-      }
-    };
+    elems.push([child, element]);
+    child.bind('input', checkOverflow);
 
-    child.bind('input', checkOverflow)
-    angular.element(window).bind('resize', _.debounce(checkOverflow, 80))
-
-    _.defer(checkOverflow);
-
+    // _.defer(checkOverflow);
   }
 
 })
@@ -170,7 +176,7 @@ angular.module('entry')
       if (prevCentered) {
         var rect = prevCentered.getBoundingClientRect();
         var t = rect.top + document.body.scrollTop + rect.height/2 - window.innerHeight/2;
-        smoothScroll(t, 1)  
+        window.scrollTo(0, t);
       } else if (centeredElement) {
         prevCentered = centeredElement;
       }
@@ -285,6 +291,17 @@ angular.module('entry')
         $scope.$eval(attrs.onTouch);
       });
     });
+  }
+})
+.directive('revealOnLast', function() {
+  return function($scope, element, attrs) {
+    if ($scope.$last === true) {
+      element.ready(function() {
+        setTimeout(function() {
+          angular.element(document.body).addClass('reveal');
+        }, 200);
+      })
+    }
   }
 });
 
