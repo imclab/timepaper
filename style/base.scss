@@ -1,12 +1,5 @@
 @import "_shared";
 
-@include keyframes(fade-in) {
-  0% { opacity: 0 }
-  30% { opacity: 0 }
-  100% { opacity: 1 }
-}
-
-
 * {
   margin: 0;
   padding: 0;
@@ -17,11 +10,16 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+@include keyframes(fade-in) {
+  0% { opacity: 0; }
+  100% { opacity: 1 }
+}
 body {
   @include prefix(user-select, none);     
   font-family: 'Radley', serif;
-  background: #eee;
-}
+
+    @include prefix(animation, fade-in 0.5s linear);
+  }
 
 calendar {
   

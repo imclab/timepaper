@@ -1,4 +1,36 @@
+@-webkit-keyframes fade-in2 {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes fade-in2 {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes fade-in2 {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-in2 {
+  0% {
+    opacity: 0; }
+
+  100% {
+    opacity: 1; } }
+
 @media screen and (min-width: 1250px) {
+  body {
+    -webkit-animation: fade-in2 0.5s linear;
+    animation: fade-in2 0.5s linear; }
+
   calendar year, calendar day {
     display: none; }
   calendar header wrapper {

@@ -28,7 +28,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.begin = 0;
   $scope.today = d.getTime();
-  $scope.pageSize = 100;
+  $scope.pageSize = 80;
   $scope.pointer = -1;
   $scope.Modernizr = Modernizr;
   $scope.birdseye = false;

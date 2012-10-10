@@ -1,8 +1,18 @@
 @import "_shared";
 
+@include keyframes(fade-in1) {
+  0% { opacity: 0; }
+  100% { opacity: 1 }
+}
+
+
 @media screen and (max-width: 1249px) and (min-width: 850px) {
 
+body { 
+
+    @include prefix(animation, fade-in1 0.5s linear);}
   calendar { 
+
 
     ordinal {
       display: none;
