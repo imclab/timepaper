@@ -7,40 +7,11 @@
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent; }
 
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1; } }
-
-@-moz-keyframes fade-in {
-  0% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1; } }
-
-@-o-keyframes fade-in {
-  0% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1; } }
-
-@keyframes fade-in {
-  0% {
-    opacity: 0; }
-
-  100% {
-    opacity: 1; } }
-
 body {
   -webkit-user-select: none;
   user-select: none;
   font-family: 'Radley', serif;
-  -webkit-animation: fade-in 0.5s linear;
-  animation: fade-in 0.5s linear; }
+  background-color: #fff; }
 
 calendar {
   -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.25, 0.25, 0, 0.99), opacity 0.3s linear;
