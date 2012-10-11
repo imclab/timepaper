@@ -61,8 +61,8 @@ angular.module('entry')
         raw.focus();
         setPosition(raw.value.length);
       }
-      // if (Modernizr.touch) focus();
-      // else setTimeout(focus, 200);
+      if (Modernizr.touch) focus();
+      else setTimeout(focus, 200);
 
     }
     function setPosition(pos) {
@@ -104,6 +104,7 @@ angular.module('entry')
 })
 
  .directive('overflow', function() {
+  // busted because all the textareas are super tall in this mode.
   var elems = [];
   var checkOverflow = _.debounce(function() {
     console.log('overflow', elems.length);
