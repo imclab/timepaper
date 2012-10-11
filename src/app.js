@@ -72,14 +72,14 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   }
 
   $scope.solo = function(entry) {
-    if ($scope.month) {
+    
+    if (Modernizr.touch) {
+      window.location = '#/'+$routeParams.tableId+'/'+entry._id.$oid;
+    } else if ($scope.month) {
       $scope.drawer = true;
       document.querySelector('solo textarea').focus();
       $scope.entry = entry;
       $scope.selectedEntry = entry;
-    }
-    if (Modernizr.touch) {
-      window.location = '#/'+$routeParams.tableId+'/'+entry._id.$oid;
     }
   };
 
@@ -164,7 +164,7 @@ function EditCtrl($scope, $location, $routeParams, Entry) {
 
   Entry = Entry($routeParams.tableId);
   Entry.get({id: $routeParams.entryId}, function(entry) {
-    $scope.selectedEntry = entry;
+    $scope.entry = entry;
   });
 
   $scope.back = function() {

@@ -40,7 +40,7 @@ solo header {
     line-height: 18px; }
 solo button {
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   top: 7px;
   right: 7px; }
 solo textarea {
