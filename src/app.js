@@ -73,7 +73,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.solo = function(entry) {
     
-    if (true || Modernizr.touch) {
+    if (Modernizr.touch) {
       window.location = '#/'+$routeParams.tableId+'/'+entry._id.$oid;
     } else if ($scope.month) {
       $scope.drawer = true;
