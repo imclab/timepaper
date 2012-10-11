@@ -1,8 +1,15 @@
 var smoothScroll = (function() {
   
   var prevLoop;
+  if (Modernizr.touch) {
+    return function(y) {
+      window.scrollTo(document.body.scrollLeft, y);
+    }
+  }
   
   return function(y, easing) {
+
+
     
     cancelAnimationFrame(prevLoop)
 
