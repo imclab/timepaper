@@ -56,7 +56,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
         
         $scope.firstEntry = -$scope.entries.indexOf($scope.todaysEntry);
         $scope.lastEntry = $scope.entries.length + $scope.firstEntry;
-        $scope.solo(entry);
+        if (!Modernizr.touch) $scope.solo(entry);
       }
     });
     
