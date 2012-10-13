@@ -6,10 +6,14 @@ angular.module('entry', ['mongolab']).config(function($routeProvider) {
       table = lastTable;
     }
   }
+  console.log(table);
+
   $routeProvider.
     when('/:tableId', { controller: EntryCtrl, templateUrl: 'templates/calendar.html' }).
     when('/:tableId/:entryId', { controller: EditCtrl, templateUrl: 'templates/solo.html' }).
     otherwise({ redirectTo: table });
+
+
 });
 
 function EntryCtrl($scope, $route, $routeParams, Entry) {
@@ -36,7 +40,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   });
 
   if (Modernizr.localstorage) {
-    localStorage.setItem('lastTable', $scope.table);
+    localStorage.setItem('lastTable', $routeParams.tableId);
   }
 
 

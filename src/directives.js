@@ -129,8 +129,7 @@ angular.module('entry')
       element = element.parent();
 
     elems.push([child, element]);
-    child.bind('input', checkOverflow);
-
+    // child.bind('input', checkOverflow);
     // setTimeout(checkOverflow, 1000);
   }
 
