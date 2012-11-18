@@ -46,6 +46,8 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
 
   $scope.entries = Entry.query({}, function() {
 
+    console.log($scope.entries.length);
+
     if ($scope.entries.length == 0) {
       initDatabase();
     }
@@ -54,17 +56,36 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
       return a.timestamp - b.timestamp;
     });
 
+
+    var containsToday = _.find($scope.entries, function(e) { 
+      var b = e.timestamp == $scope.today;
+      if (b) { $scope.todaysEntry = entry; }
+      return b;
+    });
+
+
     angular.forEach($scope.entries, function(entry) {
       if (entry.timestamp == $scope.today) {
         $scope.todaysEntry = entry;
-        
-        $scope.firstEntry = -$scope.entries.indexOf($scope.todaysEntry);
-        $scope.lastEntry = $scope.entries.length + $scope.firstEntry;
-        if (!Modernizr.touch) $scope.solo(entry);
       }
     });
+
+    if (!$scope.todaysEntry) {
+      // add 50 more days.
+      $scope.todaysEntry = initDatabase(0, 50);
+    }
+
+    $scope.firstEntry = -$scope.entries.indexOf($scope.todaysEntry);
+    $scope.lastEntry = $scope.entries.length + $scope.firstEntry;
+    if (!Modernizr.touch) $scope.solo(entry);
+
+    
+
+    console.log($scope.today, $scope.firstEntry-add_on_scroll, $scope.firstEntry);
     
   });
+
+  // $scope.entries = Entry.get({})
 
   $scope.updateExceptTouch = function(entry) {
     !Modernizr.touch && entry.update();
@@ -88,7 +109,7 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
   };
 
   $scope.addTop = function() {
-    console.log('top');
+    
     angular.forEach(_.range($scope.firstEntry-add_on_scroll, $scope.firstEntry), function(j) {
       $scope.entries.unshift(makeEntry(j));
     });
@@ -126,12 +147,19 @@ function EntryCtrl($scope, $route, $routeParams, Entry) {
     return e;
   }
 
-  function initDatabase() {
-    angular.forEach(_.range(-50, 50), function(i) {
+  function initDatabase(min, max) {
+    if (!_.isNumber(min)) min = -50;
+    if (!_.isNumber(max)) max = 50;
+    var toReturn;
+    angular.forEach(_.range(min, max), function(i, ii) {
       var e = makeEntry(i);
+      if (ii == 0) {
+        toReturn = e;
+      }
       e.$save();
       $scope.entries.push(e);
     });
+    return toReturn;
   }
 
   function today() {
